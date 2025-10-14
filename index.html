@@ -168,16 +168,16 @@
             <h2 class="galeria-titulo" data-aos="fade-down">Algunas fotos nuestras</h2>
         
             <div class="galeria-cuadricula">
-                <img src="fotos/foto-01.webp" alt="Foto 1" class="galeria-item" data-aos="fade-right" data-aos-delay="100">
-                <img src="fotos/foto-02.webp" alt="Foto 2" class="galeria-item" data-aos="fade-left" data-aos-delay="200">
-                <img src="fotos/foto-03.webp" alt="Foto 3" class="galeria-item" data-aos="fade-right" data-aos-delay="300">
-                <img src="fotos/foto-04.webp" alt="Foto 4" class="galeria-item" data-aos="fade-left" data-aos-delay="400">
-                <img src="fotos/foto-05.webp" alt="Foto 5" class="galeria-item galeria-span-2" data-aos="fade-up" data-aos-delay="500"> 
-                <img src="fotos/foto-06.webp" alt="Foto 6" class="galeria-item" data-aos="fade-right" data-aos-delay="600">
-                <img src="fotos/foto-07.webp" alt="Foto 7" class="galeria-item" data-aos="fade-left" data-aos-delay="700">
-                <img src="fotos/foto-08.webp" alt="Foto 8" class="galeria-item" data-aos="fade-right" data-aos-delay="800">
-                <img src="fotos/foto-09.webp" alt="Foto 9" class="galeria-item" data-aos="fade-left" data-aos-delay="900">
-                <img src="fotos/foto-10.webp" alt="Foto 10" class="galeria-item galeria-span-2" data-aos="fade-up" data-aos-delay="1000">
+                <img src="fotos/foto-01.webp" alt="Foto 1" class="galeria-item" data-aos="fade-right" data-aos-delay="100" style="object-position: 50% 30%;">
+                <img src="fotos/foto-02.webp" alt="Foto 2" class="galeria-item" data-aos="fade-left" data-aos-delay="200" style="object-position: 50% 23%;">
+                <img src="fotos/foto-03.webp" alt="Foto 3" class="galeria-item" data-aos="fade-right" data-aos-delay="300" style="object-position: 50% 23%;">
+                <img src="fotos/foto-04.webp" alt="Foto 4" class="galeria-item" data-aos="fade-left" data-aos-delay="400" style="object-position: 50% 30%;">
+                <img src="fotos/foto-05.webp" alt="Foto 5" class="galeria-item galeria-span-2" data-aos="fade-up" data-aos-delay="500" style="object-position: 50% 90%;"> 
+                <img src="fotos/foto-06.webp" alt="Foto 6" class="galeria-item" data-aos="fade-right" data-aos-delay="600" style="object-position: 50% 53%;">
+                <img src="fotos/foto-07.webp" alt="Foto 7" class="galeria-item" data-aos="fade-left" data-aos-delay="700" style="object-position: 50% 50%;">
+                <img src="fotos/foto-08.webp" alt="Foto 8" class="galeria-item" data-aos="fade-right" data-aos-delay="800"style="object-position: 80% 50%;">
+                <img src="fotos/foto-09.webp" alt="Foto 9" class="galeria-item" data-aos="fade-left" data-aos-delay="900"style="object-position: 50% 50%;">
+                <img src="fotos/foto-10.webp" alt="Foto 10" class="galeria-item galeria-span-2" data-aos="fade-up" data-aos-delay="1000"style="object-position: 50% 43%;">
             </div>
         </section>
 
@@ -189,18 +189,15 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <script>
-        // Función para cambiar las animaciones en móvil
         function ajustarAnimacionesMovil() {
             const anchoMovil = 768;
 
             if (window.innerWidth <= anchoMovil) {
-                // Lógica para el Cronograma
                 const timelineItems = document.querySelectorAll('.timeline-item');
                 timelineItems.forEach(item => {
                     item.setAttribute('data-aos', 'fade-right');
                 });
 
-                // Lógica para la Galería
                 const galeriaImages = document.querySelectorAll('.galeria-cuadricula img');
                 galeriaImages.forEach((img, index) => {
                     const numeroDeFoto = index + 1;
@@ -215,10 +212,7 @@
             }
         }
 
-        // Ejecutamos la función al cargar la página
         ajustarAnimacionesMovil();
-
-        // Inicializamos la librería de animaciones
         AOS.init({
             duration: 800,
             once: false 
@@ -227,20 +221,17 @@
     
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- FUNCIÓN REUTILIZABLE PARA COPIAR TEXTO (VERSIÓN MEJORADA) ---
-        function setupCopyButton(btnId, textId, originalText) {
+           function setupCopyButton(btnId, textId, originalText) {
             const boton = document.getElementById(btnId);
             const textoParaCopiar = document.getElementById(textId)?.innerText;
 
             if (boton && textoParaCopiar) {
                 boton.addEventListener('click', () => {
-                    // Intenta usar la API moderna si está disponible y en un contexto seguro
                     if (navigator.clipboard && window.isSecureContext) {
                         navigator.clipboard.writeText(textoParaCopiar).then(() => {
                             showFeedback(boton, originalText);
                         });
                     } else {
-                        // Método de reserva para HTTP o navegadores antiguos
                         const textArea = document.createElement('textarea');
                         textArea.value = textoParaCopiar;
                         textArea.style.position = 'absolute';
@@ -259,7 +250,6 @@
             }
         }
 
-        // Función para mostrar feedback al usuario
         function showFeedback(boton, originalText) {
             boton.innerText = '¡Copiado!';
             setTimeout(() => {
@@ -267,7 +257,6 @@
             }, 2000);
         }
 
-        // --- Configuramos los 4 botones (esto no cambia) ---
         setupCopyButton('btn-copiar-tarjeta', 'cbu-tarjeta', 'Copiar CBU');
         setupCopyButton('btn-copiar-alias-tarjeta', 'alias-tarjeta', 'Copiar Alias');
         setupCopyButton('btn-copiar-regalo', 'cbu-regalo', 'Copiar CBU');
@@ -277,33 +266,22 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Seleccionamos TODOS los elementos que necesitan formato de fecha
         const dateElements = document.querySelectorAll('.js-format-date');
 
-        // Creamos un solo formateador para reutilizar
         const dateFormatter = new Intl.DateTimeFormat(undefined, {
           day: '2-digit',
           month: '2-digit',
           year: 'numeric'
         });
 
-        // Recorremos cada elemento
         dateElements.forEach(element => {
-            // 1. Leemos la fecha específica del atributo 'data-date'
             const dateString = element.dataset.date;
-
             if (dateString) {
-                // 2. Creamos un objeto Date con esa fecha
-                // (Añadimos T00:00:00 para evitar problemas con zonas horarias)
                 const date = new Date(dateString + 'T00:00:00');
-
-                // 3. Formateamos y reconstruimos con nuestra estética "•"
                 const formattedDate = dateFormatter.formatToParts(date)
                     .filter(part => part.type !== 'literal')
                     .map(part => part.value)
                     .join(' • ');
-
-                // 4. Insertamos la fecha formateada en el elemento
                 element.innerText = formattedDate;
             }
         });

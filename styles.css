@@ -74,7 +74,7 @@ h1, h2, h3 {
 .content {
   width: 100%;
   position: relative;
-  top: -15vh; /* Controla la altura del bloque de texto */
+  top: -15vh;
   z-index: 10;
   padding: 20px;
 }
@@ -195,15 +195,15 @@ h1, h2, h3 {
 
 .cronograma-titulo {
   display: flex;
-  flex-direction: column; /* Apila los elementos verticalmente */
-  align-items: center;    /* Los centra horizontalmente */
+  flex-direction: column;
+  align-items: center;
   margin-top: 0;
   margin-bottom: 60px;
   text-align: center;
 }
 
 .cronograma-titulo i {
-  font-size: 4em; /* Tamaño del ícono */
+  font-size: 4em;
   color: var(--color-blanco);
   text-shadow: 0px 2px 5px rgba(0, 0, 0, 1);
 }
@@ -216,15 +216,12 @@ h1, h2, h3 {
   letter-spacing: 2px;
   
   /* --- ESTILOS DE LA TARJETA --- */
-  background-color: rgba(255, 255, 255, 0.85); /* Fondo semitransparente */
-  padding: 8px 20px; /* Espacio interno de la tarjeta */
-  border-radius: 12px; /* Bordes redondeados */
-  backdrop-filter: blur(8px); /* Efecto de desenfoque */
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 8px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  
-  /* --- AJUSTE DE COLOR PARA CONTRASTE --- */
-  color: var(--color-secundario); /* Texto oscuro para leerse sobre fondo claro */
-  /* Quitamos la sombra de texto que ya no es necesaria */
+  color: var(--color-secundario);
 }
 
 .timeline-container {
@@ -277,7 +274,7 @@ h1, h2, h3 {
 .tarjeta-section {
   padding: 50px 20px;
   text-align: center;
-  background-color: #e8e6d1; /* Un color de fondo claro y neutro */
+  background-color: #e8e6d1;
 }
 
 .tarjeta-titulo {
@@ -319,16 +316,16 @@ h1, h2, h3 {
 .botones-copiar {
   display: flex;
   justify-content: center;
-  gap: 10px; /* Espacio entre los botones */
+  gap: 10px;
   margin-top: 20px;
 }
 
 .texto-aclaracion {
-  margin-top: 25px; /* Espacio para separarlo de la tarjeta de arriba */
-  font-size: 0.9em;   /* Un tamaño de letra un poco más pequeño */
-  font-style: italic;  /* Estilo en cursiva para distinguirlo */
-  opacity: 0.8;       /* Un poco más sutil que el texto principal */
-  max-width: 600px;   /* Mantenemos el mismo ancho que los párrafos descriptivos */
+  margin-top: 25px;
+  font-size: 0.9em;
+  font-style: italic;
+  opacity: 0.8;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
@@ -376,10 +373,9 @@ h1, h2, h3 {
 
 .datos-bancarios p {
   line-height: 1.7;
-  word-wrap: break-word; /* Para que el CBU no se desborde */
+  word-wrap: break-word;
 }
 
-/* Ajustamos el botón de copiar para que herede el estilo */
 #btn-copiar {
   margin-top: 20px;
   cursor: pointer;
@@ -525,7 +521,7 @@ footer {
   }
 
   .content {
-    position: static; /* Reseteamos posicionamiento para centrado flex */
+    position: static;
   }
 
   .content h1:first-child {
