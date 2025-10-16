@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invitación a nuestra boda</title>
     <link rel="icon" type="image/png" href="icon.png">
-    <link rel="preload" as="image" href="fotos/portada_01.webp">
-    <link rel="preload" as="image" href="fotos/detalles.webp">
-    <link rel="preload" as="image" href="fotos/detalles_celu.webp">
-    <link rel="preload" as="image" href="fotos/horario.webp">
-    <link rel="preload" as="image" href="fotos/galeria.webp">
+
+    <link rel="preload" as="image" href="img/fondo-principal.webp">
+    <link rel="preload" as="image" href="img/fondo-detalles.webp">
+    <link rel="preload" as="image" href="img/fondo-galeria.webp">
+
     <style>
         html {
             scroll-behavior: smooth;
         }
     </style>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="styles.css"> 
-    
+    <link rel="stylesheet" href="styles.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -32,15 +32,83 @@
             <div class="content">
                 <h1 data-aos="fade" data-aos-duration="1500">Kelly & Boris</h1>
                 <h1 class="hero-date js-format-date" data-date="2027-04-04" data-aos="fade" data-aos-duration="1500" data-aos-delay="200"></h1>
-            </div> 
-            <a href="#detalles" class="scroll-link">
+            </div>
+            <a href="#detalles" id="hero-scroll-link" class="scroll-link">
                 <div class="scroll-indicator">
                     <i class="fas fa-chevron-down"></i>
                     <i class="fas fa-chevron-down"></i>
                 </div>
-            </a>               
+            </a>
         </header>
 
+        <section id="damas" class="damas-section cortejo-section hidden">
+            <div class="cortejo-content">
+                <h2 class="damas-titulo"><i class="fa-solid fa-person-dress"></i></h2>
+                <p class="damas-descripcion">
+                    ¡Gracias por ser parte de este día tan especial como Dama de Honor! Tu apoyo significa todo para nosotros.
+                </p>
+            </div>
+            <a href="#" id="btn-ver-damas" class="link-secundario btn-cortejo-inferior">Ver todas las damas de honor</a>
+        </section>
+
+        <section id="lista-damas" class="lista-desplegable">
+            <div class="lista-contenido">
+                <h2 class="lista-titulo">Damas de Honor</h2>
+                <div class="nombres-grid">
+                    <div class="persona">
+                        <img src="fotos/damas/person.webp" alt="Nombre Dama 1">
+                        <p>Nombre Dama 1</p>
+                    </div>
+                    <div class="persona">
+                        <img src="fotos/damas/person.webp" alt="Nombre Dama 2">
+                        <p>Nombre Dama 2</p>
+                    </div>
+                    <div class="persona">
+                        <img src="fotos/damas/person.webp" alt="Nombre Dama 3">
+                        <p>Nombre Dama 3</p>
+                    </div>
+                    <div class="persona">
+                        <img src="fotos/damas/person.webp" alt="Nombre Dama 4">
+                        <p>Nombre Dama 4</p>
+                    </div>
+                    <div class="persona">
+                        <img src="fotos/damas/person.webp" alt="Nombre Dama 5">
+                        <p>Nombre Dama 5</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="caballeros" class="caballeros-section cortejo-section hidden">
+            <div class="cortejo-content">
+                <h2 class="caballeros-titulo"><i class="fa-solid fa-user-tie"></i></h2>
+                <p class="caballeros-descripcion">
+                    ¡Gracias por acompañarnos como Caballero de Honor en este gran paso! Es un honor tenerte a nuestro lado.
+                </p>
+            </div>
+            <a href="#" id="btn-ver-caballeros" class="link-secundario btn-cortejo-inferior">Ver todos los caballeros de honor</a>
+        </section>
+
+        <section id="lista-caballeros" class="lista-desplegable">
+            <div class="lista-contenido">
+                <h2 class="lista-titulo">Caballeros de Honor</h2>
+                <div class="nombres-grid">
+                    <div class="persona">
+                        <img src="fotos/caballeros/person.webp" alt="Nombre Caballero 1">
+                        <p>Nombre Caballero 1</p>
+                    </div>
+                    <div class="persona">
+                        <img src="fotos/caballeros/person.webp" alt="Nombre Caballero 2">
+                        <p>Nombre Caballero 2</p>
+                    </div>
+                    <div class="persona">
+                        <img src="fotos/caballeros/person.webp" alt="Nombre Caballero 3">
+                        <p>Nombre Caballero 3</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <section id="detalles" class="detalles-section">
             <div class="espaciador-vertical"></div>
             <div class="info-bloques">
@@ -49,14 +117,23 @@
                     <p>"La Yumba" - Ruta 11 Km 21, Aldea Brasilera, Entre Ríos.<i class="fa-solid fa-location-dot"></i></p>
                     <a href="https://maps.app.goo.gl/3apmmqSBGVd8eMAF7?g_st=aw" target="_blank" class="link-secundario">Ver Mapa<i class="fa-solid fa-location-dot"></i></a>
                 </div>
-                
+
                 <div class="bloque" data-aos="fade-left" data-aos-delay="300">
                     <h3>Confirmanos tu asistencia</h3>
-                    <p>Completa el formulario confirmando asistencia y seleccionando tu menu de comida.<i class="fa-solid fa-utensils"></i>
+                    <p>Completa el formulario confirmando asistencia y seleccionando tu menu de comida.<i class="fa-solid fa-utensils"></i></p>
                     <p class="fecha-limite">Completalo antes del <span class="js-format-date" data-date="2026-08-01"></span>.</p>
                     <a href="https://t8oknbl8.forms.app/boda-kelly-boris" target="_blank" class="link-secundario"> Confirmar Asistencia<i class="fa-solid fa-pen-to-square"></i></a>
                 </div>
-            </div>
+                
+<! -- Descomentar lo de abajo cuando se quiera agregar el juego -->       
+ <!--       
+              <div class="bloque" data-aos="fade-left" data-aos-delay="300">
+                    <h3>Respondé unas preguntas para un juego</h3>
+                    <p>Para este juego es necesario que cada invitado responda unas preguntas así tenemos la mayor cantidad de respuestas.<i class="fa-solid fa-dice"></i></p>
+                    <a href="https://t8oknbl8.forms.app/preguntas-kelly-boris" target="_blank" class="link-secundario"> Responder preguntas<i class="fa-solid fa-circle-question"></i></a>
+                </div>
+  -->
+                </div>
         </section>
         
         <section id="cronograma" class="cronograma-section">
@@ -65,231 +142,121 @@
                 <span class="cronograma-fecha js-format-date" data-date="2027-04-04"></span>
             </h2>
             <div class="timeline-container">
-                
                 <div class="timeline-item" data-aos="fade-right">
                     <div class="timeline-content">
                         <h3>17:00 hs - Recepción</h3>
                         <p>¡Los esperamos a todos y nos preparamos para la ceremonia!</p>
                     </div>
                 </div>
-
                 <div class="timeline-item" data-aos="fade-left">
                     <div class="timeline-content">
                         <h3>18:00 hs - Ceremonia</h3>
                         <p>El momento más importante de nuestras vidas.</p>
                     </div>
                 </div>
-
                 <div class="timeline-item" data-aos="fade-right">
                     <div class="timeline-content">
                         <h3>19:00 hs - Entrada</h3>
                         <p>Disfruten de una entrada y bebida mientras nos hacemos fotos.</p>
                     </div>
                 </div>
-
                 <div class="timeline-item" data-aos="fade-left">
                     <div class="timeline-content">
                         <h3>20:00 hs - ¡Fiesta!</h3>
                         <p>¡A celebrar juntos este momento especial con juegos, música y buena comida!</p>
                     </div>
                 </div>
-                
                 <div class="timeline-item" data-aos="fade-right">
                     <div class="timeline-content">
                         <h3>22:00 hs - Fotos</h3>
                         <p>Las fotos con cada uno de ustedes.</p>
                     </div>
                 </div>
-                
                 <div class="timeline-item" data-aos="fade-left">
                     <div class="timeline-content">
                         <h3>23:00 hs - Brindis</h3>
                         <p>Brindamos por nosotros y por todos los invitados.</p>
                     </div>
                 </div>
-                
                 <div class="timeline-item" data-aos="fade-right">
                     <div class="timeline-content">
                         <h3>23:30 hs - ¡Nos escapamos!</h3>
                         <p>Gracias por venir.</p>
                     </div>
                 </div>
-                
             </div>
         </section>
-        <section id="tarjeta" class="tarjeta-section">
-    <h2 class="tarjeta-titulo" data-aos="fade-up">
-        <i class="fa-solid fa-ticket-simple"></i>
-    </h2>
-    <p class="tarjeta-descripcion" data-aos="fade-up" data-aos-delay="100">
-        El valor de la tarjeta es de:<br>
-        $65.000 por adulto (mayores a 12 años).<br>
-        $40.000 ARS por niño (entre 2 y 12 años).<br>
-        Los bebés menores de 2 años no pagan.
-    </p>
 
-    <div class="info-tarjeta" data-aos="fade-up" data-aos-delay="200">
-      <h4>Datos para la transferencia:</h4>
-        <p>
-          <strong>CBU:</strong> <span id="cbu-tarjeta">0070080130004074676249</span><br>
-          <strong>Alias:</strong> <span id="alias-tarjeta">KELLY.AND.BORIS</span>
-        </p>
-      <div class="botones-copiar">
-        <button id="btn-copiar-tarjeta" class="link-secundario">Copiar CBU</button>
-        <button id="btn-copiar-alias-tarjeta" class="link-secundario">Copiar Alias</button>
-      </div>
-    </div>
-        <p class="texto-aclaracion" data-aos="fade-up" data-aos-delay="100">
-        Si no podés transferir podés alcanzarnos el efectivo.<br>
-        Podés escribirnos por WhatsApp si querés pagar de otra forma (en usd o en cuotas).<br>
-        Por favor confirmar asistencia y abonar la tarjeta antes del <span class="js-format-date" data-date="2026-08-01"></span>.
-        </p>
+        <section id="tarjeta" class="tarjeta-section hidden">
+            <h2 class="tarjeta-titulo" data-aos="fade-up">
+                <i class="fa-solid fa-ticket-simple"></i>
+            </h2>
+            <p class="tarjeta-descripcion" data-aos="fade-up" data-aos-delay="100">
+                El valor de la tarjeta es de:<br>
+                $65.000 por adulto (mayores a 12 años).<br>
+                $40.000 ARS por niño (entre 2 y 12 años).<br>
+                Los bebés menores de 2 años no pagan.
+            </p>
+            <div class="info-tarjeta" data-aos="fade-up" data-aos-delay="200">
+                <h4>Datos para la transferencia:</h4>
+                <p>
+                    <strong>CBU:</strong> <span id="cbu-tarjeta">0070080130004074676249</span><br>
+                    <strong>Alias:</strong> <span id="alias-tarjeta">KELLY.AND.BORIS</span>
+                </p>
+                <div class="botones-copiar">
+                    <button id="btn-copiar-tarjeta" class="link-secundario">Copiar CBU</button>
+                    <button id="btn-copiar-alias-tarjeta" class="link-secundario">Copiar Alias</button>
+                </div>
+            </div>
+            <p class="texto-aclaracion" data-aos="fade-up" data-aos-delay="100">
+                Si no podés transferir podés alcanzarnos el efectivo.<br>
+                Podés escribirnos por WhatsApp si querés pagar de otra forma (en usd o en cuotas).<br>
+                Por favor confirmar asistencia y abonar la tarjeta antes del <span class="js-format-date" data-date="2026-08-01"></span>.
+            </p>
         </section>
         
         <section id="regalo" class="regalo-section">
-              <h2 class="regalo-titulo" data-aos="fade-up">
-                  <i class="fa-solid fa-gift"></i>
-              </h2>
-                    <p class="regalo-descripcion" data-aos="fade-up" data-aos-delay="100">
-                      El mejor regalo es tu presencia, ¡pero si deseás hacernos un obsequio, podés ayudarnos con nuestra luna de miel!
-                    </p>
-
-        <div class="datos-bancarios" data-aos="fade-up" data-aos-delay="200">
-    <h4>Datos para transferencia:</h4>
-    <p>
-        <strong>CBU:</strong> <span id="cbu-regalo">0070080130004074676249</span><br>
-        <strong>Alias:</strong> <span id="alias-regalo">KELLY.AND.BORIS</span>
-    </p>
-    <div class="botones-copiar">
-        <button id="btn-copiar-regalo" class="link-secundario">Copiar CBU</button>
-        <button id="btn-copiar-alias-regalo" class="link-secundario">Copiar Alias</button>
-    </div>
-    </div>
+            <h2 class="regalo-titulo" data-aos="fade-up">
+                <i class="fa-solid fa-gift"></i>
+            </h2>
+            <p class="regalo-descripcion" data-aos="fade-up" data-aos-delay="100">
+                El mejor regalo es tu presencia, ¡pero si deseás hacernos un obsequio, podés ayudarnos con nuestra luna de miel!
+            </p>
+            <div class="datos-bancarios" data-aos="fade-up" data-aos-delay="200">
+                <h4>Datos para transferencia:</h4>
+                <p>
+                    <strong>CBU:</strong> <span id="cbu-regalo">0070080130004074676249</span><br>
+                    <strong>Alias:</strong> <span id="alias-regalo">KELLY.AND.BORIS</span>
+                </p>
+                <div class="botones-copiar">
+                    <button id="btn-copiar-regalo" class="link-secundario">Copiar CBU</button>
+                    <button id="btn-copiar-alias-regalo" class="link-secundario">Copiar Alias</button>
+                </div>
+            </div>
         </section>
         
         <section id="galeria" class="galeria-section">
             <h2 class="galeria-titulo" data-aos="fade-down">Algunas fotos nuestras</h2>
-        
             <div class="galeria-cuadricula">
                 <img src="fotos/foto-01.webp" alt="Foto 1" class="galeria-item" data-aos="fade-right" data-aos-delay="100" style="object-position: 50% 30%;">
                 <img src="fotos/foto-02.webp" alt="Foto 2" class="galeria-item" data-aos="fade-left" data-aos-delay="200" style="object-position: 50% 23%;">
                 <img src="fotos/foto-03.webp" alt="Foto 3" class="galeria-item" data-aos="fade-right" data-aos-delay="100" style="object-position: 50% 23%;">
                 <img src="fotos/foto-04.webp" alt="Foto 4" class="galeria-item" data-aos="fade-left" data-aos-delay="200" style="object-position: 50% 30%;">
-                <img src="fotos/foto-05.webp" alt="Foto 5" class="galeria-item galeria-span-2" data-aos="fade-up" data-aos-delay="100" style="object-position: 50% 90%;"> 
+                <img src="fotos/foto-05.webp" alt="Foto 5" class="galeria-item galeria-span-2" data-aos="fade-up" data-aos-delay="100" style="object-position: 50% 90%;">
                 <img src="fotos/foto-06.webp" alt="Foto 6" class="galeria-item" data-aos="fade-right" data-aos-delay="100" style="object-position: 50% 53%;">
                 <img src="fotos/foto-07.webp" alt="Foto 7" class="galeria-item" data-aos="fade-left" data-aos-delay="200" style="object-position: 50% 50%;">
-                <img src="fotos/foto-08.webp" alt="Foto 8" class="galeria-item" data-aos="fade-right" data-aos-delay="100"style="object-position: 80% 50%;">
-                <img src="fotos/foto-09.webp" alt="Foto 9" class="galeria-item" data-aos="fade-left" data-aos-delay="200"style="object-position: 50% 50%;">
-                <img src="fotos/foto-10.webp" alt="Foto 10" class="galeria-item galeria-span-2" data-aos="fade-up" data-aos-delay="100"style="object-position: 50% 43%;">
+                <img src="fotos/foto-08.webp" alt="Foto 8" class="galeria-item" data-aos="fade-right" data-aos-delay="100" style="object-position: 80% 50%;">
+                <img src="fotos/foto-09.webp" alt="Foto 9" class="galeria-item" data-aos="fade-left" data-aos-delay="200" style="object-position: 50% 50%;">
+                <img src="fotos/foto-10.webp" alt="Foto 10" class="galeria-item galeria-span-2" data-aos="fade-up" data-aos-delay="100" style="object-position: 50% 43%;">
             </div>
         </section>
 
         <footer>
             <p>Kelly & Boris</p>
         </footer>
-    </div>  
+    </div>
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <script>
-        function ajustarAnimacionesMovil() {
-            const anchoMovil = 768;
-
-            if (window.innerWidth <= anchoMovil) {
-                const timelineItems = document.querySelectorAll('.timeline-item');
-                timelineItems.forEach(item => {
-                    item.setAttribute('data-aos', 'fade-right');
-                });
-
-                const galeriaImages = document.querySelectorAll('.galeria-cuadricula img');
-                galeriaImages.forEach((img, index) => {
-                    const numeroDeFoto = index + 1;
-                    if (numeroDeFoto >= 5 && numeroDeFoto <= 9) {
-                        if (numeroDeFoto % 2 !== 0) {
-                            img.setAttribute('data-aos', 'fade-right');
-                        } else {
-                            img.setAttribute('data-aos', 'fade-left');
-                        }
-                    }
-                });
-            }
-        }
-
-        ajustarAnimacionesMovil();
-        AOS.init({
-            duration: 800,
-            once: false 
-        });
-    </script>
-    
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-           function setupCopyButton(btnId, textId, originalText) {
-            const boton = document.getElementById(btnId);
-            const textoParaCopiar = document.getElementById(textId)?.innerText;
-
-            if (boton && textoParaCopiar) {
-                boton.addEventListener('click', () => {
-                    if (navigator.clipboard && window.isSecureContext) {
-                        navigator.clipboard.writeText(textoParaCopiar).then(() => {
-                            showFeedback(boton, originalText);
-                        });
-                    } else {
-                        const textArea = document.createElement('textarea');
-                        textArea.value = textoParaCopiar;
-                        textArea.style.position = 'absolute';
-                        textArea.style.left = '-9999px';
-                        document.body.appendChild(textArea);
-                        textArea.select();
-                        try {
-                            document.execCommand('copy');
-                            showFeedback(boton, originalText);
-                        } catch (err) {
-                            console.error('Error al copiar con el método antiguo: ', err);
-                        }
-                        document.body.removeChild(textArea);
-                    }
-                });
-            }
-        }
-
-        function showFeedback(boton, originalText) {
-            boton.innerText = '¡Copiado!';
-            setTimeout(() => {
-                boton.innerText = originalText;
-            }, 2000);
-        }
-
-        setupCopyButton('btn-copiar-tarjeta', 'cbu-tarjeta', 'Copiar CBU');
-        setupCopyButton('btn-copiar-alias-tarjeta', 'alias-tarjeta', 'Copiar Alias');
-        setupCopyButton('btn-copiar-regalo', 'cbu-regalo', 'Copiar CBU');
-        setupCopyButton('btn-copiar-alias-regalo', 'alias-regalo', 'Copiar Alias');
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const dateElements = document.querySelectorAll('.js-format-date');
-
-        const dateFormatter = new Intl.DateTimeFormat(undefined, {
-          day: '2-digit',
-          month: '2-digit',
-          year: 'numeric'
-        });
-
-        dateElements.forEach(element => {
-            const dateString = element.dataset.date;
-            if (dateString) {
-                const date = new Date(dateString + 'T00:00:00');
-                const formattedDate = dateFormatter.formatToParts(date)
-                    .filter(part => part.type !== 'literal')
-                    .map(part => part.value)
-                    .join(' • ');
-                element.innerText = formattedDate;
-            }
-        });
-    });
-</script>
-
+    <script src="scripts.js"></script>
 </body>
 </html>
