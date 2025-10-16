@@ -163,12 +163,15 @@ h1, h2, h3 {
     color: var(--color-blanco);
 }
 
-.btn-cortejo-inferior {
+.cortejo-boton-wrapper {
     position: absolute;
     bottom: 60px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
+}
+
+.btn-cortejo-inferior {
     width: auto;
     padding: 0 25px;
     box-sizing: border-box;
