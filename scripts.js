@@ -117,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (grupo === 'caballeros') {
         if (seccionCaballeros) seccionCaballeros.classList.remove('hidden');
         if (heroScrollLink) heroScrollLink.href = '#caballeros';
+    } else if (grupo === 'familia' || grupo === 'inv_esp') {
     } else {
         if (seccionTarjeta) seccionTarjeta.classList.remove('hidden');
     }
