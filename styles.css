@@ -416,11 +416,10 @@ h1, h2, h3 {
     width: 25px;
 }
 
-/* Estilo para los iconos SVG del cronograma */
 .timeline-content h3 .timeline-icon {
     width: 25px;
     height: auto;
-    margin-left: 10px;
+    margin-left: 12px;
     vertical-align: middle;
     padding-bottom: 5px;
 }
@@ -712,6 +711,10 @@ footer {
         padding-left: 70px;
         padding-right: 15px;
         left: 0;
+    }
+
+    .timeline-content h3 .timeline-icon {
+    margin-left: 3px;
     }
 
     /* --- GALERÍA --- */
