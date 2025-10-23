@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
     <div class="invitacion-container">
@@ -156,50 +157,61 @@
                 <i class="fa-solid fa-clock"></i>
                 <span class="cronograma-fecha js-format-date" data-date="2027-04-04"></span>
             </h2>
-            <div class="timeline-container">
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-content">
-                        <h3>17:00 hs - Recepción</h3>
-                        <p>¡Los esperamos a todos y nos preparamos para la ceremonia!</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-content">
-                        <h3>18:00 hs - Ceremonia</h3>
-                        <p>El momento más importante de nuestras vidas.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-content">
-                        <h3>19:00 hs - Entrada</h3>
-                        <p>Disfruten de una entrada y bebida mientras nos hacemos fotos.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-content">
-                        <h3>20:00 hs - ¡Fiesta!</h3>
-                        <p>¡A celebrar juntos este momento especial con juegos, música y buena comida!</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-content">
-                        <h3>22:00 hs - Fotos</h3>
-                        <p>Las fotos con cada uno de ustedes.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-content">
-                        <h3>23:00 hs - Brindis</h3>
-                        <p>Brindamos por nosotros y por todos los invitados.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-content">
-                        <h3>23:30 hs - ¡Nos escapamos!</h3>
-                        <p>Gracias por venir.</p>
-                    </div>
+        <div class="timeline-container">
+    
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-content">
+                    <h3>17:00 hs - Recepción<i class="fa-solid fa-bell-concierge"></i></h3>
+                    <p>¡Los esperamos a todos y nos preparamos para la ceremonia!</p>
                 </div>
             </div>
+
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-content">
+                    <h3>
+                        18:00 hs - Ceremonia
+                        <img src="icons/anillos.svg" class="timeline-icon" alt="icono anillos">
+                    </h3>
+                    <p>El momento más importante de nuestras vidas.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-content">
+                    <h3>19:00 hs - Entrada<i class="fa-solid fa-champagne-glasses"></i></h3>
+                    <p>Disfruten de una entrada y bebida mientras nos hacemos fotos.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-content">
+                    <h3>20:00 hs - ¡Fiesta!<i class="fa-solid fa-music"></i></h3>
+                    <p>¡A celebrar juntos este momento especial con juegos, música y buena comida!</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-content">
+                    <h3>22:00 hs - Fotos<i class="fa-solid fa-camera-retro"></i></h3>
+                    <p>Las fotos con cada uno de ustedes.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-content">
+                    <h3>23:00 hs - Brindis<i class="fa-solid fa-glass-cheers"></i></h3>
+                    <p>Brindamos por nosotros y por todos los invitados.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-content">
+                    <h3>23:30 hs - ¡Nos escapamos!<i class="fa-solid fa-car-side"></i></h3>
+                    <p>Gracias por venir.</p>
+                </div>
+            </div>
+
+        </div>
         </section>
 
         <section id="tarjeta" class="tarjeta-section hidden">
@@ -209,7 +221,7 @@
             <p class="tarjeta-descripcion" data-aos="fade-up" data-aos-delay="100">
                 El valor de la tarjeta es de:<br>
                 $65.000 por adulto (mayores a 12 años).<br>
-                $40.000 ARS por niño (entre 2 y 12 años).<br>
+                $40.000 por niño (entre 2 y 12 años).<br>
                 Los bebés menores de 2 años no pagan.
             </p>
             <div class="info-tarjeta" data-aos="fade-up" data-aos-delay="200">
@@ -251,7 +263,7 @@
         </section>
         
         <section id="galeria" class="galeria-section">
-            <h2 class="galeria-titulo" data-aos="fade-down">Algunas fotos nuestras</h2>
+            <h2 class="galeria-titulo" data-aos="fade-up">Algunas fotos nuestras</h2>
             <div class="galeria-cuadricula">
                 <img src="fotos/foto-01.webp" alt="Foto 1" class="galeria-item" data-aos="fade-right" data-aos-delay="100" loading="lazy" style="object-position: 50% 30%;">
                 <img src="fotos/foto-02.webp" alt="Foto 2" class="galeria-item" data-aos="fade-left" data-aos-delay="200" loading="lazy" style="object-position: 50% 23%;">
@@ -267,7 +279,11 @@
         </section>
 
         <footer>
-            <p>Kelly & Boris</p>
+            <img src="icons/flor.svg" class="footer-svg icono-izquierdo" alt="Adorno floral">
+
+            <p class="footer-names">Kelly & Boris</p>
+
+            <img src="icons/flor.svg" class="footer-svg" alt="Adorno floral">
         </footer>
     </div>
     

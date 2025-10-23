@@ -35,7 +35,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--color-fondo-claro);
+    background-color: var(--color-principal);
     color: var(--color-texto-oscuro);
     overflow-x: hidden;
 }
@@ -85,7 +85,7 @@ h1, h2, h3 {
 
 .content h1:not(.hero-date) {
     font-family: 'Calligraphy', sans-serif;
-    font-size: 5em;
+    font-size: clamp(3.5em, 15vw, 5em);
     margin-bottom: 10px;
     color: white;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
@@ -255,7 +255,7 @@ h1, h2, h3 {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100% 20%;
-    background-color: rgba(130, 126, 72, 0.55);
+    background-color: rgba(90, 88, 72, 0.5);
     background-blend-mode: overlay;
     color: var(--color-texto-oscuro);
 }
@@ -333,7 +333,7 @@ h1, h2, h3 {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    background-color: rgba(130, 126, 72, 0.6);
+    background-color: rgba(90, 88, 72, 0.45);
     background-blend-mode: multiply;
 }
 
@@ -408,6 +408,21 @@ h1, h2, h3 {
 .timeline-content h3 {
     margin-top: 0;
     color: var(--color-secundario);
+}
+
+
+.timeline-content h3 i {
+    margin-left: 12px;
+    width: 25px;
+}
+
+/* Estilo para los iconos SVG del cronograma */
+.timeline-content h3 .timeline-icon {
+    width: 25px;
+    height: auto;
+    margin-left: 10px;
+    vertical-align: middle;
+    padding-bottom: 5px;
 }
 
 /* ============================================== */
@@ -544,14 +559,32 @@ h1, h2, h3 {
 /* ============================================== */
 /* 8. FOOTER Y SCROLL INDICATOR                   */
 /* ============================================== */
+
 footer {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 25px 20px;
+    background-color: var(--color-principal);
+}
+
+.footer-names {
     font-family: 'Calligraphy', sans-serif;
     font-size: 2.2em;
-    padding: 1px 0px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
     color: var(--color-secundario);
-    background-color: var(--color-principal);
+    margin: 0;
+}
+
+.footer-svg {
+    width: 45px; 
+    height: auto;
+    opacity: 0.8;
+}
+
+.icono-izquierdo {
+    transform: scaleX(-1);
 }
 
 .scroll-link {
