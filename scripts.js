@@ -145,6 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    toggleLista(btnVerDamas, listaDamas, 'Ver todas las damas de honor', 'Ocultar lista');
-    toggleLista(btnVerCaballeros, listaCaballeros, 'Ver todos los caballeros de honor', 'Ocultar lista');
+    toggleLista(btnVerDamas, listaDamas, 'Ver todas las damas de honor', 'Ocultar damas de honor');
+    toggleLista(btnVerCaballeros, listaCaballeros, 'Ver todos los caballeros de honor', 'Ocultar caballeros de honor');
 });
