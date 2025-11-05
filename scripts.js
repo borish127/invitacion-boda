@@ -135,13 +135,24 @@ document.addEventListener('DOMContentLoaded', () => {
         boton.addEventListener('click', (e) => {
             e.preventDefault();
             const estaActivo = lista.classList.toggle('activo');
+            
+            // --- INICIO DE CAMBIOS ---
+            // Asignamos la altura dinámicamente para la animación
+            if (estaActivo) {
+                // Al activar, asignamos la altura total del contenido (incluyendo padding)
+                lista.style.maxHeight = lista.scrollHeight + "px";
+            } else {
+                // Al desactivar, la volvemos a 0
+                lista.style.maxHeight = "0px";
+            }
+            // --- FIN DE CAMBIOS ---
 
             boton.textContent = estaActivo ? textoActivo : textoOriginal;
 
             // Refrescar AOS después de que la animación de despliegue termine
             setTimeout(() => {
                 AOS.refresh();
-            }, 700);
+            }, 700); // 700ms coincide con la transición de 0.7s en el CSS
         });
     }
 

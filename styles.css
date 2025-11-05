@@ -196,7 +196,6 @@ h1, h2, h3 {
 }
 
 .lista-desplegable.activo {
-    max-height: 800px;
     padding: 40px 20px;
 }
 
