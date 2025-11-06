@@ -135,27 +135,72 @@ document.addEventListener('DOMContentLoaded', () => {
         boton.addEventListener('click', (e) => {
             e.preventDefault();
             const estaActivo = lista.classList.toggle('activo');
-            
-            // --- INICIO DE CAMBIOS ---
-            // Asignamos la altura dinámicamente para la animación
             if (estaActivo) {
-                // Al activar, asignamos la altura total del contenido (incluyendo padding)
                 lista.style.maxHeight = lista.scrollHeight + "px";
             } else {
-                // Al desactivar, la volvemos a 0
                 lista.style.maxHeight = "0px";
             }
-            // --- FIN DE CAMBIOS ---
 
             boton.textContent = estaActivo ? textoActivo : textoOriginal;
-
-            // Refrescar AOS después de que la animación de despliegue termine
             setTimeout(() => {
                 AOS.refresh();
-            }, 700); // 700ms coincide con la transición de 0.7s en el CSS
+            }, 700);
         });
     }
 
     toggleLista(btnVerDamas, listaDamas, 'Ver todas las damas de honor', 'Ocultar damas de honor');
     toggleLista(btnVerCaballeros, listaCaballeros, 'Ver todos los caballeros de honor', 'Ocultar caballeros de honor');
+
+    // --- BLOQUE 5: CUENTA REGRESIVA ---
+    const countdownTimer = document.getElementById('countdown-timer');
+    const heroSection = document.querySelector('.hero-section');
+    
+    // La fecha y hora de la boda (basado en la recepción a las 17:00hs)
+    const fechaBoda = new Date('2027-04-04T17:00:00').getTime();
+
+    function actualizarCuentaRegresiva() {
+        const ahora = new Date().getTime();
+        const distancia = fechaBoda - ahora;
+
+        // Si la fecha ya pasó, ocultamos el timer y detenemos todo
+        if (distancia < 0) {
+            clearInterval(intervaloCuenta);
+            if(countdownTimer) countdownTimer.style.display = 'none';
+            return;
+        }
+
+        // Cálculos de tiempo
+        const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+        // Mostrar en el HTML con dos dígitos
+        document.getElementById('dias').innerText = String(dias).padStart(2, '0');
+        document.getElementById('horas').innerText = String(horas).padStart(2, '0');
+        document.getElementById('minutos').innerText = String(minutos).padStart(2, '0');
+        document.getElementById('segundos').innerText = String(segundos).padStart(2, '0');
+    }
+
+    // Iniciar el intervalo para actualizar cada segundo
+    const intervaloCuenta = setInterval(actualizarCuentaRegresiva, 1000);
+    actualizarCuentaRegresiva(); // Llamada inicial para que no haya delay
+
+    // --- BLOQUE 6: VISIBILIDAD DE CUENTA REGRESIVA AL HACER SCROLL ---
+    function checkScrollParaCountdown() {
+        if (!heroSection || !countdownTimer) return;
+
+        const umbral = heroSection.offsetHeight - 50; 
+
+        if (window.scrollY > umbral) {
+            countdownTimer.classList.add('visible');
+        } else {
+            countdownTimer.classList.remove('visible');
+        }
+    }
+
+    // Escuchar el evento de scroll
+    window.addEventListener('scroll', checkScrollParaCountdown);
+    // Comprobar al cargar, por si el usuario recarga la página más abajo
+    checkScrollParaCountdown();
 });
