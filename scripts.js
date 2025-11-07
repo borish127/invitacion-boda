@@ -106,6 +106,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const grupo = urlParams.get('grupo');
 
+    // ===== INICIO: Lógica para pasar el 'grupo' al formulario =====
+    const linkFormulario = document.getElementById('link-formulario-asistencia');
+    if (linkFormulario && grupo) {
+        // Obtenemos la URL base del enlace
+        const baseUrl = linkFormulario.href;
+        // Añadimos el parámetro
+        linkFormulario.href = `${baseUrl}?grupo=${grupo}`;
+    }
+    // ===== FIN: Lógica para pasar el 'grupo' al formulario =====
+
     const seccionTarjeta = document.getElementById('tarjeta');
     const seccionDamas = document.getElementById('damas');
     const seccionCaballeros = document.getElementById('caballeros');
@@ -135,21 +145,30 @@ document.addEventListener('DOMContentLoaded', () => {
         boton.addEventListener('click', (e) => {
             e.preventDefault();
             const estaActivo = lista.classList.toggle('activo');
+            
+            // --- INICIO DE CAMBIOS ---
+            // Asignamos la altura dinámicamente para la animación
             if (estaActivo) {
+                // Al activar, asignamos la altura total del contenido (incluyendo padding)
                 lista.style.maxHeight = lista.scrollHeight + "px";
             } else {
+                // Al desactivar, la volvemos a 0
                 lista.style.maxHeight = "0px";
             }
+            // --- FIN DE CAMBIOS ---
 
-            boton.textContent = estaActivo ? textoActivo : textoOriginal;
+            boton.textContent = estaActivo ? textoOriginal : textoOriginal;
+
+            // Refrescar AOS después de que la animación de despliegue termine
             setTimeout(() => {
                 AOS.refresh();
-            }, 700);
+            }, 700); // 700ms coincide con la transición de 0.7s en el CSS
         });
     }
 
     toggleLista(btnVerDamas, listaDamas, 'Ver todas las damas de honor', 'Ocultar damas de honor');
     toggleLista(btnVerCaballeros, listaCaballeros, 'Ver todos los caballeros de honor', 'Ocultar caballeros de honor');
+
 
     // --- BLOQUE 5: CUENTA REGRESIVA ---
     const countdownTimer = document.getElementById('countdown-timer');
@@ -190,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkScrollParaCountdown() {
         if (!heroSection || !countdownTimer) return;
 
+        // 50px de margen antes de que termine la sección hero
         const umbral = heroSection.offsetHeight - 50; 
 
         if (window.scrollY > umbral) {
@@ -202,5 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Escuchar el evento de scroll
     window.addEventListener('scroll', checkScrollParaCountdown);
     // Comprobar al cargar, por si el usuario recarga la página más abajo
-    checkScrollParaCountdown();
+    checkScrollParaCountdown(); 
+
 });

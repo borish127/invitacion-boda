@@ -50,64 +50,6 @@ h1, h2, h3 {
 }
 
 /* ============================================== */
-/* 0.5 CUENTA REGRESIVA (MODIFICADO)               */
-/* ============================================== */
-#countdown-timer {
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: rgba(46, 43, 1, 0.5); 
-    color: var(--color-blanco);
-    padding: 8px 15px;
-    border-radius: 0 0 0 8px; 
-    z-index: 1000;
-    display: flex;
-    gap: 12px;
-    
-    /* ===== CAMBIO DE FUENTE ===== */
-    font-family: 'Montserrat', sans-serif; 
-    
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    
-    opacity: 0;
-    transform: translateY(-20px);
-    pointer-events: none;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-#countdown-timer.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.countdown-bloque {
-    text-align: center;
-    line-height: 1.2;
-}
-
-.countdown-bloque span {
-    display: block;
-}
-
-/* Los números (00) */
-.countdown-bloque span:first-child {
-    font-size: 1.2em;
-    font-weight: 300;
-}
-
-/* El texto (Días, Horas...) */
-.countdown-label {
-    font-size: 0.7em;
-    text-transform: uppercase;
-    opacity: 0.8;
-    font-weight: 300;
-}
-
-/* ============================================== */
 /* 1. SECCIÓN PRINCIPAL (HERO)                    */
 /* ============================================== */
 .hero-section {
@@ -254,6 +196,7 @@ h1, h2, h3 {
 }
 
 .lista-desplegable.activo {
+    /* La altura máxima (max-height) ahora se controla por JS para que sea dinámica */
     padding: 40px 20px;
 }
 
@@ -689,8 +632,68 @@ footer {
     60% { transform: translateY(-3px); }
 }
 
+/* ============================================== */
+/* 9. CUENTA REGRESIVA (MODIFICADO)               */
+/* ============================================== */
+#countdown-timer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(46, 43, 1, 0.5); 
+    color: var(--color-blanco);
+    padding: 8px 15px;
+    border-radius: 0 0 0 8px; 
+    z-index: 1000;
+    display: flex;
+    gap: 12px;
+    
+    /* ===== CAMBIO DE FUENTE ===== */
+    font-family: 'Montserrat', sans-serif; 
+    
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#countdown-timer.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.countdown-bloque {
+    text-align: center;
+    line-height: 1.2;
+}
+
+.countdown-bloque span {
+    display: block;
+}
+
+/* Los números (00) */
+.countdown-bloque span:first-child {
+    font-size: 1.2em; /* Ajustado para Montserrat */
+    font-weight: 400; /* Peso de Montserrat */
+}
+
+/* El texto (Días, Horas...) */
+.countdown-label {
+    font-size: 0.7em; /* Ajustado para Montserrat */
+    text-transform: uppercase;
+    opacity: 0.8;
+    font-weight: 300; /* Usamos el peso más ligero */
+    letter-spacing: 0.5px; /* <-- Agregamos el espaciado */
+}
+
 /* ======================================================= */
 /* 9. ESTADOS DE INTERACCIÓN (:active, :hover)             */
+/* =Imbécil, te dije que agregaras el número 9.5 y no el 9*/
 /* ======================================================= */
 
 /* Primero, eliminamos el resaltado azul por defecto en móviles */
@@ -740,24 +743,6 @@ footer {
     
     .content h1:not(.hero-date) {
     font-size: clamp(2.5em, 12vw, 5em);
-    }
-
-    #countdown-timer {
-        top: 0;
-        right: 0;
-        gap: 8px;
-        padding: 8px 12px;
-        border-radius: 0 0 0 8px; 
-    }
-
-    .countdown-bloque span:first-child {
-        font-size: 0.8em;
-        font-weight: 400;
-    }
-
-    .countdown-label {
-        font-size: 0.5em;
-        font-weight: 300;
     }
 
     .hero-date {
@@ -850,5 +835,25 @@ footer {
     } 
     .footer-svg {
     width: clamp(25px,8vw,45px); 
+    }
+
+    /* Ajustes para la cuenta regresiva en móviles */
+    #countdown-timer {
+        top: 0;
+        right: 0;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 0 0 0 8px; 
+    }
+
+    .countdown-bloque span:first-child {
+        font-size: 1.2em; /* Ajustado para Montserrat móvil */
+        font-weight: 400;
+    }
+
+    .countdown-label {
+        font-size: 0.7em; /* Ajustado para Montserrat móvil */
+        font-weight: 300;
+        letter-spacing: 0.5px; /* Mantenemos el espaciado */
     }
 }
