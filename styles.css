@@ -1,6 +1,3 @@
-/* ============================================== */
-/* FUENTES PERSONALIZADAS                         */
-/* ============================================== */
 @font-face {
     font-family: 'Calligraphy';
     src: url('fonts/Calligraphy.otf') format('opentype');
@@ -15,9 +12,6 @@
     font-style: normal;
 }
 
-/* ============================================== */
-/* VARIABLES DE COLOR Y ESTILOS GLOBALES          */
-/* ============================================== */
 :root {
     --color-principal: #827e48;
     --color-secundario: #2e2b01;
@@ -40,6 +34,11 @@ body {
     overflow-x: hidden;
 }
 
+html.modal-open,
+body.modal-open {
+    overflow: hidden;
+}
+
 h1, h2, h3 {
     font-family: 'Georgia', serif;
     color: var(--color-principal);
@@ -49,9 +48,6 @@ h1, h2, h3 {
     display: none !important;
 }
 
-/* ============================================== */
-/* 1. SECCIÓN PRINCIPAL (HERO)                    */
-/* ============================================== */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -101,9 +97,6 @@ h1, h2, h3 {
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.65);
 }
 
-/* ============================================== */
-/* 2. SECCIONES DE CORTEJO                        */
-/* ============================================== */
 .cortejo-section {
     position: relative;
     padding: 80px 40px;
@@ -184,9 +177,6 @@ h1, h2, h3 {
     color: var(--color-secundario);
 }
 
-/* ============================================== */
-/* 3. LISTAS DESPLEGABLES DE CORTEJO              */
-/* ============================================== */
 .lista-desplegable {
     background-color: #e8e6d1;
     padding: 0 20px;
@@ -196,7 +186,6 @@ h1, h2, h3 {
 }
 
 .lista-desplegable.activo {
-    /* La altura máxima (max-height) ahora se controla por JS para que sea dinámica */
     padding: 40px 20px;
 }
 
@@ -250,9 +239,6 @@ h1, h2, h3 {
     margin: 0;
 }
 
-/* ============================================== */
-/* 4. SECCIÓN DE DETALLES                         */
-/* ============================================== */
 .detalles-section {
     position: relative;
     padding: 60px 20px;
@@ -322,11 +308,13 @@ h1, h2, h3 {
     height: 40px;
     box-sizing: border-box;
     transition: all 0.3s;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    background-color: transparent;
+    cursor: pointer;
+    width: 100%;
 }
 
-/* ============================================== */
-/* 5. SECCIÓN DE CRONOGRAMA                       */
-/* ============================================== */
 .cronograma-section {
     padding: 50px 20px 80px 20px;
     position: relative;
@@ -438,9 +426,6 @@ h1, h2, h3 {
     text-align: center;
 }
 
-/* ============================================== */
-/* 6. OTRAS SECCIONES (TARJETA, REGALO, ETC.)     */
-/* ============================================== */
 .tarjeta-section, .regalo-section {
     padding: 50px 20px;
     text-align: center;
@@ -508,9 +493,6 @@ h1, h2, h3 {
     line-height: 1.6;
 }
 
-/* ============================================== */
-/* 7. SECCIÓN DE GALERÍA                          */
-/* ============================================== */
 .galeria-section {
     position: relative;
     padding: 50px 20px 60px 20px;
@@ -568,10 +550,6 @@ h1, h2, h3 {
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.9);
 }
-
-/* ============================================== */
-/* 8. FOOTER Y SCROLL INDICATOR                   */
-/* ============================================== */
 
 footer {
     display: flex;
@@ -632,9 +610,6 @@ footer {
     60% { transform: translateY(-3px); }
 }
 
-/* ============================================== */
-/* 9. CUENTA REGRESIVA (MODIFICADO)               */
-/* ============================================== */
 #countdown-timer {
     position: fixed;
     top: 0;
@@ -646,15 +621,11 @@ footer {
     z-index: 1000;
     display: flex;
     gap: 12px;
-    
-    /* ===== CAMBIO DE FUENTE ===== */
     font-family: 'Montserrat', sans-serif; 
-    
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-left: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    
     opacity: 0;
     transform: translateY(-20px);
     pointer-events: none;
@@ -676,46 +647,106 @@ footer {
     display: block;
 }
 
-/* Los números (00) */
 .countdown-bloque span:first-child {
-    font-size: 1.2em; /* Ajustado para Montserrat */
-    font-weight: 400; /* Peso de Montserrat */
+    font-size: 1.2em;
+    font-weight: 400;
 }
 
-/* El texto (Días, Horas...) */
 .countdown-label {
-    font-size: 0.7em; /* Ajustado para Montserrat */
+    font-size: 0.7em;
     text-transform: uppercase;
     opacity: 0.8;
-    font-weight: 300; /* Usamos el peso más ligero */
-    letter-spacing: 0.5px; /* <-- Agregamos el espaciado */
+    font-weight: 300;
+    letter-spacing: 0.5px;
 }
 
-/* ======================================================= */
-/* 9. ESTADOS DE INTERACCIÓN (:active, :hover)             */
-/* =Imbécil, te dije que agregaras el número 9.5 y no el 9*/
-/* ======================================================= */
-
-/* Primero, eliminamos el resaltado azul por defecto en móviles */
 .link-secundario, .btn-cortejo-inferior {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Estado :active para los botones generales (respuesta al toque) */
 .link-secundario:active {
     background-color: var(--color-secundario);
     color: var(--color-blanco);
     transition: background-color 0.1s, color 0.1s;
 }
 
-/* Estado :active para el botón inferior (respuesta al toque) */
 .btn-cortejo-inferior:active {
     background-color: transparent;
     color: var(--color-blanco);
     transition: background-color 0.1s, color 0.1s;
 }
 
-/* Estado :hover (SOLO PARA DISPOSITIVOS CON MOUSE) */
+.form-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.form-modal-overlay.modal-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.form-modal-content {
+    position: relative;
+    background-color: transparent;
+    width: 95%;
+    height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.3s ease-in-out;
+}
+
+.form-modal-overlay.modal-visible .form-modal-content {
+    transform: scale(1);
+}
+
+.form-modal-close-btn {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: rgba(0,0,0,0.2);
+    border: none;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    padding-bottom: 3px;
+    z-index: 10;
+    transition: background-color 0.2s;
+}
+
+.form-modal-close-btn:hover {
+    background: rgba(0,0,0,0.4);
+}
+
+.form-modal-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 @media (hover: hover) {
     .link-secundario:hover {
         background-color: var(--color-secundario);
@@ -727,9 +758,6 @@ footer {
     }
 }
 
-/* ============================================== */
-/* 10. MEDIA QUERY: OPTIMIZACIÓN MÓVIL (< 768px)   */
-/* ============================================== */
 @media (max-width: 768px) {
     .hero-section {
         height: 92vh;
@@ -749,14 +777,12 @@ footer {
     font-size: clamp(1.5em, 8vw, 5em);
     }
     
-    /* --- CORTEJO --- */
     .nombres-grid {
         flex-direction: column;
         align-items: center;
         gap: 25px;
     }
     
-    /* --- DETALLES --- */
     .detalles-section {
         background-image: url('fotos/detalles_celu.webp');
         background-position: center;
@@ -779,7 +805,6 @@ footer {
         margin: 0 auto;
     }
 
-    /* --- CRONOGRAMA --- */
     .cronograma-titulo {
         font-size: 1.5em;
     }
@@ -809,7 +834,6 @@ footer {
         line-height: 1.5;
     }
 
-    /* --- GALERÍA --- */
     .galeria-section {
         padding-top: 30px;
         padding-bottom: 40px;
@@ -837,7 +861,6 @@ footer {
     width: clamp(25px,8vw,45px); 
     }
 
-    /* Ajustes para la cuenta regresiva en móviles */
     #countdown-timer {
         top: 0;
         right: 0;
@@ -847,13 +870,23 @@ footer {
     }
 
     .countdown-bloque span:first-child {
-        font-size: 1.2em; /* Ajustado para Montserrat móvil */
+        font-size: 1.2em;
         font-weight: 400;
     }
 
     .countdown-label {
-        font-size: 0.7em; /* Ajustado para Montserrat móvil */
+        font-size: 0.7em;
         font-weight: 300;
-        letter-spacing: 0.5px; /* Mantenemos el espaciado */
+        letter-spacing: 0.5px;
+    }
+
+    .form-modal-content {
+        width: 92%;
+        height: 95%;
+    }
+
+    /* Ajuste para centrar la 'x' del modal en móvil */
+    .form-modal-close-btn {
+        padding-bottom: 0px; /* Restablece el padding para móvil */
     }
 }

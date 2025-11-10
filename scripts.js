@@ -1,18 +1,12 @@
-/**
- * Ajusta los atributos de animación de ciertos elementos para una mejor
- * experiencia en dispositivos móviles (ancho <= 768px).
- */
 function ajustarAnimacionesMovil() {
     const anchoMovil = 768;
 
     if (window.innerWidth <= anchoMovil) {
-        // En móvil, todos los items del cronograma animan desde la derecha.
         const timelineItems = document.querySelectorAll('.timeline-item');
         timelineItems.forEach(item => {
             item.setAttribute('data-aos', 'fade-right');
         });
 
-        // En móvil, se ajusta la animación de ciertas imágenes de la galería.
         const galeriaImages = document.querySelectorAll('.galeria-cuadricula img');
         galeriaImages.forEach((img, index) => {
             const numeroDeFoto = index + 1;
@@ -27,19 +21,15 @@ function ajustarAnimacionesMovil() {
     }
 }
 
-// 1. Ajustar animaciones antes de inicializar la librería.
 ajustarAnimacionesMovil();
 
-// 2. Inicializar la librería de animaciones AOS.
 AOS.init({
     duration: 800,
     once: false
 });
 
-// 3. Lógica principal que se ejecuta una vez que el DOM está completamente cargado.
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- BLOQUE 1: FUNCIONALIDAD DE BOTONES PARA COPIAR ---
     function setupCopyButton(btnId, textId, originalText) {
         const boton = document.getElementById(btnId);
         const textoParaCopiar = document.getElementById(textId)?.innerText;
@@ -82,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupCopyButton('btn-copiar-regalo', 'cbu-regalo', 'Copiar CBU');
     setupCopyButton('btn-copiar-alias-regalo', 'alias-regalo', 'Copiar Alias');
 
-    // --- BLOQUE 2: FORMATEO DE FECHAS ---
     const dateElements = document.querySelectorAll('.js-format-date');
     const dateFormatter = new Intl.DateTimeFormat(undefined, {
         day: '2-digit',
@@ -102,19 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- BLOQUE 3: LÓGICA DE VISIBILIDAD DE SECCIONES POR URL ---
     const urlParams = new URLSearchParams(window.location.search);
     const grupo = urlParams.get('grupo');
 
-    // ===== INICIO: Lógica para pasar el 'grupo' al formulario =====
-    const linkFormulario = document.getElementById('link-formulario-asistencia');
-    if (linkFormulario && grupo) {
-        // Obtenemos la URL base del enlace
-        const baseUrl = linkFormulario.href;
-        // Añadimos el parámetro
-        linkFormulario.href = `${baseUrl}?grupo=${grupo}`;
+    let formUrl = 'formulario/index.html';
+    if (grupo) {
+        formUrl += `?grupo=${grupo}`;
     }
-    // ===== FIN: Lógica para pasar el 'grupo' al formulario =====
 
     const seccionTarjeta = document.getElementById('tarjeta');
     const seccionDamas = document.getElementById('damas');
@@ -131,9 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         if (seccionTarjeta) seccionTarjeta.classList.remove('hidden');
     }
-    AOS.refresh(); // Refrescar AOS después de cambiar la visibilidad
+    AOS.refresh();
 
-    // --- BLOQUE 4: FUNCIONALIDAD DE LISTAS DESPLEGABLES ---
     const btnVerDamas = document.getElementById('btn-ver-damas');
     const btnVerCaballeros = document.getElementById('btn-ver-caballeros');
     const listaDamas = document.getElementById('lista-damas');
@@ -146,23 +128,17 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const estaActivo = lista.classList.toggle('activo');
             
-            // --- INICIO DE CAMBIOS ---
-            // Asignamos la altura dinámicamente para la animación
             if (estaActivo) {
-                // Al activar, asignamos la altura total del contenido (incluyendo padding)
                 lista.style.maxHeight = lista.scrollHeight + "px";
             } else {
-                // Al desactivar, la volvemos a 0
                 lista.style.maxHeight = "0px";
             }
-            // --- FIN DE CAMBIOS ---
 
             boton.textContent = estaActivo ? textoOriginal : textoOriginal;
 
-            // Refrescar AOS después de que la animación de despliegue termine
             setTimeout(() => {
                 AOS.refresh();
-            }, 700); // 700ms coincide con la transición de 0.7s en el CSS
+            }, 700);
         });
     }
 
@@ -170,46 +146,38 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleLista(btnVerCaballeros, listaCaballeros, 'Ver todos los caballeros de honor', 'Ocultar caballeros de honor');
 
 
-    // --- BLOQUE 5: CUENTA REGRESIVA ---
     const countdownTimer = document.getElementById('countdown-timer');
     const heroSection = document.querySelector('.hero-section');
     
-    // La fecha y hora de la boda (basado en la recepción a las 17:00hs)
     const fechaBoda = new Date('2027-04-04T17:00:00').getTime();
 
     function actualizarCuentaRegresiva() {
         const ahora = new Date().getTime();
         const distancia = fechaBoda - ahora;
 
-        // Si la fecha ya pasó, ocultamos el timer y detenemos todo
         if (distancia < 0) {
             clearInterval(intervaloCuenta);
             if(countdownTimer) countdownTimer.style.display = 'none';
             return;
         }
 
-        // Cálculos de tiempo
         const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
         const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
         const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-        // Mostrar en el HTML con dos dígitos
         document.getElementById('dias').innerText = String(dias).padStart(2, '0');
         document.getElementById('horas').innerText = String(horas).padStart(2, '0');
         document.getElementById('minutos').innerText = String(minutos).padStart(2, '0');
         document.getElementById('segundos').innerText = String(segundos).padStart(2, '0');
     }
 
-    // Iniciar el intervalo para actualizar cada segundo
     const intervaloCuenta = setInterval(actualizarCuentaRegresiva, 1000);
-    actualizarCuentaRegresiva(); // Llamada inicial para que no haya delay
+    actualizarCuentaRegresiva();
 
-    // --- BLOQUE 6: VISIBILIDAD DE CUENTA REGRESIVA AL HACER SCROLL ---
     function checkScrollParaCountdown() {
         if (!heroSection || !countdownTimer) return;
 
-        // 50px de margen antes de que termine la sección hero
         const umbral = heroSection.offsetHeight - 50; 
 
         if (window.scrollY > umbral) {
@@ -219,9 +187,58 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Escuchar el evento de scroll
     window.addEventListener('scroll', checkScrollParaCountdown);
-    // Comprobar al cargar, por si el usuario recarga la página más abajo
     checkScrollParaCountdown(); 
 
+    const modalOverlay = document.getElementById('form-modal-overlay');
+    const openModalBtn = document.getElementById('open-form-modal');
+    const closeModalBtn = document.getElementById('close-form-modal');
+    const formIframe = document.getElementById('form-iframe');
+
+    function openModal() {
+        if (!modalOverlay || !formIframe) return;
+        formIframe.src = formUrl; 
+        modalOverlay.classList.add('modal-visible');
+        document.documentElement.classList.add('modal-open');
+        document.body.classList.add('modal-open');
+    }
+
+    function closeModal() {
+        if (!modalOverlay || !formIframe) return;
+        modalOverlay.classList.remove('modal-visible');
+        document.documentElement.classList.remove('modal-open');
+        document.body.classList.remove('modal-open');
+        formIframe.src = 'about:blank';
+    }
+
+    if (openModalBtn) {
+        openModalBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        });
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+    }
+    
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+    }
+});
+
+window.addEventListener('message', (event) => {
+    if (event.data === 'closeFormModal') {
+        const modalOverlay = document.getElementById('form-modal-overlay');
+        const formIframe = document.getElementById('form-iframe');
+        
+        if (modalOverlay) modalOverlay.classList.remove('modal-visible');
+        if (formIframe) formIframe.src = 'about:blank';
+        document.documentElement.classList.remove('modal-open');
+        document.body.classList.remove('modal-open');
+    }
 });

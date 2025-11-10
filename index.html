@@ -173,19 +173,10 @@
                     <h3>Confirmanos tu asistencia</h3>
                     <p>Completa el formulario confirmando asistencia y seleccionando tu menu de comida.<i class="fa-solid fa-utensils"></i></p>
                     <p class="fecha-limite">Completalo antes del <span class="js-format-date" data-date="2026-08-01"></span>.</p>
-                    <!-- ===== MODIFICACIÓN: Se añadió un ID a este enlace ===== -->
-                    <a href="https://borish127.github.io/formulario/" target="_blank" class="link-secundario" id="link-formulario-asistencia"> Confirmar Asistencia<i class="fa-solid fa-pen-to-square"></i></a>
+                    <button type="button" class="link-secundario" id="open-form-modal"> Confirmar Asistencia<i class="fa-solid fa-pen-to-square"></i></button>
                 </div>
                 
-<! -- Descomentar lo de abajo cuando se quiera agregar el juego -->       
-<!--        
-              <div class="bloque" data-aos="fade-left" data-aos-delay="300">
-                    <h3>Respondé unas preguntas para un juego</h3>
-                    <p>Para este juego es necesario que cada invitado responda unas preguntas así tenemos la mayor cantidad de respuestas.<i class="fa-solid fa-dice"></i></p>
-                    <a href="https://t8oknbl8.forms.app/preguntas-kelly-boris" target="_blank" class="link-secundario"> Responder preguntas<i class="fa-solid fa-circle-question"></i></a>
-                </div>
-  -->
-                </div>
+            </div>
         </section>
         
         <section id="cronograma" class="cronograma-section">
@@ -340,6 +331,15 @@
         </footer>
     </div>
     
+    <!-- ===== INICIO: MODAL DEL FORMULARIO ===== -->
+    <div id="form-modal-overlay" class="form-modal-overlay">
+        <div class="form-modal-content">
+            <button id="close-form-modal" class="form-modal-close-btn" aria-label="Cerrar formulario">&times;</button>
+            <iframe id="form-iframe" src="about:blank" class="form-modal-iframe" title="Formulario de Confirmación"></iframe>
+        </div>
+    </div>
+    <!-- ===== FIN: MODAL DEL FORMULARIO ===== -->
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="scripts.js"></script>
 </body>
