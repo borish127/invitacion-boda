@@ -145,6 +145,15 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleLista(btnVerDamas, listaDamas, 'Ver todas las damas de honor', 'Ocultar damas de honor');
     toggleLista(btnVerCaballeros, listaCaballeros, 'Ver todos los caballeros de honor', 'Ocultar caballeros de honor');
 
+    // --- BLOQUE 4.5: PREVENIR MENÚ CONTEXTUAL EN MÓVIL (LONG PRESS) ---
+    // Mantenemos esta lógica en JS ya que es más robusta que solo CSS
+    const linksParaBloquear = document.querySelectorAll('.link-secundario');
+    linksParaBloquear.forEach(link => {
+        // 'contextmenu' es el evento para "click derecho" o "pulsación larga"
+        link.addEventListener('contextmenu', (e) => {
+            e.preventDefault(); // Previene que aparezca el menú
+        });
+    });
 
     const countdownTimer = document.getElementById('countdown-timer');
     const heroSection = document.querySelector('.hero-section');
@@ -197,15 +206,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openModal() {
         if (!modalOverlay || !formIframe) return;
-        formIframe.src = formUrl; 
-        modalOverlay.classList.add('modal-visible');
+        // 1. Muestra el overlay oscuro y bloquea el scroll
+        modalOverlay.classList.add('modal-loading');
         document.documentElement.classList.add('modal-open');
         document.body.classList.add('modal-open');
+
+        // 2. Escucha el evento 'load' del iframe
+        formIframe.addEventListener('load', () => {
+            // 3. Cuando el iframe cargó, activa la animación final
+            modalOverlay.classList.add('modal-visible');
+        }, { once: true }); // 'once: true' asegura que solo se ejecute 1 vez
+
+        // 4. Inicia la carga del iframe
+        formIframe.src = formUrl; 
     }
 
     function closeModal() {
         if (!modalOverlay || !formIframe) return;
         modalOverlay.classList.remove('modal-visible');
+        modalOverlay.classList.remove('modal-loading');
         document.documentElement.classList.remove('modal-open');
         document.body.classList.remove('modal-open');
         formIframe.src = 'about:blank';
@@ -230,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
+    
 window.addEventListener('message', (event) => {
     if (event.data === 'closeFormModal') {
         const modalOverlay = document.getElementById('form-modal-overlay');
