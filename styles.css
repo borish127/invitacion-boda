@@ -520,10 +520,6 @@ h1, h2, h3 {
     color: var(--color-texto-rosa-oscuro); /* ACTUALIZADO: Texto en rosa oscuro */
 }
 
-.datos-bancarios m {
-    margin-top: 0;
-}
-
 .botones-copiar {
     display: flex;
     justify-content: center;
