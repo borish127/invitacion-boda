@@ -1,10 +1,18 @@
 /* --- DEFINICIÓN DE VARIABLES DE COLOR --- */
 :root {
-    --color-principal: #797542;
-    --color-secundario: #2e2b01;
-    --color-fondo-claro: #8f8b5b;
-    --color-texto-oscuro: #262401;
+    /* Paleta floral */
+    --color-principal: #9F985C; /* Salvia */
+    --color-secundario: #CF3E4D; /* Frambuesa */
+    --color-fondo-claro: #F2C1C1; /* Rosa claro */
+    --color-texto-oscuro: #591A21; /* Marrón vino (para texto) */
     --color-blanco: white;
+
+    /* Colores extra de la paleta */
+    --color-acento-durazno: #FDA170;
+    --color-acento-amarillo: #F4B147;
+
+    /* Colores para estados (hover/active) */
+    --color-secundario-hover: #db8456; /* Frambuesa más oscuro */
 }
 
 /* --- ESTILO PARA EL FONDO --- */
@@ -27,14 +35,36 @@
 /* --- ESTILOS BASE --- */
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--color-secundario);
-    background-color: transparent;
+    background-color: transparent; /* Mantenido transparente para el efecto blur */
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
     color: var(--color-texto-oscuro);
 }
+
+/* NUEVAS REGLAS DE TEXTO */
+.form-header h1 {
+    color: var(--color-blanco);
+}
+
+.form-container .form-header p {
+    color: var(--color-blanco); 
+    opacity: 0.9;
+}
+
+.form-container p {
+    color: var(--color-texto-oscuro) /* Un tono legible, más suave que el marrón vino */
+}
+
+/* Texto de etiquetas y títulos que no son h1-h6 (como los de la pág. 1) */
+.form-container label,
+.form-container .font-semibold,
+.form-container .font-medium {
+    color: var(--color-texto-oscuro);
+}
+/* Fin de nuevas reglas */
+
 
 /* --- TARJETA DE VIDRIO --- */
 .form-container {
@@ -61,12 +91,12 @@ body:not(.flex) {
 }
 
 .icon-primary {
-    color: var(--color-principal);
+    color: var(--color-texto-oscuro);
 }
 
 /* --- BOTONES --- */
 .btn-primary {
-    background-color: var(--color-principal);
+    background-color: var(--color-acento-durazno);
     color: var(--color-blanco);
     font-weight: 700;
     padding: 0.75rem 1.5rem;
@@ -85,7 +115,7 @@ body:not(.flex) {
 /* Respuesta táctil */
 .btn-primary:active,
 .btn-primary.js-active {
-    background-color: var(--color-secundario);
+    background-color: var(--color-secundario-hover); /* ACTUALIZADO */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     transform: translateY(-2px);
 }
@@ -93,7 +123,7 @@ body:not(.flex) {
 /* Solo aplicar :hover en dispositivos con ratón (PC) */
 @media (hover: hover) {
     .btn-primary:hover {
-        background-color: var(--color-secundario);
+        background-color: var(--color-secundario-hover); /* ACTUALIZADO */
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         transform: translateY(-2px);
     }
@@ -162,7 +192,7 @@ body:not(.flex) {
 .form-input:focus, .form-textarea:focus, .form-select:focus {
     outline: none;
     border-color: transparent;
-    --tw-ring-color: var(--color-principal);
+    --tw-ring-color: var(--color-acento-durazno); /* ACTUALIZADO: De frambuesa a durazno */
     --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
     --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
     box-shadow: 0 0 0 0 #fff, var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
@@ -202,23 +232,23 @@ body:not(.flex) {
 /* Respuesta táctil */
 .radio-option:active,
 .radio-option.js-active {
-    border-color: var(--color-principal);
-    background-color: rgba(143, 139, 91, 0.1);
+    border-color: var(--color-acento-durazno); /* ACTUALIZADO: De frambuesa a durazno */
+    background-color: rgba(253, 161, 112, 0.1); /* ACTUALIZADO (rgba de durazno) */
 }
 
 /* Solo aplicar :hover en dispositivos con ratón (PC) */
 @media (hover: hover) {
     .radio-option:hover {
-        border-color: var(--color-principal);
-        background-color: rgba(143, 139, 91, 0.1);
+        border-color: var(--color-acento-durazno); /* ACTUALIZADO: De frambuesa a durazno */
+        background-color: rgba(253, 161, 112, 0.1); /* ACTUALIZADO (rgba de durazno) */
     }
 }
 
 /* Estilo para el radio chequeado */
 input[type="radio"]:checked + .radio-option {
-    border-color: var(--color-principal);
-    background-color: rgba(130, 126, 72, 0.1);
-    --tw-ring-color: var(--color-principal);
+    border-color: var(--color-acento-durazno); /* ACTUALIZADO: De frambuesa a durazno */
+    background-color: rgba(253, 161, 112, 0.1); /* ACTUALIZADO (rgba de durazno) */
+    --tw-ring-color: var(--color-acento-durazno); /* ACTUALIZADO: De frambuesa a durazno */
     --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
     --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
     box-shadow: 0 0 0 0 #fff, var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
