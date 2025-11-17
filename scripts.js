@@ -261,3 +261,13 @@ window.addEventListener('message', (event) => {
         document.body.classList.remove('modal-open');
     }
 });
+
+// --- BLOQUEO DE ARRASTRE EN PC ---
+    // Esto previene que se arrastren enlaces y botones como si fueran archivos
+    const noDragElements = document.querySelectorAll('a, button, img, .btn-cortejo-inferior, .link-secundario');
+    
+    noDragElements.forEach(element => {
+        element.addEventListener('dragstart', (e) => {
+            e.preventDefault();
+        });
+    });

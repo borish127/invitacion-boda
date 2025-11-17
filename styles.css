@@ -13,27 +13,20 @@
 }
 
 :root {
-    /* Paleta floral */
+    /* Paleta floral actualizada */
     --color-principal: #9F985C; /* Salvia (verde base) */
-    --color-secundario: #CF3E4D; /* Frambuesa (para acentos clave) */
-    --color-fondo-claro: #F2C1C1; /* Rosa claro (para fondos suaves) */
-    --color-texto-oscuro: #313e24; /* Marrón/Verde oscuro (derivado del salvia para texto) */
+    --color-texto-oscuro: #2e3e24; /* Marrón/Verde oscuro (para texto sobre verde) */
     --color-blanco: white;
 
     /* Colores extra de la paleta */
-    --color-acento-durazno: #FDA170;
     --color-acento-amarillo: #F4B147;
 
-    /* Colores para estados (hover/active) */
-    --color-secundario-hover: #431a1f; /* Frambuesa más oscuro */
-
     /* NUEVOS COLORES ESPECÍFICOS */
-    --color-rosa-medio: #E8A8B3; /* Rosa para damas */
-    --color-rojizo-oscuro: #8F3440; /* Rojizo oscuro para caballeros */
-    --color-verde-oscuro-legible: #232e01; /* Verde muy oscuro para texto en secciones verdes */
-    --color-rosa-tarjeta: #F7DDE0; /* Rosa para sección tarjeta */
-    --color-rosa-regalo: #E9BCC3; /* Rosa diferente para sección regalo */
-    --color-texto-rosa-oscuro: #5C232B; /* Tono oscuro de rosa para texto en secciones rosas */
+    --color-verde-claro: #eef2e9; /* Verde muy claro (para fondo regalo) */
+    --color-amarillo-claro: #fdf8e7; /* Amarillo muy claro (para fondo tarjeta) */
+    --color-texto-amarillo-oscuro: #8C6529; /* Marrón/amarillo oscuro (para texto sobre amarillo) */
+
+    --color-verde-oscuro-legible: #1a2e01; /* Verde muy oscuro para texto en secciones verdes */
 }
 
 html {
@@ -45,9 +38,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--color-principal);
+    background-color: #000000;
     color: var(--color-texto-oscuro);
-    overflow-x: hidden;
 }
 
 html.modal-open,
@@ -62,6 +54,12 @@ h1, h2, h3 {
 
 .hidden {
     display: none !important;
+}
+
+.invitacion-container {
+    background-color: var(--color-principal);
+    overflow-x: hidden;
+    user-select: none;
 }
 
 .hero-section {
@@ -116,7 +114,7 @@ h1, h2, h3 {
 .cortejo-section {
     position: relative;
     padding: 80px 40px;
-    height: 70vh;
+    height: 30vh;
     display: flex;
     align-items: center;
     color: white;
@@ -135,28 +133,47 @@ h1, h2, h3 {
 }
 
 .damas-section {
-    background-color: var(--color-rosa-medio); /* ACTUALIZADO: Tonos rosas para Damas */
+    background-image: url('fotos/damas_bg.webp');
+    background-size: cover;
+    background-position: center;
+    background-color: var(--color-acento-amarillo);
+}
+
+.damas-section::before {
+    background-color: rgba(135, 102, 48, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .caballeros-section {
-    background-color: var(--color-texto-rosa-oscuro); /* ACTUALIZADO: Tonos rojizos oscuros para Caballeros */
+    background-image: url('fotos/caballeros_bg.webp');
+    background-size: cover;
+    background-position: center;
+    background-color: var(--color-verde-claro);
+}
+
+.caballeros-section::before {
+    background-color: rgb(46, 62, 36, 0.3);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 }
 
 .cortejo-content {
-    position: relative;
+    position: center;
     z-index: 2;
     width: 100%;
     max-width: 600px;
+    margin-top: -10vh;
     margin-left: auto;
-    margin-right: 0;
-    text-align: right;
+    margin-right: auto;
+    text-align: center;
 }
 
 .damas-titulo,
 .caballeros-titulo {
     font-size: 4em;
     color: var(--color-blanco);
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.9);
     margin-top: 0;
     margin-bottom: 20px;
 }
@@ -164,10 +181,9 @@ h1, h2, h3 {
 .damas-descripcion,
 .caballeros-descripcion {
     max-width: 600px;
-    margin: 0 0 30px 0;
     font-size: 1.2em;
-    line-height: 1.6;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    line-height: 1.8;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
     color: var(--color-blanco);
 }
 
@@ -180,12 +196,20 @@ h1, h2, h3 {
 }
 
 .lista-desplegable {
-    background-color: var(--color-fondo-claro);
+    background-color: #f0f0f0; 
     padding: 0 20px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.7s ease-in-out, padding 0.7s ease-in-out;
 }
+
+.damas-section + .lista-desplegable {
+    background-color: var(--color-amarillo-claro);
+}
+.caballeros-section + .lista-desplegable {
+    background-color: var(--color-verde-claro);
+}
+
 
 .lista-desplegable.activo {
     padding: 40px 20px;
@@ -198,11 +222,17 @@ h1, h2, h3 {
 }
 
 .lista-titulo {
-    color: var(--color-texto-rosa-oscuro);
-    text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);
     font-size: 2em;
     margin-top: 0;
     margin-bottom: 35px;
+    text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.damas-section + .lista-desplegable .lista-titulo {
+    color: var(--color-texto-amarillo-oscuro);
+}
+.caballeros-section + .lista-desplegable .lista-titulo {
+    color: var(--color-texto-oscuro);
 }
 
 .nombres-grid {
@@ -236,9 +266,13 @@ h1, h2, h3 {
 .persona p {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1em;
-    color: var(--color-texto-rosa-oscuro);
+    color: var(--color-texto-oscuro);
     line-height: 1.3;
     margin: 0;
+}
+
+#lista-damas .persona p {
+    color: var(--color-texto-amarillo-oscuro);
 }
 
 .detalles-section {
@@ -250,8 +284,8 @@ h1, h2, h3 {
     background-size: cover;
     background-position: 100% 20%;
     background-color: rgba(0, 0, 0, 0.2);
-    background-blend-mode: overlay; /* Mantiene blend mode para textura */
-    color: var(--color-verde-oscuro-legible); /* ACTUALIZADO: Texto verde oscuro */
+    background-blend-mode: overlay; 
+    color: var(--color-verde-oscuro-legible); 
 }
 
 .espaciador-vertical {
@@ -263,7 +297,7 @@ h1, h2, h3 {
     justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
-    max-width: 1400px;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -286,26 +320,24 @@ h1, h2, h3 {
 
 .bloque p i {
     margin-left: 12px;
-    color: var(--color-verde-oscuro-legible); /* ACTUALIZADO: Iconos en verde oscuro */
+    color: var(--color-verde-oscuro-legible); 
 }
 
 .bloque h3 {
     font-size: 1.8em;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    color: var(--color-verde-oscuro-legible); /* ACTUALIZADO: Títulos en verde oscuro */
+    color: var(--color-verde-oscuro-legible); 
 }
 
-/* Regla general para link-secundario (color frambuesa por defecto) */
 .link-secundario {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 12px;
     margin-top: auto;
-    color: var(--color-secundario);
     text-decoration: none;
     font-weight: bold;
-    border: 1px solid var(--color-secundario);
+    border: 1px solid;
     padding: 0 10px;
     border-radius: 8px;
     height: 40px;
@@ -316,14 +348,8 @@ h1, h2, h3 {
     background-color: transparent;
     cursor: pointer;
     width: 100%;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
 }
 
-/* NUEVA REGLA: Botones en sección Detalles (verde oscuro) */
 .bloque .link-secundario {
     color: var(--color-verde-oscuro-legible);
     border-color: var(--color-verde-oscuro-legible);
@@ -340,19 +366,35 @@ h1, h2, h3 {
     align-items: center;
     text-align: center;
     background-color: var(--color-blanco);
-    color: var(--color-secundario);
     border: none;
 }
 
-.btn-cortejo-inferior:active {
-    background-color: transparent;
+.damas-section .btn-cortejo-inferior {
+    color: var(--color-texto-amarillo-oscuro);
+}
+
+.caballeros-section .btn-cortejo-inferior {
+    color: var(--color-texto-oscuro);
+}
+
+.damas-section .btn-cortejo-inferior:active {
+    background-color: var(--color-texto-amarillo-oscuro);
+    color: var(--color-blanco);
+    transition: background-color 0.1s, color 0.1s;
+}
+.caballeros-section .btn-cortejo-inferior:active {
+    background-color: var(--color-texto-oscuro);
     color: var(--color-blanco);
     transition: background-color 0.1s, color 0.1s;
 }
 
 @media (hover: hover) {
-    .btn-cortejo-inferior:hover{
-        background-color: transparent;
+    .damas-section .btn-cortejo-inferior:hover {
+        background-color: var(--color-texto-amarillo-oscuro);
+        color: var(--color-blanco);
+    }
+    .caballeros-section .btn-cortejo-inferior:hover {
+        background-color: var(--color-texto-oscuro);
         color: var(--color-blanco);
     }
 }
@@ -395,7 +437,7 @@ h1, h2, h3 {
     border-radius: 12px;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    color: var(--color-verde-oscuro-legible); /* ACTUALIZADO: Texto verde oscuro */
+    color: var(--color-verde-oscuro-legible); 
 }
 
 .timeline-container {
@@ -439,7 +481,7 @@ h1, h2, h3 {
 
 .timeline-content h3 {
     margin-top: 0;
-    color: var(--color-verde-oscuro-legible); /* ACTUALIZADO: Títulos en verde oscuro */
+    color: var(--color-verde-oscuro-legible); 
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -474,10 +516,10 @@ h1, h2, h3 {
     text-align: center;
 }
 .tarjeta-section {
-    background-color: var(--color-rosa-tarjeta); /* ACTUALIZADO: Fondo rosa claro para tarjeta */
+    background-color: var(--color-amarillo-claro);
 }
 .regalo-section {
-    background-color: var(--color-rosa-regalo); /* ACTUALIZADO: Fondo rosa diferente para regalo */
+    background-color: var(--color-verde-claro);
     padding-bottom: 80px;
 }
 
@@ -486,16 +528,18 @@ h1, h2, h3 {
     margin-top: 0;
     margin-bottom: 20px;
 }
-.tarjeta-titulo { color: var(--color-texto-rosa-oscuro); } /* ACTUALIZADO: Títulos en rosa oscuro */
-.regalo-titulo { color: var(--color-texto-rosa-oscuro); } /* ACTUALIZADO: Títulos en rosa oscuro */
+.tarjeta-titulo { color: var(--color-texto-amarillo-oscuro); }
+.regalo-titulo { color: var(--color-texto-oscuro); }
 
 .tarjeta-descripcion, .regalo-descripcion {
     max-width: 600px;
     margin: 0 auto 40px auto;
     font-size: 1.1em;
     line-height: 1.6;
-    color: var(--color-texto-rosa-oscuro); /* ACTUALIZADO: Texto en rosa oscuro */
 }
+.tarjeta-descripcion { color: var(--color-texto-amarillo-oscuro); }
+.regalo-descripcion { color: var(--color-texto-oscuro); }
+
 
 .info-tarjeta, .datos-bancarios {
     background-color: rgba(255, 255, 255, 0.5);
@@ -511,14 +555,16 @@ h1, h2, h3 {
 .info-tarjeta h4, .datos-bancarios h4 {
     margin-top: 0;
     font-size: 1.5em;
-    color: var(--color-texto-rosa-oscuro); /* ACTUALIZADO: Títulos en rosa oscuro */
 }
+.info-tarjeta h4 { color: var(--color-texto-amarillo-oscuro); }
+.datos-bancarios h4 { color: var(--color-texto-oscuro); }
 
 .info-tarjeta p, .datos-bancarios p {
     line-height: 1.7;
     word-wrap: break-word;
-    color: var(--color-texto-rosa-oscuro); /* ACTUALIZADO: Texto en rosa oscuro */
 }
+.info-tarjeta p { color: var(--color-texto-amarillo-oscuro); }
+.datos-bancarios p { color: var(--color-texto-oscuro); }
 
 .botones-copiar {
     display: flex;
@@ -526,6 +572,17 @@ h1, h2, h3 {
     gap: 10px;
     margin-top: 20px;
 }
+
+.tarjeta-section .link-secundario {
+    color: var(--color-texto-amarillo-oscuro);
+    border-color: var(--color-texto-amarillo-oscuro);
+}
+
+.regalo-section .link-secundario {
+    color: var(--color-texto-oscuro);
+    border-color: var(--color-texto-oscuro);
+}
+
 
 .texto-aclaracion {
     margin-top: 25px;
@@ -536,8 +593,8 @@ h1, h2, h3 {
     margin-left: auto;
     margin-right: auto;
     line-height: 1.6;
-    color: var(--color-texto-rosa-oscuro); /* ACTUALIZADO: Texto en rosa oscuro */
 }
+.tarjeta-section .texto-aclaracion { color: var(--color-texto-amarillo-oscuro); }
 
 .galeria-section {
     position: relative;
@@ -603,7 +660,7 @@ footer {
     align-items: center;
     gap: 20px;
     padding: 25px 20px;
-    background-color: var(--color-principal); /* ACTUALIZADO: Fondo verde */
+    background-color: var(--color-principal); 
 }
 
 .footer-names {
@@ -660,7 +717,7 @@ footer {
     position: fixed;
     top: 0;
     right: 0;
-    background-color: rgba(62, 60, 36, 0.6);
+    background-color: rgba(30, 30, 30, 0.5);
     color: var(--color-blanco);
     padding: 8px 15px;
     border-radius: 0 0 0 8px; 
@@ -710,18 +767,20 @@ footer {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Estado :active para botones frambuesa (default) */
-.link-secundario:active {
-    background-color: var(--color-secundario);
-    color: var(--color-blanco);
-    transition: background-color 0.1s, color 0.1s;
-}
-
-/* NUEVA REGLA: Estado :active para botones verdes */
 .bloque .link-secundario:active {
     background-color: var(--color-verde-oscuro-legible);
     color: var(--color-blanco);
 }
+
+.tarjeta-section .link-secundario:active {
+    background-color: var(--color-texto-amarillo-oscuro);
+    color: var(--color-blanco);
+}
+.regalo-section .link-secundario:active {
+    background-color: var(--color-texto-oscuro);
+    color: var(--color-blanco);
+}
+
 
 .form-modal-overlay {
     position: fixed;
@@ -785,11 +844,6 @@ footer {
     padding-bottom: 3px;
     z-index: 10;
     transition: background-color 0.2s;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        -webkit-touch-callout: none;
 }
 
 .form-modal-close-btn:hover {
@@ -799,10 +853,12 @@ footer {
 .form-modal-iframe {
     width: 100%;
     height: 100%;
+    transition: background-color 0.1s, color 0.1s;
     border: none;
+    display: block;
+    transition: background-color 0.1s ease, color 0.1s ease;
 }
 
-/* Estado :hover para botones frambuesa (default) */
 @media (hover: hover) {
     .link-secundario:hover {
         background-color: var(--color-secundario);
@@ -810,10 +866,19 @@ footer {
     }
 }
 
-/* NUEVA REGLA: Estado :hover para botones verdes */
+
 @media (hover: hover) {
     .bloque .link-secundario:hover {
         background-color: var(--color-verde-oscuro-legible);
+        color: var(--color-blanco);
+    }
+
+    .tarjeta-section .link-secundario:hover {
+        background-color: var(--color-texto-amarillo-oscuro);
+        color: var(--color-blanco);
+    }
+    .regalo-section .link-secundario:hover {
+        background-color: var(--color-texto-oscuro);
         color: var(--color-blanco);
     }
 }
@@ -837,6 +902,10 @@ footer {
     font-size: clamp(1.5em, 8vw, 5em);
     }
     
+    .cortejo-section {
+        height: 40vh;
+    }
+
     .nombres-grid {
         gap: 25px;
         grid-template-columns: repeat(2, 1fr);
@@ -948,4 +1017,20 @@ footer {
     .form-modal-close-btn {
         padding-bottom: 0px;
     }
+}
+
+/* --- BLOQUEO DE INTERACCIONES NO DESEADAS --- */
+img {
+    -webkit-user-drag: none;
+    user-drag: none;
+    -webkit-touch-callout: none;
+    pointer-events: none; 
+}
+
+a, button, .btn-cortejo-inferior, .link-secundario {
+    -webkit-user-drag: none;
+    user-drag: none;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
