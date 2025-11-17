@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- BLOQUE 4.5: PREVENIR MENÚ CONTEXTUAL EN MÓVIL (LONG PRESS) ---
     // Mantenemos esta lógica en JS ya que es más robusta que solo CSS
-    const linksParaBloquear = document.querySelectorAll('.link-secundario');
+    const linksParaBloquear = document.querySelectorAll('.link-secundario, .scroll-link');
     linksParaBloquear.forEach(link => {
         // 'contextmenu' es el evento para "click derecho" o "pulsación larga"
         link.addEventListener('contextmenu', (e) => {

@@ -1022,14 +1022,12 @@ footer {
 /* --- BLOQUEO DE INTERACCIONES NO DESEADAS --- */
 img {
     -webkit-user-drag: none;
-    user-drag: none;
     -webkit-touch-callout: none;
     pointer-events: none; 
 }
 
 a, button, .btn-cortejo-inferior, .link-secundario {
     -webkit-user-drag: none;
-    user-drag: none;
     -webkit-touch-callout: none;
     user-select: none;
     -webkit-user-select: none;
