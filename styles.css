@@ -212,11 +212,11 @@ h1, h2, h3 {
 
 
 .lista-desplegable.activo {
-    padding: 40px 20px;
+    padding: 40px 20px 60px 20px;
 }
 
 .lista-contenido {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
     text-align: center;
 }
@@ -238,14 +238,22 @@ h1, h2, h3 {
 .nombres-grid {
     gap: 30px;
     display: grid;
-    grid-template-columns: repeat(4, 120px);
+    grid-template-columns: repeat(4, 140px); 
     justify-content: center;
     align-items: flex-start;
 }
 
+/* --- NUEVA REGLA PARA CABALLEROS EN PC (5 POR FILA) --- */
+#lista-caballeros .nombres-grid {
+    grid-template-columns: repeat(5, 140px);
+}
+
 .persona {
-    width: 120px;
+    width: 140px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .persona-foto {
@@ -255,6 +263,7 @@ h1, h2, h3 {
     border-radius: 12px;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
     overflow: hidden;
+    flex-shrink: 0; 
 }
 
 .persona-foto img {
@@ -265,10 +274,13 @@ h1, h2, h3 {
 
 .persona p {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.1em;
+    font-size: 1em;
     color: var(--color-texto-oscuro);
-    line-height: 1.3;
+    line-height: 1.2;
     margin: 0;
+    white-space: nowrap;
+    overflow: visible;
+    width: 100%;
 }
 
 #lista-damas .persona p {
@@ -397,7 +409,26 @@ h1, h2, h3 {
         background-color: var(--color-texto-oscuro);
         color: var(--color-blanco);
     }
-}
+    
+    .link-secundario:hover {
+        background-color: var(--color-secundario);
+        color: var(--color-blanco);
+    }
+
+    .bloque .link-secundario:hover {
+        background-color: var(--color-verde-oscuro-legible);
+        color: var(--color-blanco);
+    }
+
+    .tarjeta-section .link-secundario:hover {
+        background-color: var(--color-texto-amarillo-oscuro);
+        color: var(--color-blanco);
+    }
+    .regalo-section .link-secundario:hover {
+        background-color: var(--color-texto-oscuro);
+        color: var(--color-blanco);
+    }
+} /* CIERRE IMPORTANTE DEL MEDIA QUERY HOVER */
 
 
 .cronograma-section {
@@ -782,6 +813,7 @@ footer {
 }
 
 
+/* --- ESTILOS MODAL --- */
 .form-modal-overlay {
     position: fixed;
     top: 0;
@@ -795,13 +827,16 @@ footer {
     justify-content: center;
     align-items: center;
     z-index: 2000;
+    /* Cambiado para asegurar que esté oculto si falla la opacidad */
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
 .form-modal-overlay.modal-visible {
     opacity: 1;
+    visibility: visible;
     pointer-events: auto;
 }
 
@@ -815,13 +850,10 @@ footer {
     overflow: hidden;
     transform: scale(0.95);
     transition: transform 0.3s ease-in-out;
-    opacity: 0;
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .form-modal-overlay.modal-visible .form-modal-content {
     transform: scale(1);
-    opacity: 1;
 }
 
 .form-modal-close-btn {
@@ -853,34 +885,23 @@ footer {
 .form-modal-iframe {
     width: 100%;
     height: 100%;
+    border: none; 
+    display: block; 
     transition: background-color 0.1s, color 0.1s;
-    border: none;
-    display: block;
-    transition: background-color 0.1s ease, color 0.1s ease;
 }
 
-@media (hover: hover) {
-    .link-secundario:hover {
-        background-color: var(--color-secundario);
-        color: var(--color-blanco);
-    }
+/* --- BLOQUEO DE INTERACCIONES NO DESEADAS --- */
+img {
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    pointer-events: none; 
 }
 
-
-@media (hover: hover) {
-    .bloque .link-secundario:hover {
-        background-color: var(--color-verde-oscuro-legible);
-        color: var(--color-blanco);
-    }
-
-    .tarjeta-section .link-secundario:hover {
-        background-color: var(--color-texto-amarillo-oscuro);
-        color: var(--color-blanco);
-    }
-    .regalo-section .link-secundario:hover {
-        background-color: var(--color-texto-oscuro);
-        color: var(--color-blanco);
-    }
+a, button, .btn-cortejo-inferior, .link-secundario {
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 @media (max-width: 768px) {
@@ -906,10 +927,35 @@ footer {
         height: 40vh;
     }
 
-    .nombres-grid {
-        gap: 25px;
+
+    .nombres-grid,
+    #lista-caballeros .nombres-grid {
+        gap: 20px 10px;
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
+        padding: 0 10px;
+    }
+
+    /* Ajuste para las tarjetas de persona en móvil */
+    .persona {
+        width: 100%; 
+        max-width: 160px;
+    }
+    
+    .persona p {
+        white-space: normal;
+        font-size: 0.95em;
+        min-height: 2.4em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* --- CORRECCIÓN MÓVIL PARA 5 CABALLEROS --- */
+    #lista-caballeros .nombres-grid .persona:last-child {
+        grid-column: span 2;
+        max-width: 100%;
+        width: auto;
     }
     
     .detalles-section {
@@ -1017,18 +1063,4 @@ footer {
     .form-modal-close-btn {
         padding-bottom: 0px;
     }
-}
-
-/* --- BLOQUEO DE INTERACCIONES NO DESEADAS --- */
-img {
-    -webkit-user-drag: none;
-    -webkit-touch-callout: none;
-    pointer-events: none; 
-}
-
-a, button, .btn-cortejo-inferior, .link-secundario {
-    -webkit-user-drag: none;
-    -webkit-touch-callout: none;
-    user-select: none;
-    -webkit-user-select: none;
 }

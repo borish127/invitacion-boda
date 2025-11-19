@@ -250,6 +250,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
     
+    const botonMapa = document.getElementById('link-ubicacion');
+    if (botonMapa) {
+        const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/3apmmqSBGVd8eMAF7?g_st=aw";      
+        const APPLE_MAPS_URL = "https://maps.apple/p/hI~mG2AbUpvX-z"; 
+        
+        // Detección simple de iOS/Mac
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+        const isMac = /Macintosh|Mac OS X/.test(userAgent) && !/Windows/.test(userAgent);
+
+        if (isIOS || isMac) {
+            botonMapa.href = APPLE_MAPS_URL;
+        } else {
+            botonMapa.href = GOOGLE_MAPS_URL;
+        }
+    }
+
 window.addEventListener('message', (event) => {
     if (event.data === 'closeFormModal') {
         const modalOverlay = document.getElementById('form-modal-overlay');

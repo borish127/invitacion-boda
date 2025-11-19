@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // !!! IMPORTANTE: REEMPLAZA ESTA URL CON LA QUE TE DIO GOOGLE APPS SCRIPT !!!
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzvd0MtBxXCThSsgE_Gf-z7QNshy-LoKiav7ptTV93fpllEYXo2eW_gSuqZYLjrAvSBMQ/exec"; 
+
     const form = document.getElementById('wedding-form');
     const pages = document.querySelectorAll('.page');
     
@@ -423,14 +426,76 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- LÓGICA DE ENVÍO ---
     submitBtn.addEventListener('click', () => {
         blurActiveElement();
         
         if (validateCurrentPage()) {
-            console.log('Formulario enviado (simulado)');
-            
-            pageHistory.push('8');
-            showPage('8');
+            if (GOOGLE_SCRIPT_URL === "PEGAR_TU_URL_AQUI") {
+                alert("Falta configurar la URL del script de Google. Por favor revisa las instrucciones.");
+                return;
+            }
+
+            // Cambiar estado del botón a cargando
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Enviando...';
+
+            // Recopilar datos
+            const formData = new FormData(form);
+            const rawData = Object.fromEntries(formData.entries());
+
+            // Limpiar y estructurar los datos para enviar
+            const dataToSend = {
+                nombre: rawData['full-name'],
+                asistencia: rawData['asistencia'],
+                grupo: rawData['grupo'],
+                mensaje: (rawData['asistencia'] === 'si') ? rawData['mensaje-si-asiste'] : rawData['mensaje-no-asiste']
+            };
+
+            if (rawData['asistencia'] === 'si') {
+                if (rawData['grupo'] === 'grupo') {
+                    dataToSend.adultos = rawData['num-adultos'];
+                    dataToSend.ninos = rawData['num-ninos'];
+                    dataToSend.bebes = rawData['num-bebes'];
+                    dataToSend.nombresGrupo = rawData['nombres-grupo'];
+                    
+                    // Menús Grupo
+                    dataToSend.menuCarne = rawData['menu-carne'];
+                    dataToSend.menuVeg = rawData['menu-vegetariano'];
+                    dataToSend.menuVegan = rawData['menu-vegano'];
+                    dataToSend.menuGluten = rawData['menu-sin-gluten'];
+                    dataToSend.menuLactosa = rawData['menu-sin-lactosa'];
+                    dataToSend.menuOtro = rawData['menu-otro'];
+                    dataToSend.menuOtroSpec = rawData['otro-grupo-spec'];
+                } else {
+                    // Es solo, usamos valores por defecto para grupo
+                    dataToSend.adultos = "1";
+                    dataToSend.menuSolo = rawData['menu_solo'];
+                    dataToSend.menuSoloSpec = rawData['otro-solo-spec'];
+                }
+            }
+
+            // Enviar a Google Apps Script
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Importante para evitar errores CORS con Apps Script
+                headers: {
+                    'Content-Type': 'text/plain' // Evita preflight request
+                },
+                body: JSON.stringify(dataToSend)
+            })
+            .then(() => {
+                // Éxito (no-cors siempre resuelve a éxito si llega al servidor)
+                pageHistory.push('8');
+                showPage('8');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Parece que no tienes Internet. Por favor intenta nuevamente mas tarde.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            });
         }
     });
 
@@ -463,7 +528,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.self !== window.top) {
                 window.parent.postMessage('closeFormModal', '*');
             } else {
-                alert('¡Gracias!');
+                // Fallback si no está en iframe (pruebas)
+                window.location.reload();
             }
         });
     }
