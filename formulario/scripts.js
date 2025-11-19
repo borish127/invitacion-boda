@@ -431,11 +431,6 @@ document.addEventListener('DOMContentLoaded', () => {
         blurActiveElement();
         
         if (validateCurrentPage()) {
-            if (GOOGLE_SCRIPT_URL === "PEGAR_TU_URL_AQUI") {
-                alert("Falta configurar la URL del script de Google. Por favor revisa las instrucciones.");
-                return;
-            }
-
             // Cambiar estado del botón a cargando
             const originalText = submitBtn.innerHTML;
             submitBtn.disabled = true;

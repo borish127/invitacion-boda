@@ -25,7 +25,6 @@ ajustarAnimacionesMovil();
 
 AOS.init({
     duration: 800,
-    once: false
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -103,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const seccionDamas = document.getElementById('damas');
     const seccionCaballeros = document.getElementById('caballeros');
     const heroScrollLink = document.getElementById('hero-scroll-link');
-    
+
     if (grupo === 'damas') {
         if (seccionDamas) seccionDamas.classList.remove('hidden');
         if (heroScrollLink) heroScrollLink.href = '#damas';
@@ -127,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         boton.addEventListener('click', (e) => {
             e.preventDefault();
             const estaActivo = lista.classList.toggle('activo');
-            
+
             if (estaActivo) {
                 lista.style.maxHeight = lista.scrollHeight + "px";
             } else {
@@ -157,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const countdownTimer = document.getElementById('countdown-timer');
     const heroSection = document.querySelector('.hero-section');
-    
+
     const fechaBoda = new Date('2027-04-04T17:00:00').getTime();
 
     function actualizarCuentaRegresiva() {
@@ -166,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (distancia < 0) {
             clearInterval(intervaloCuenta);
-            if(countdownTimer) countdownTimer.style.display = 'none';
+            if (countdownTimer) countdownTimer.style.display = 'none';
             return;
         }
 
@@ -187,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkScrollParaCountdown() {
         if (!heroSection || !countdownTimer) return;
 
-        const umbral = heroSection.offsetHeight - 50; 
+        const umbral = heroSection.offsetHeight - 50;
 
         if (window.scrollY > umbral) {
             countdownTimer.classList.add('visible');
@@ -197,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('scroll', checkScrollParaCountdown);
-    checkScrollParaCountdown(); 
+    checkScrollParaCountdown();
 
     const modalOverlay = document.getElementById('form-modal-overlay');
     const openModalBtn = document.getElementById('open-form-modal');
@@ -218,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { once: true }); // 'once: true' asegura que solo se ejecute 1 vez
 
         // 4. Inicia la carga del iframe
-        formIframe.src = formUrl; 
+        formIframe.src = formUrl;
     }
 
     function closeModal() {
@@ -240,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeModalBtn) {
         closeModalBtn.addEventListener('click', closeModal);
     }
-    
+
     if (modalOverlay) {
         modalOverlay.addEventListener('click', (e) => {
             if (e.target === modalOverlay) {
@@ -249,29 +248,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-    
-    const botonMapa = document.getElementById('link-ubicacion');
-    if (botonMapa) {
-        const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/3apmmqSBGVd8eMAF7?g_st=aw";      
-        const APPLE_MAPS_URL = "https://maps.apple/p/hI~mG2AbUpvX-z"; 
-        
-        // Detección simple de iOS/Mac
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
-        const isMac = /Macintosh|Mac OS X/.test(userAgent) && !/Windows/.test(userAgent);
 
-        if (isIOS || isMac) {
-            botonMapa.href = APPLE_MAPS_URL;
-        } else {
-            botonMapa.href = GOOGLE_MAPS_URL;
-        }
+const botonMapa = document.getElementById('link-ubicacion');
+if (botonMapa) {
+    const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/3apmmqSBGVd8eMAF7?g_st=aw";
+    const APPLE_MAPS_URL = "https://maps.apple/p/hI~mG2AbUpvX-z";
+
+    // Detección simple de iOS/Mac
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+    const isMac = /Macintosh|Mac OS X/.test(userAgent) && !/Windows/.test(userAgent);
+
+    if (isIOS || isMac) {
+        botonMapa.href = APPLE_MAPS_URL;
+    } else {
+        botonMapa.href = GOOGLE_MAPS_URL;
     }
+}
 
 window.addEventListener('message', (event) => {
     if (event.data === 'closeFormModal') {
         const modalOverlay = document.getElementById('form-modal-overlay');
         const formIframe = document.getElementById('form-iframe');
-        
+
         if (modalOverlay) modalOverlay.classList.remove('modal-visible');
         if (formIframe) formIframe.src = 'about:blank';
         document.documentElement.classList.remove('modal-open');
@@ -280,11 +279,11 @@ window.addEventListener('message', (event) => {
 });
 
 // --- BLOQUEO DE ARRASTRE EN PC ---
-    // Esto previene que se arrastren enlaces y botones como si fueran archivos
-    const noDragElements = document.querySelectorAll('a, button, img, .btn-cortejo-inferior, .link-secundario');
-    
-    noDragElements.forEach(element => {
-        element.addEventListener('dragstart', (e) => {
-            e.preventDefault();
-        });
+// Esto previene que se arrastren enlaces y botones como si fueran archivos
+const noDragElements = document.querySelectorAll('a, button, img, .btn-cortejo-inferior, .link-secundario');
+
+noDragElements.forEach(element => {
+    element.addEventListener('dragstart', (e) => {
+        e.preventDefault();
     });
+});
