@@ -177,6 +177,14 @@ h3 {
     text-align: center;
 }
 
+.damas-section .cortejo-content h2 {
+    font-size: 2em;
+}
+
+.caballeros-section .cortejo-content h2 {
+    font-size: 4em;
+}
+
 .damas-titulo,
 .caballeros-titulo {
     font-size: 4em;
