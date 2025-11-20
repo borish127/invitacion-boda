@@ -830,7 +830,8 @@ h3 {
 }
 
 /* Horizontal photos need narrower overlay to match vertical size */
-.galeria-item-container.horizontal .foto-info {
+.galeria-item-container.horizontal .foto-info,
+.galeria-item-container.span-2 .foto-info {
     width: calc(50% - 20px);
 }
 
