@@ -7,14 +7,14 @@ function ajustarAnimacionesMovil() {
             item.setAttribute('data-aos', 'fade-right');
         });
 
-        const galeriaImages = document.querySelectorAll('.galeria-cuadricula img');
-        galeriaImages.forEach((img, index) => {
+        const galeriaItems = document.querySelectorAll('.galeria-item-container');
+        galeriaItems.forEach((item, index) => {
             const numeroDeFoto = index + 1;
             if (numeroDeFoto >= 5 && numeroDeFoto <= 9) {
                 if (numeroDeFoto % 2 !== 0) {
-                    img.setAttribute('data-aos', 'fade-right');
+                    item.setAttribute('data-aos', 'fade-right');
                 } else {
-                    img.setAttribute('data-aos', 'fade-left');
+                    item.setAttribute('data-aos', 'fade-left');
                 }
             }
         });
@@ -247,6 +247,49 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- INTERACCIÓN GALERÍA (MÓVIL) ---
+    const galeriaItems = document.querySelectorAll('.galeria-item-container');
+
+    // Agregar animación de "tap" a la primera foto si es móvil
+    if (window.innerWidth <= 768 && galeriaItems.length > 0) {
+        galeriaItems[0].classList.add('hint-animation');
+    }
+
+    galeriaItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            // Evitar que el click se propague al document y cierre inmediatamente
+            e.stopPropagation();
+
+            // Remover la animación de hint al primer toque de CUALQUIER foto
+            const hintItem = document.querySelector('.hint-animation');
+            if (hintItem) {
+                hintItem.classList.remove('hint-animation');
+            }
+
+            const estabaActiva = item.classList.contains('active');
+
+            // Quitar active de todas
+            galeriaItems.forEach(i => i.classList.remove('active'));
+
+            // Si no estaba activa, activarla
+            if (!estabaActiva) {
+                item.classList.add('active');
+            }
+        });
+
+        // Limpiar estado al salir el mouse (para desktop si se hizo click)
+        item.addEventListener('mouseleave', () => {
+            item.classList.remove('active');
+        });
+    });
+
+    // Cerrar al hacer click fuera
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.galeria-item-container')) {
+            galeriaItems.forEach(i => i.classList.remove('active'));
+        }
+    });
 });
 
 const botonMapa = document.getElementById('link-ubicacion');
