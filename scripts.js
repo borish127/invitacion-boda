@@ -280,7 +280,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Limpiar estado al salir el mouse (para desktop si se hizo click)
         item.addEventListener('mouseleave', () => {
-            item.classList.remove('active');
+            if (window.matchMedia('(hover: hover)').matches) {
+                item.classList.remove('active');
+            }
         });
     });
 
@@ -329,4 +331,22 @@ noDragElements.forEach(element => {
     element.addEventListener('dragstart', (e) => {
         e.preventDefault();
     });
+});
+
+// --- BLOQUEO DE ZOOM EN ESCRITORIO ---
+document.addEventListener('wheel', function (e) {
+    if (e.ctrlKey) {
+        e.preventDefault();
+    }
+}, { passive: false });
+
+document.addEventListener('keydown', function (e) {
+    if (e.ctrlKey && (e.key === '+' || e.key === '-' || e.key === '0' || e.key === '=')) {
+        e.preventDefault();
+    }
+});
+
+// Prevent gesture zoom (Safari)
+document.addEventListener('gesturestart', function (e) {
+    e.preventDefault();
 });

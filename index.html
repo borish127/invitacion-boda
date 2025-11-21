@@ -14,7 +14,7 @@
     <meta name="twitter:card" content="boda_kelly_boris">
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#000000">
 
     <link rel="icon" type="image/png" href="icon.png">
@@ -242,10 +242,70 @@
                             class="fa-solid fa-pen-to-square"></i></button>
                 </div>
 
+                <!-- <div class="bloque" data-aos="fade-left" data-aos-delay="300">
+                    <h3>Juego</h3>
+                    <p>Responde unas preguntas para un juego<i
+                            class="fa-solid fa-utensils"></i></p>
+                    <p class="fecha-limite">Completalo antes del <span class="js-format-date"
+                            data-date="2026-08-01"></span>.</p>
+                    <button type="button" class="link-secundario" id="open-game-modal"> Responder preguntas<i
+                            class="fa-solid fa-pen-to-square"></i></button>
+                </div> -->
+
             </div>
         </section>
 
-        <section id="cronograma" class="cronograma-section">
+        <section id="tarjeta" class="tarjeta-section hidden">
+            <h2 class="tarjeta-titulo" data-aos="fade-up">
+                <i class="fa-solid fa-ticket-simple"></i>
+            </h2>
+            <p class="tarjeta-descripcion" data-aos="fade-up" data-aos-delay="100">
+                El valor de la tarjeta es de:<br>
+                $65.000 por adulto (mayores a 12 años).<br>
+                $40.000 por niño (entre 2 y 12 años).<br>
+                Los bebés menores de 2 años no pagan.
+            </p>
+            <div class="info-tarjeta" data-aos="fade-up" data-aos-delay="200">
+                <h4>Datos para la transferencia:</h4>
+                <p>
+                    <strong>CBU:</strong> <span id="cbu-tarjeta">0070080130004074676249</span><br>
+                    <strong>Alias:</strong> <span id="alias-tarjeta">KELLY.AND.BORIS</span>
+                </p>
+                <div class="botones-copiar">
+                    <button id="btn-copiar-tarjeta" class="link-secundario">Copiar CBU</button>
+                    <button id="btn-copiar-alias-tarjeta" class="link-secundario">Copiar Alias</button>
+                </div>
+            </div>
+            <p class="texto-aclaracion" data-aos="fade-up" data-aos-delay="100">
+                Si preferís darnos el dinero en efectivo, usd o transferencia desde el fuera de Argentina escribinos por
+                WhatsApp para coordinarlo.<br>
+                Por favor confirmar asistencia y abonar la tarjeta antes del <span class="js-format-date"
+                    data-date="2026-08-01"></span>.
+            </p>
+        </section>
+
+        <section id="regalo" class="regalo-section">
+            <h2 class="regalo-titulo" data-aos="fade-up">
+                <i class="fa-solid fa-gift"></i>
+            </h2>
+            <p class="regalo-descripcion" data-aos="fade-up" data-aos-delay="100">
+                El mejor regalo es tu presencia, ¡pero si deseás hacernos un obsequio, podés ayudarnos con nuestra luna
+                de miel!
+            </p>
+            <div class="datos-bancarios" data-aos="fade-up" data-aos-delay="200">
+                <h4>Datos para transferencia:</h4>
+                <p>
+                    <strong>CBU:</strong> <span id="cbu-regalo">0070080130004074676249</span><br>
+                    <strong>Alias:</strong> <span id="alias-regalo">KELLY.AND.BORIS</span>
+                </p>
+                <div class="botones-copiar">
+                    <button id="btn-copiar-regalo" class="link-secundario">Copiar CBU</button>
+                    <button id="btn-copiar-alias-regalo" class="link-secundario">Copiar Alias</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section id="cronograma" class="cronograma-section">
             <h2 class="cronograma-titulo" data-aos="fade-up">
                 <i class="fa-solid fa-clock"></i>
                 <span class="cronograma-fecha js-format-date" data-date="2027-04-04"></span>
@@ -323,242 +383,233 @@
                 </div>
 
             </div>
-        </section>
-
-        <section id="tarjeta" class="tarjeta-section hidden">
-            <h2 class="tarjeta-titulo" data-aos="fade-up">
-                <i class="fa-solid fa-ticket-simple"></i>
-            </h2>
-            <p class="tarjeta-descripcion" data-aos="fade-up" data-aos-delay="100">
-                El valor de la tarjeta es de:<br>
-                $65.000 por adulto (mayores a 12 años).<br>
-                $40.000 por niño (entre 2 y 12 años).<br>
-                Los bebés menores de 2 años no pagan.
-            </p>
-            <div class="info-tarjeta" data-aos="fade-up" data-aos-delay="200">
-                <h4>Datos para la transferencia:</h4>
-                <p>
-                    <strong>CBU:</strong> <span id="cbu-tarjeta">0070080130004074676249</span><br>
-                    <strong>Alias:</strong> <span id="alias-tarjeta">KELLY.AND.BORIS</span>
-                </p>
-                <div class="botones-copiar">
-                    <button id="btn-copiar-tarjeta" class="link-secundario">Copiar CBU</button>
-                    <button id="btn-copiar-alias-tarjeta" class="link-secundario">Copiar Alias</button>
-                </div>
-            </div>
-            <p class="texto-aclaracion" data-aos="fade-up" data-aos-delay="100">
-                Si preferís darnos el dinero en efectivo o en usd escribinos por WhatsApp para coordinarlo.<br>
-                Por favor confirmar asistencia y abonar la tarjeta antes del <span class="js-format-date"
-                    data-date="2026-08-01"></span>.
-            </p>
-        </section>
-
-        <section id="regalo" class="regalo-section">
-            <h2 class="regalo-titulo" data-aos="fade-up">
-                <i class="fa-solid fa-gift"></i>
-            </h2>
-            <p class="regalo-descripcion" data-aos="fade-up" data-aos-delay="100">
-                El mejor regalo es tu presencia, ¡pero si deseás hacernos un obsequio, podés ayudarnos con nuestra luna
-                de miel!
-            </p>
-            <div class="datos-bancarios" data-aos="fade-up" data-aos-delay="200">
-                <h4>Datos para transferencia:</h4>
-                <p>
-                    <strong>CBU:</strong> <span id="cbu-regalo">0070080130004074676249</span><br>
-                    <strong>Alias:</strong> <span id="alias-regalo">KELLY.AND.BORIS</span>
-                </p>
-                <div class="botones-copiar">
-                    <button id="btn-copiar-regalo" class="link-secundario">Copiar CBU</button>
-                    <button id="btn-copiar-alias-regalo" class="link-secundario">Copiar Alias</button>
-                </div>
-            </div>
-        </section>
+        </section> -->
 
         <section id="galeria" class="galeria-section">
             <h2 class="galeria-titulo" data-aos="fade-up">Nuestras Fotos</h2>
             <div class="galeria-cuadricula">
-                <div class="galeria-item-container vertical" data-aos="fade-right">
+                <div class="galeria-item-container vertical hint-animation" data-aos="fade-right">
                     <img src="fotos/album/01.webp" alt="Foto 1" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">21 Sep 2019<br>UAP<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2019-09-21"></span><br>UAP<br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-left">
                     <img src="fotos/album/02.webp" alt="Foto 2" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">21 Sep 2019<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2019-09-21"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-up">
                     <img src="fotos/album/03.webp" alt="Foto 3" class="galeria-item" loading="lazy"
                         style="object-position: 70% 50%">
-                    <div class="foto-info"><span class="foto-fecha">22 Sep 2019<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2019-09-22"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container horizontal" data-aos="fade-right">
                     <img src="fotos/album/04.webp" alt="Foto 4" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">28 Sep 2019<br>Puente Rojo<br>Lib. San Martín</span>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2019-09-28"></span><br>Puente Rojo<br>Lib. San Martín</span>
                     </div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-left">
                     <img src="fotos/album/05.webp" alt="Foto 5" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">15 Dic 2019<br>Instituto Adventista Balcarce</span>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2019-12-15"></span><br>Instituto Adventista Balcarce</span>
                     </div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-up">
                     <img src="fotos/album/06.webp" alt="Foto 6" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">7 Mar 2020<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2020-03-07"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-right">
                     <img src="fotos/album/07.webp" alt="Foto 7" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">16 Oct 2021<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2021-10-16"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container horizontal" data-aos="fade-left">
                     <img src="fotos/album/08.webp" alt="Foto 8" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">7 Nov 2021<br>Gira en Córdoba</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2021-11-07"></span><br>Gira en Córdoba</span></div>
                 </div>
                 <div class="galeria-item-container horizontal" data-aos="fade-up">
                     <img src="fotos/album/09.webp" alt="Foto 9" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">7 Nov 2021<br>Gira en Córdoba</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2021-11-07"></span><br>Gira en Córdoba</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-right">
                     <img src="fotos/album/10.webp" alt="Foto 10" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">27 Mar 2022<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2022-03-27"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-left">
                     <img src="fotos/album/11.webp" alt="Foto 11" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">22 May 2022<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2022-05-22"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-up">
-                    <img src="fotos/album/12.webp" alt="Foto 12" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">27 Ago 2022<br>UAP<br>Lib. San Martín</span></div>
+                    <img src="fotos/album/12.webp" alt="Foto 12" class="galeria-item" loading="lazy"
+                        style="object-position: 40% 50%">
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2022-08-27"></span><br>UAP<br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-right">
                     <img src="fotos/album/13.webp" alt="Foto 13" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">19 Oct 2022<br>Gira en Brasil</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2022-10-19"></span><br>Gira en Brasil</span></div>
                 </div>
                 <div class="galeria-item-container horizontal" data-aos="fade-left">
                     <img src="fotos/album/14.webp" alt="Foto 14" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">23 Oct 2022<br>Gira en Brasil</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2022-10-23"></span><br>Gira en Brasil</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-up">
                     <img src="fotos/album/15.webp" alt="Foto 15" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">11 Dic 2022<br>Catedral, Paraná</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2022-12-11"></span><br>Catedral, Paraná</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-right">
                     <img src="fotos/album/16.webp" alt="Foto 16" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">17 Jun 2023<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2023-06-17"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container horizontal" data-aos="fade-left">
                     <img src="fotos/album/17.webp" alt="Foto 17" class="galeria-item" loading="lazy"
                         style="object-position: 50% 10%">
-                    <div class="foto-info"><span class="foto-fecha">20 Ago 2023<br>UAP<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2023-08-20"></span><br>UAP<br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-up">
                     <img src="fotos/album/18.webp" alt="Foto 18" class="galeria-item" loading="lazy"
                         style="object-position: 70% 25%">
-                    <div class="foto-info"><span class="foto-fecha">20 Ago 2023<br>UAP<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2023-08-20"></span><br>UAP<br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container horizontal" data-aos="fade-right">
                     <img src="fotos/album/19.webp" alt="Foto 19" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">21 Sep 2023<br>Puente Rojo<br>Lib. San Martín</span>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2023-09-21"></span><br>Puente Rojo<br>Lib. San Martín</span>
                     </div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-left">
                     <img src="fotos/album/20.webp" alt="Foto 20" class="galeria-item" loading="lazy"
                         style="object-position: 30% 50%">
-                    <div class="foto-info"><span class="foto-fecha">30 Mar 2024<br>Instituto Adventista Balcarce</span>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2024-03-30"></span><br>Instituto Adventista Balcarce</span>
                     </div>
                 </div>
                 <div class="galeria-item-container horizontal" data-aos="fade-up">
                     <img src="fotos/album/21.webp" alt="Foto 21" class="galeria-item" loading="lazy"
                         style="object-position: 50% 25%">
-                    <div class="foto-info"><span class="foto-fecha">4 Abr 2024<br>Puente Rojo<br>Lib. San Martín</span>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2024-04-04"></span><br>Puente Rojo<br>Lib. San Martín</span>
                     </div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-right">
                     <img src="fotos/album/22.webp" alt="Foto 22" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">27 Jul 2024<br>UAP<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2024-07-27"></span><br>UAP<br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container horizontal" data-aos="fade-left">
                     <img src="fotos/album/23.webp" alt="Foto 23" class="galeria-item" loading="lazy"
                         style="object-position: 50% 25%">
-                    <div class="foto-info"><span class="foto-fecha">4 Oct 2024<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2024-10-04"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-up">
                     <img src="fotos/album/24.webp" alt="Foto 24" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">5 Oct 2024<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2024-10-05"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-right">
                     <img src="fotos/album/25.webp" alt="Foto 25" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">13 Dic 2024<br>Puiggari</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2024-12-13"></span><br>Puiggari</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-left">
                     <img src="fotos/album/26.webp" alt="Foto 26" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">15 Dic 2024<br>Crespo</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2024-12-15"></span><br>Crespo</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-up">
                     <img src="fotos/album/27.webp" alt="Foto 27" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">30 Mar 2025<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-03-30"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container horizontal" data-aos="fade-right">
                     <img src="fotos/album/28.webp" alt="Foto 28" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">30 Mar 2025<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-03-30"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-left">
                     <img src="fotos/album/29.webp" alt="Foto 29" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">30 Mar 2025<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-03-30"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-up">
                     <img src="fotos/album/30.webp" alt="Foto 30" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">30 Mar 2025<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-03-30"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-right">
                     <img src="fotos/album/31.webp" alt="Foto 31" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">30 Mar 2025<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-03-30"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-left">
                     <img src="fotos/album/32.webp" alt="Foto 32" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">30 Mar 2025<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-03-30"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-up">
                     <img src="fotos/album/33.webp" alt="Foto 33" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">30 Mar 2025<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-03-30"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-right">
                     <img src="fotos/album/34.webp" alt="Foto 34" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">19 Jun 2025<br>"Compromiso"<br>Lib. San
-                            Martín</span>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-06-19"></span><br>"Compromiso"<br>Lib. San Martín</span>
                     </div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-left">
                     <img src="fotos/album/35.webp" alt="Foto 35" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">19 Jun 2025<br>"Compromiso"<br>Lib. San
-                            Martín</span>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-06-19"></span><br>"Compromiso"<br>Lib. San Martín</span>
                     </div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-up">
                     <img src="fotos/album/36.webp" alt="Foto 36" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">19 Jun 2025<br>"Compromiso"<br>Lib. San
-                            Martín</span>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-06-19"></span><br>"Compromiso"<br>Lib. San Martín</span>
                     </div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-right">
                     <img src="fotos/album/37.webp" alt="Foto 37" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">19 Jun 2025<br>"Compromiso"<br>Lib. San
-                            Martín</span>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-06-19"></span><br>"Compromiso"<br>Lib. San Martín</span>
                     </div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-left">
                     <img src="fotos/album/38.webp" alt="Foto 38" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">30 Jun 2025<br>UAP<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-06-30"></span><br>UAP<br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container vertical" data-aos="fade-right">
                     <img src="fotos/album/40.webp" alt="Foto 40" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">29 Sep 2025<br>Lib. San Martín</span></div>
+                    <div class=" foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-09-29"></span><br>Lib. San Martín</span>
+                    </div>
                 </div>
                 <div class="galeria-item-container vertical span-2" data-aos="fade-left">
-                    <img src="fotos/album/41.webp" alt="Foto 41" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">8 Nov 2025<br>Lib. San Martín</span></div>
+                    <img src="fotos/album/41.webp" alt="Foto 41" class="galeria-item" loading="lazy"
+                        style="object-position: 50% 45%">
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-11-08"></span><br>Lib. San Martín</span></div>
                 </div>
                 <div class="galeria-item-container horizontal" data-aos="fade-up">
                     <img src="fotos/album/39.webp" alt="Foto 39" class="galeria-item" loading="lazy">
-                    <div class="foto-info"><span class="foto-fecha">39 Jun 2025<br>UAP<br>Lib. San Martín</span></div>
+                    <div class="foto-info"><span class="foto-data"><span class="js-format-date"
+                                data-date="2025-06-30"></span><br>UAP<br>Lib. San Martín</span></div>
                 </div>
             </div>
         </section>
