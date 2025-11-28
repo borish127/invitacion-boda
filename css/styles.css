@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'Calligraphy';
-    src: url('fonts/Calligraphy.otf') format('opentype');
+    src: url('../fonts/Calligraphy.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Riesling';
-    src: url('fonts/riesling.ttf') format('truetype');
+    src: url('../fonts/riesling.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -73,7 +73,7 @@ h3 {
 .hero-section {
     position: relative;
     height: 100vh;
-    background-image: url('fotos/portada-01.webp');
+    background-image: url('../assets/fotos/portada-01.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 40% 63%;
@@ -141,7 +141,7 @@ h3 {
 }
 
 .damas-section {
-    background-image: url('fotos/damas_bg.webp');
+    background-image: url('../assets/fotos/damas_bg.webp');
     background-size: cover;
     background-position: center;
     background-color: var(--color-acento-amarillo);
@@ -154,7 +154,7 @@ h3 {
 }
 
 .caballeros-section {
-    background-image: url('fotos/caballeros_bg.webp');
+    background-image: url('../assets/fotos/caballeros_bg.webp');
     background-size: cover;
     background-position: center;
     background-color: var(--color-verde-claro);
@@ -308,7 +308,7 @@ h3 {
     position: relative;
     padding: 60px 20px;
     text-align: center;
-    background-image: url('fotos/detalles.webp');
+    background-image: url('../assets/fotos/detalles.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100% 20%;
@@ -456,7 +456,7 @@ h3 {
 .cronograma-section {
     padding: 50px 20px 80px 20px;
     position: relative;
-    background-image: url('fotos/horario.webp');
+    background-image: url('../assets/fotos/horario.webp');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -700,7 +700,7 @@ h3 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('fotos/album/01.webp'), url('fotos/album/20.webp'), url('fotos/album/41.webp');
+    background-image: url('../assets/fotos/album/01.webp'), url('../assets/fotos/album/20.webp'), url('../assets/fotos/album/41.webp');
     background-position: top center, center center, bottom center;
     background-size: 100% 40%;
     background-repeat: no-repeat;
@@ -1180,7 +1180,7 @@ button,
     }
 
     .detalles-section {
-        background-image: url('fotos/detalles_celu.webp');
+        background-image: url('../assets/fotos/detalles_celu.webp');
         background-position: center;
         min-height: 100vh;
         display: flex;
@@ -1243,7 +1243,7 @@ button,
     }
 
     .galeria-section::before {
-        background-image: url('fotos/album/01.webp'), url('fotos/album/10.webp'), url('fotos/album/20.webp'), url('fotos/album/30.webp'), url('fotos/album/35.webp'), url('fotos/album/41.webp');
+        background-image: url('../assets/fotos/album/01.webp'), url('../assets/fotos/album/10.webp'), url('../assets/fotos/album/20.webp'), url('../assets/fotos/album/30.webp'), url('../assets/fotos/album/35.webp'), url('../assets/fotos/album/41.webp');
         background-position: center 0%, center 20%, center 40%, center 60%, center 80%, center 100%;
         background-size: auto 30%;
         background-repeat: no-repeat;
