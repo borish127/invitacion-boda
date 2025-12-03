@@ -708,6 +708,8 @@ h3 {
     transform: scale(1.1);
     /* Evitar bordes blancos por el blur */
     z-index: 0;
+    will-change: transform;
+    transform: scale(1.1) translateZ(0);
 }
 
 .galeria-section::after {
@@ -766,6 +768,7 @@ h3 {
     overflow: hidden;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    backface-visibility: hidden;
 }
 
 .galeria-item-container:hover {
