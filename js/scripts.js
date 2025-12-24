@@ -256,6 +256,45 @@ document.addEventListener('DOMContentLoaded', () => {
         galeriaItems[0].classList.add('hint-animation');
     }
 
+    // Función para actualizar la posición del hint al hacer scroll
+    function checkScrollForHint() {
+        // Solo para móvil
+        if (window.innerWidth > 768) return;
+
+        // Verificar si existe algún elemento con la clase hint (si no hay, el usuario ya interactuó)
+        const currentHint = document.querySelector('.hint-animation');
+        if (!currentHint) return;
+
+        // Buscar el primer elemento visible
+        // Consideramos visible si su borde inferior está significativamente dentro de la pantalla (más abajo del top)
+        // y su borde superior no está por debajo de la pantalla
+        const headerOffset = 150; // Compensación aproximada por si hay header fijo o para no tomar fotos que se están yendo
+
+        let found = false;
+
+        for (let i = 0; i < galeriaItems.length; i++) {
+            const item = galeriaItems[i];
+            const rect = item.getBoundingClientRect();
+
+            // Condición: 
+            // rect.bottom > headerOffset -> La parte de abajo de la foto está visible más allá del offset superior
+            // rect.top < window.innerHeight - 100 -> La parte de arriba está en pantalla (no es una foto que aún no entra por abajo)
+
+            if (rect.bottom > headerOffset && rect.top < window.innerHeight - 100) {
+                if (item !== currentHint) {
+                    currentHint.classList.remove('hint-animation');
+                    item.classList.add('hint-animation');
+                }
+                found = true;
+                break; // Encontramos el primero, dejamos de buscar
+            }
+        }
+    }
+
+    // Añadir listener de scroll específico para esto (con throttle idealmente, pero simple por ahora)
+    window.addEventListener('scroll', checkScrollForHint, { passive: true });
+
+
     galeriaItems.forEach(item => {
         item.addEventListener('click', (e) => {
             // Evitar que el click se propague al document y cierre inmediatamente
