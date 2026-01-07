@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const countdownTimer = document.getElementById('countdown-timer');
     const heroSection = document.querySelector('.hero-section');
 
-    const fechaBoda = new Date('2027-04-04T17:00:00').getTime();
+    const fechaBoda = new Date('2027-04-04T10:00:00').getTime();
 
     function actualizarCuentaRegresiva() {
         const ahora = new Date().getTime();
