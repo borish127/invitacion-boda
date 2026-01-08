@@ -1,17 +1,17 @@
-function ajustarAnimacionesMovil() {
-    const anchoMovil = 768;
+function adjustMobileAnimations() {
+    const mobileWidth = 768;
 
-    if (window.innerWidth <= anchoMovil) {
+    if (window.innerWidth <= mobileWidth) {
         const timelineItems = document.querySelectorAll('.timeline-item');
         timelineItems.forEach(item => {
             item.setAttribute('data-aos', 'fade-right');
         });
 
-        const galeriaItems = document.querySelectorAll('.galeria-item-container');
-        galeriaItems.forEach((item, index) => {
-            const numeroDeFoto = index + 1;
-            if (numeroDeFoto >= 5 && numeroDeFoto <= 9) {
-                if (numeroDeFoto % 2 !== 0) {
+        const galleryItems = document.querySelectorAll('.gallery-item-container');
+        galleryItems.forEach((item, index) => {
+            const photoNumber = index + 1;
+            if (photoNumber >= 5 && photoNumber <= 9) {
+                if (photoNumber % 2 !== 0) {
                     item.setAttribute('data-aos', 'fade-right');
                 } else {
                     item.setAttribute('data-aos', 'fade-left');
@@ -21,7 +21,7 @@ function ajustarAnimacionesMovil() {
     }
 }
 
-ajustarAnimacionesMovil();
+adjustMobileAnimations();
 
 AOS.init({
     duration: 800,
@@ -30,26 +30,26 @@ AOS.init({
 document.addEventListener('DOMContentLoaded', () => {
 
     function setupCopyButton(btnId, textId, originalText) {
-        const boton = document.getElementById(btnId);
-        const textoParaCopiar = document.getElementById(textId)?.innerText;
+        const button = document.getElementById(btnId);
+        const textToCopy = document.getElementById(textId)?.innerText;
 
-        if (boton && textoParaCopiar) {
-            boton.addEventListener('click', () => {
+        if (button && textToCopy) {
+            button.addEventListener('click', () => {
                 if (navigator.clipboard && window.isSecureContext) {
-                    navigator.clipboard.writeText(textoParaCopiar).then(() => {
-                        showFeedback(boton, originalText);
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        showFeedback(button, originalText);
                     });
                 } else {
                     // Fallback para contextos no seguros (ej. http)
                     const textArea = document.createElement('textarea');
-                    textArea.value = textoParaCopiar;
+                    textArea.value = textToCopy;
                     textArea.style.position = 'absolute';
                     textArea.style.left = '-9999px';
                     document.body.appendChild(textArea);
                     textArea.select();
                     try {
                         document.execCommand('copy');
-                        showFeedback(boton, originalText);
+                        showFeedback(button, originalText);
                     } catch (err) {
                         console.error('Error al copiar: ', err);
                     }
@@ -59,17 +59,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function showFeedback(boton, originalText) {
-        boton.innerText = '¡Copiado!';
+    function showFeedback(button, originalText) {
+        button.innerText = '¡Copiado!';
         setTimeout(() => {
-            boton.innerText = originalText;
+            button.innerText = originalText;
         }, 2000);
     }
 
-    setupCopyButton('btn-copiar-tarjeta', 'cbu-tarjeta', 'Copiar CBU');
-    setupCopyButton('btn-copiar-alias-tarjeta', 'alias-tarjeta', 'Copiar Alias');
-    setupCopyButton('btn-copiar-regalo', 'cbu-regalo', 'Copiar CBU');
-    setupCopyButton('btn-copiar-alias-regalo', 'alias-regalo', 'Copiar Alias');
+    setupCopyButton('btn-copy-card', 'cbu-card', 'Copiar CBU');
+    setupCopyButton('btn-copy-alias-card', 'alias-card', 'Copiar Alias');
+    setupCopyButton('btn-copy-gift', 'cbu-gift', 'Copiar CBU');
+    setupCopyButton('btn-copy-alias-gift', 'alias-gift', 'Copiar Alias');
 
     const dateElements = document.querySelectorAll('.js-format-date');
     const dateFormatter = new Intl.DateTimeFormat(undefined, {
@@ -91,49 +91,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const urlParams = new URLSearchParams(window.location.search);
-    const grupo = urlParams.get('grupo');
+    const group = urlParams.get('grupo');
 
     let formUrl = 'formulario/index.html';
-    if (grupo) {
-        formUrl += `?grupo=${grupo}`;
+    if (group) {
+        formUrl += `?grupo=${group}`;
     }
 
-    const seccionTarjeta = document.getElementById('tarjeta');
-    const seccionDamas = document.getElementById('damas');
-    const seccionCaballeros = document.getElementById('caballeros');
+    const cardSection = document.getElementById('card');
+    const bridesmaidsSection = document.getElementById('bridesmaids');
+    const groomsmenSection = document.getElementById('groomsmen');
     const heroScrollLink = document.getElementById('hero-scroll-link');
 
-    if (grupo === 'damas') {
-        if (seccionDamas) seccionDamas.classList.remove('hidden');
-        if (heroScrollLink) heroScrollLink.href = '#damas';
-    } else if (grupo === 'caballeros') {
-        if (seccionCaballeros) seccionCaballeros.classList.remove('hidden');
-        if (heroScrollLink) heroScrollLink.href = '#caballeros';
-    } else if (grupo === 'familia' || grupo === 'inv_esp') {
+    if (group === 'damas') {
+        if (bridesmaidsSection) bridesmaidsSection.classList.remove('hidden');
+        if (heroScrollLink) heroScrollLink.href = '#bridesmaids';
+    } else if (group === 'caballeros') {
+        if (groomsmenSection) groomsmenSection.classList.remove('hidden');
+        if (heroScrollLink) heroScrollLink.href = '#groomsmen';
+    } else if (group === 'familia' || group === 'inv_esp') {
     } else {
-        if (seccionTarjeta) seccionTarjeta.classList.remove('hidden');
+        if (cardSection) cardSection.classList.remove('hidden');
     }
     AOS.refresh();
 
-    const btnVerDamas = document.getElementById('btn-ver-damas');
-    const btnVerCaballeros = document.getElementById('btn-ver-caballeros');
-    const listaDamas = document.getElementById('lista-damas');
-    const listaCaballeros = document.getElementById('lista-caballeros');
+    const btnViewBridesmaids = document.getElementById('btn-view-bridesmaids');
+    const btnViewGroomsmen = document.getElementById('btn-view-groomsmen');
+    const bridesmaidsList = document.getElementById('bridesmaids-list');
+    const groomsmenList = document.getElementById('groomsmen-list');
 
-    function toggleLista(boton, lista, textoOriginal, textoActivo) {
-        if (!boton || !lista) return;
+    function toggleList(button, list, originalText, activeText) {
+        if (!button || !list) return;
 
-        boton.addEventListener('click', (e) => {
+        button.addEventListener('click', (e) => {
             e.preventDefault();
-            const estaActivo = lista.classList.toggle('activo');
+            const isActive = list.classList.toggle('active');
 
-            if (estaActivo) {
-                lista.style.maxHeight = lista.scrollHeight + "px";
+            if (isActive) {
+                list.style.maxHeight = list.scrollHeight + "px";
             } else {
-                lista.style.maxHeight = "0px";
+                list.style.maxHeight = "0px";
             }
 
-            boton.textContent = estaActivo ? textoOriginal : textoOriginal;
+            button.textContent = isActive ? originalText : originalText;
 
             setTimeout(() => {
                 AOS.refresh();
@@ -141,13 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    toggleLista(btnVerDamas, listaDamas, 'Ver todas las damas de honor', 'Ocultar damas de honor');
-    toggleLista(btnVerCaballeros, listaCaballeros, 'Ver todos los caballeros de honor', 'Ocultar caballeros de honor');
+    toggleList(btnViewBridesmaids, bridesmaidsList, 'Ver todas las damas de honor', 'Ocultar damas de honor');
+    toggleList(btnViewGroomsmen, groomsmenList, 'Ver todos los caballeros de honor', 'Ocultar caballeros de honor');
 
     // --- BLOQUE 4.5: PREVENIR MENÚ CONTEXTUAL EN MÓVIL (LONG PRESS) ---
     // Mantenemos esta lógica en JS ya que es más robusta que solo CSS
-    const linksParaBloquear = document.querySelectorAll('.link-secundario, .scroll-link');
-    linksParaBloquear.forEach(link => {
+    const linksToBlock = document.querySelectorAll('.secondary-link, .scroll-link');
+    linksToBlock.forEach(link => {
         // 'contextmenu' es el evento para "click derecho" o "pulsación larga"
         link.addEventListener('contextmenu', (e) => {
             e.preventDefault(); // Previene que aparezca el menú
@@ -157,46 +157,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const countdownTimer = document.getElementById('countdown-timer');
     const heroSection = document.querySelector('.hero-section');
 
-    const fechaBoda = new Date('2027-04-04T10:00:00').getTime();
+    const weddingDate = new Date('2027-04-04T10:00:00').getTime();
 
-    function actualizarCuentaRegresiva() {
-        const ahora = new Date().getTime();
-        const distancia = fechaBoda - ahora;
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
 
-        if (distancia < 0) {
-            clearInterval(intervaloCuenta);
+        if (distance < 0) {
+            clearInterval(countdownInterval);
             if (countdownTimer) countdownTimer.style.display = 'none';
             return;
         }
 
-        const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-        const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-        const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        document.getElementById('dias').innerText = String(dias).padStart(2, '0');
-        document.getElementById('horas').innerText = String(horas).padStart(2, '0');
-        document.getElementById('minutos').innerText = String(minutos).padStart(2, '0');
-        document.getElementById('segundos').innerText = String(segundos).padStart(2, '0');
+        document.getElementById('days').innerText = String(days).padStart(2, '0');
+        document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+        document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
     }
 
-    const intervaloCuenta = setInterval(actualizarCuentaRegresiva, 1000);
-    actualizarCuentaRegresiva();
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
 
-    function checkScrollParaCountdown() {
+    function checkScrollForCountdown() {
         if (!heroSection || !countdownTimer) return;
 
-        const umbral = heroSection.offsetHeight - 50;
+        const threshold = heroSection.offsetHeight - 50;
 
-        if (window.scrollY > umbral) {
+        if (window.scrollY > threshold) {
             countdownTimer.classList.add('visible');
         } else {
             countdownTimer.classList.remove('visible');
         }
     }
 
-    window.addEventListener('scroll', checkScrollParaCountdown);
-    checkScrollParaCountdown();
+    window.addEventListener('scroll', checkScrollForCountdown);
+    checkScrollForCountdown();
 
     const modalOverlay = document.getElementById('form-modal-overlay');
     const openModalBtn = document.getElementById('open-form-modal');
@@ -249,11 +249,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- INTERACCIÓN GALERÍA (MÓVIL) ---
-    const galeriaItems = document.querySelectorAll('.galeria-item-container');
+    const galleryItems = document.querySelectorAll('.gallery-item-container');
 
     // Agregar animación de "tap" a la primera foto si es móvil
-    if (window.innerWidth <= 768 && galeriaItems.length > 0) {
-        galeriaItems[0].classList.add('hint-animation');
+    if (window.innerWidth <= 768 && galleryItems.length > 0) {
+        galleryItems[0].classList.add('hint-animation');
     }
 
     // Función para actualizar la posición del hint al hacer scroll
@@ -272,8 +272,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let found = false;
 
-        for (let i = 0; i < galeriaItems.length; i++) {
-            const item = galeriaItems[i];
+        for (let i = 0; i < galleryItems.length; i++) {
+            const item = galleryItems[i];
             const rect = item.getBoundingClientRect();
 
             // Condición: 
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', checkScrollForHint, { passive: true });
 
 
-    galeriaItems.forEach(item => {
+    galleryItems.forEach(item => {
         item.addEventListener('click', (e) => {
             // Evitar que el click se propague al document y cierre inmediatamente
             e.stopPropagation();
@@ -306,13 +306,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 hintItem.classList.remove('hint-animation');
             }
 
-            const estabaActiva = item.classList.contains('active');
+            const wasActive = item.classList.contains('active');
 
             // Quitar active de todas
-            galeriaItems.forEach(i => i.classList.remove('active'));
+            galleryItems.forEach(i => i.classList.remove('active'));
 
             // Si no estaba activa, activarla
-            if (!estabaActiva) {
+            if (!wasActive) {
                 item.classList.add('active');
             }
         });
@@ -327,14 +327,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cerrar al hacer click fuera
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('.galeria-item-container')) {
-            galeriaItems.forEach(i => i.classList.remove('active'));
+        if (!e.target.closest('.gallery-item-container')) {
+            galleryItems.forEach(i => i.classList.remove('active'));
         }
     });
 });
 
-const botonMapa = document.getElementById('link-ubicacion');
-if (botonMapa) {
+const mapButton = document.getElementById('link-location');
+if (mapButton) {
     const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/3apmmqSBGVd8eMAF7?g_st=aw";
     const APPLE_MAPS_URL = "https://maps.apple/p/hI~mG2AbUpvX-z";
 
@@ -344,9 +344,9 @@ if (botonMapa) {
     const isMac = /Macintosh|Mac OS X/.test(userAgent) && !/Windows/.test(userAgent);
 
     if (isIOS || isMac) {
-        botonMapa.href = APPLE_MAPS_URL;
+        mapButton.href = APPLE_MAPS_URL;
     } else {
-        botonMapa.href = GOOGLE_MAPS_URL;
+        mapButton.href = GOOGLE_MAPS_URL;
     }
 }
 
@@ -364,7 +364,7 @@ window.addEventListener('message', (event) => {
 
 // --- BLOQUEO DE ARRASTRE EN PC ---
 // Esto previene que se arrastren enlaces y botones como si fueran archivos
-const noDragElements = document.querySelectorAll('a, button, img, .btn-cortejo-inferior, .link-secundario');
+const noDragElements = document.querySelectorAll('a, button, img, .btn-court-bottom, .secondary-link');
 
 noDragElements.forEach(element => {
     element.addEventListener('dragstart', (e) => {

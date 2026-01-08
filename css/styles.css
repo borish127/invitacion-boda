@@ -13,26 +13,26 @@
 }
 
 :root {
-    /* Paleta floral actualizada */
-    --color-principal: #9F985C;
-    /* Salvia (verde base) */
-    --color-texto-oscuro: #2e3e24;
-    /* Marrón/Verde oscuro (para texto sobre verde) */
-    --color-blanco: white;
+    /* Updated Floral Palette */
+    --color-primary: #9F985C;
+    /* Sage (base green) */
+    --color-text-dark: #2e3e24;
+    /* Dark Brown/Green (for text on green) */
+    --color-white: white;
 
-    /* Colores extra de la paleta */
-    --color-acento-amarillo: #F4B147;
+    /* Extra palette colors */
+    --color-accent-yellow: #F4B147;
 
-    /* NUEVOS COLORES ESPECÍFICOS */
-    --color-verde-claro: #eef2e9;
-    /* Verde muy claro (para fondo regalo) */
-    --color-amarillo-claro: #fdf8e7;
-    /* Amarillo muy claro (para fondo tarjeta) */
-    --color-texto-amarillo-oscuro: #8C6529;
-    /* Marrón/amarillo oscuro (para texto sobre amarillo) */
+    /* NEW SPECIFIC COLORS */
+    --color-green-light: #eef2e9;
+    /* Very light green (for gift background) */
+    --color-yellow-light: #fdf8e7;
+    /* Very light yellow (for card background) */
+    --color-text-yellow-dark: #8C6529;
+    /* Dark brown/yellow (for text on yellow) */
 
-    --color-verde-oscuro-legible: #1a2e01;
-    /* Verde muy oscuro para texto en secciones verdes */
+    --color-green-dark-legible: #1a2e01;
+    /* Very dark green for text in green sections */
 }
 
 html {
@@ -45,7 +45,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #000000;
-    color: var(--color-texto-oscuro);
+    color: var(--color-text-dark);
 }
 
 html.modal-open,
@@ -57,15 +57,15 @@ h1,
 h2,
 h3 {
     font-family: 'Georgia', serif;
-    color: var(--color-principal);
+    color: var(--color-primary);
 }
 
 .hidden {
     display: none !important;
 }
 
-.invitacion-container {
-    background-color: var(--color-principal);
+.invitation-container {
+    background-color: var(--color-primary);
     overflow-x: hidden;
     user-select: none;
 }
@@ -81,7 +81,7 @@ h3 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: var(--color-blanco);
+    color: var(--color-white);
 }
 
 .overlay {
@@ -119,7 +119,7 @@ h3 {
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.65);
 }
 
-.cortejo-section {
+.court-section {
     position: relative;
     padding: 80px 40px;
     height: 30vh;
@@ -130,7 +130,7 @@ h3 {
     background-position: center;
 }
 
-.cortejo-section::before {
+.court-section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -140,33 +140,33 @@ h3 {
     z-index: 1;
 }
 
-.damas-section {
+.bridesmaids-section {
     background-image: url('../assets/fotos/damas_bg.webp');
     background-size: cover;
     background-position: center;
-    background-color: var(--color-acento-amarillo);
+    background-color: var(--color-accent-yellow);
 }
 
-.damas-section::before {
+.bridesmaids-section::before {
     background-color: rgba(135, 102, 48, 0.5);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
 
-.caballeros-section {
+.groomsmen-section {
     background-image: url('../assets/fotos/caballeros_bg.webp');
     background-size: cover;
     background-position: center;
-    background-color: var(--color-verde-claro);
+    background-color: var(--color-green-light);
 }
 
-.caballeros-section::before {
+.groomsmen-section::before {
     background-color: rgb(46, 62, 36, 0.3);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
 }
 
-.cortejo-content {
+.court-content {
     position: center;
     z-index: 2;
     width: 100%;
@@ -177,33 +177,33 @@ h3 {
     text-align: center;
 }
 
-.damas-section .cortejo-content h2 {
+.bridesmaids-section .court-content h2 {
     font-size: 2em;
 }
 
-.caballeros-section .cortejo-content h2 {
+.groomsmen-section .court-content h2 {
     font-size: 4em;
 }
 
-.damas-titulo,
-.caballeros-titulo {
+.bridesmaids-title,
+.groomsmen-title {
     font-size: 4em;
-    color: var(--color-blanco);
+    color: var(--color-white);
     text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.9);
     margin-top: 0;
     margin-bottom: 20px;
 }
 
-.damas-descripcion,
-.caballeros-descripcion {
+.bridesmaids-description,
+.groomsmen-description {
     max-width: 600px;
     font-size: 1.2em;
     line-height: 1.8;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
-    color: var(--color-blanco);
+    color: var(--color-white);
 }
 
-.cortejo-boton-wrapper {
+.court-btn-wrapper {
     position: absolute;
     bottom: 60px;
     left: 50%;
@@ -211,7 +211,7 @@ h3 {
     z-index: 2;
 }
 
-.lista-desplegable {
+.collapsible-list {
     background-color: #f0f0f0;
     padding: 0 20px;
     max-height: 0;
@@ -219,41 +219,41 @@ h3 {
     transition: max-height 0.7s ease-in-out, padding 0.7s ease-in-out;
 }
 
-.damas-section+.lista-desplegable {
-    background-color: var(--color-amarillo-claro);
+.bridesmaids-section+.collapsible-list {
+    background-color: var(--color-yellow-light);
 }
 
-.caballeros-section+.lista-desplegable {
-    background-color: var(--color-verde-claro);
+.groomsmen-section+.collapsible-list {
+    background-color: var(--color-green-light);
 }
 
 
-.lista-desplegable.activo {
+.collapsible-list.active {
     padding: 40px 20px 60px 20px;
 }
 
-.lista-contenido {
+.list-content {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
 }
 
-.lista-titulo {
+.list-title {
     font-size: 2em;
     margin-top: 0;
     margin-bottom: 35px;
     text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);
 }
 
-.damas-section+.lista-desplegable .lista-titulo {
-    color: var(--color-texto-amarillo-oscuro);
+.bridesmaids-section+.collapsible-list .list-title {
+    color: var(--color-text-yellow-dark);
 }
 
-.caballeros-section+.lista-desplegable .lista-titulo {
-    color: var(--color-texto-oscuro);
+.groomsmen-section+.collapsible-list .list-title {
+    color: var(--color-text-dark);
 }
 
-.nombres-grid {
+.names-grid {
     gap: 30px;
     display: grid;
     grid-template-columns: repeat(4, 140px);
@@ -261,11 +261,11 @@ h3 {
     align-items: flex-start;
 }
 
-#lista-caballeros .nombres-grid {
+#groomsmen-list .names-grid {
     grid-template-columns: repeat(3, 140px);
 }
 
-.persona {
+.person {
     width: 140px;
     text-align: center;
     display: flex;
@@ -273,7 +273,7 @@ h3 {
     align-items: center;
 }
 
-.persona-foto {
+.person-photo {
     width: 120px;
     height: 120px;
     margin-bottom: 10px;
@@ -283,16 +283,16 @@ h3 {
     flex-shrink: 0;
 }
 
-.persona-foto img {
+.person-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.persona p {
+.person p {
     font-family: 'Montserrat', sans-serif;
     font-size: 1em;
-    color: var(--color-texto-oscuro);
+    color: var(--color-text-dark);
     line-height: 1.2;
     margin: 0;
     white-space: nowrap;
@@ -300,11 +300,11 @@ h3 {
     width: 100%;
 }
 
-#lista-damas .persona p {
-    color: var(--color-texto-amarillo-oscuro);
+#bridesmaids-list .person p {
+    color: var(--color-text-yellow-dark);
 }
 
-.detalles-section {
+.details-section {
     position: relative;
     padding: 60px 20px;
     text-align: center;
@@ -314,14 +314,14 @@ h3 {
     background-position: 100% 20%;
     background-color: rgba(0, 0, 0, 0.2);
     background-blend-mode: overlay;
-    color: var(--color-verde-oscuro-legible);
+    color: var(--color-green-dark-legible);
 }
 
-.espaciador-vertical {
+.vertical-spacer {
     height: 200px;
 }
 
-.info-bloques {
+.info-blocks {
     display: flex;
     justify-content: center;
     gap: 30px;
@@ -331,7 +331,7 @@ h3 {
     margin-right: auto;
 }
 
-.bloque {
+.block {
     background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -347,18 +347,18 @@ h3 {
     min-height: 200px;
 }
 
-.bloque p i {
+.block p i {
     margin-left: 12px;
-    color: var(--color-verde-oscuro-legible);
+    color: var(--color-green-dark-legible);
 }
 
-.bloque h3 {
+.block h3 {
     font-size: 1.8em;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    color: var(--color-verde-oscuro-legible);
+    color: var(--color-green-dark-legible);
 }
 
-.link-secundario {
+.secondary-link {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -379,12 +379,12 @@ h3 {
     width: 100%;
 }
 
-.bloque .link-secundario {
-    color: var(--color-verde-oscuro-legible);
-    border-color: var(--color-verde-oscuro-legible);
+.block .secondary-link {
+    color: var(--color-green-dark-legible);
+    border-color: var(--color-green-dark-legible);
 }
 
-.btn-cortejo-inferior {
+.btn-court-bottom {
     height: auto;
     min-height: 40px;
     width: auto;
@@ -394,66 +394,66 @@ h3 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: var(--color-blanco);
+    background-color: var(--color-white);
     border: none;
 }
 
-.damas-section .btn-cortejo-inferior {
-    color: var(--color-texto-amarillo-oscuro);
+.bridesmaids-section .btn-court-bottom {
+    color: var(--color-text-yellow-dark);
 }
 
-.caballeros-section .btn-cortejo-inferior {
-    color: var(--color-texto-oscuro);
+.groomsmen-section .btn-court-bottom {
+    color: var(--color-text-dark);
 }
 
-.damas-section .btn-cortejo-inferior:active {
-    background-color: var(--color-texto-amarillo-oscuro);
-    color: var(--color-blanco);
+.bridesmaids-section .btn-court-bottom:active {
+    background-color: var(--color-text-yellow-dark);
+    color: var(--color-white);
     transition: background-color 0.1s, color 0.1s;
 }
 
-.caballeros-section .btn-cortejo-inferior:active {
-    background-color: var(--color-texto-oscuro);
-    color: var(--color-blanco);
+.groomsmen-section .btn-court-bottom:active {
+    background-color: var(--color-text-dark);
+    color: var(--color-white);
     transition: background-color 0.1s, color 0.1s;
 }
 
 @media (hover: hover) {
-    .damas-section .btn-cortejo-inferior:hover {
-        background-color: var(--color-texto-amarillo-oscuro);
-        color: var(--color-blanco);
+    .bridesmaids-section .btn-court-bottom:hover {
+        background-color: var(--color-text-yellow-dark);
+        color: var(--color-white);
     }
 
-    .caballeros-section .btn-cortejo-inferior:hover {
-        background-color: var(--color-texto-oscuro);
-        color: var(--color-blanco);
+    .groomsmen-section .btn-court-bottom:hover {
+        background-color: var(--color-text-dark);
+        color: var(--color-white);
     }
 
-    .link-secundario:hover {
+    .secondary-link:hover {
         background-color: var(--color-secundario);
-        color: var(--color-blanco);
+        color: var(--color-white);
     }
 
-    .bloque .link-secundario:hover {
-        background-color: var(--color-verde-oscuro-legible);
-        color: var(--color-blanco);
+    .block .secondary-link:hover {
+        background-color: var(--color-green-dark-legible);
+        color: var(--color-white);
     }
 
-    .tarjeta-section .link-secundario:hover {
-        background-color: var(--color-texto-amarillo-oscuro);
-        color: var(--color-blanco);
+    .card-section .secondary-link:hover {
+        background-color: var(--color-text-yellow-dark);
+        color: var(--color-white);
     }
 
-    .regalo-section .link-secundario:hover {
-        background-color: var(--color-texto-oscuro);
-        color: var(--color-blanco);
+    .gift-section .secondary-link:hover {
+        background-color: var(--color-text-dark);
+        color: var(--color-white);
     }
 }
 
 /* CIERRE IMPORTANTE DEL MEDIA QUERY HOVER */
 
 
-.cronograma-section {
+.schedule-section {
     padding: 50px 20px 80px 20px;
     position: relative;
     background-image: url('../assets/fotos/horario.webp');
@@ -464,7 +464,7 @@ h3 {
     background-blend-mode: multiply;
 }
 
-.cronograma-titulo {
+.schedule-title {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -473,13 +473,13 @@ h3 {
     text-align: center;
 }
 
-.cronograma-titulo i {
+.schedule-title i {
     font-size: 4em;
-    color: var(--color-blanco);
+    color: var(--color-white);
     text-shadow: 0px 2px 5px rgba(0, 0, 0, 1);
 }
 
-.cronograma-fecha {
+.schedule-date {
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 1.5rem;
@@ -490,7 +490,7 @@ h3 {
     border-radius: 12px;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    color: var(--color-verde-oscuro-legible);
+    color: var(--color-green-dark-legible);
 }
 
 .timeline-container {
@@ -503,7 +503,7 @@ h3 {
     content: '';
     position: absolute;
     width: 4px;
-    background-color: var(--color-blanco);
+    background-color: var(--color-white);
     top: 0;
     bottom: 0;
     left: 50%;
@@ -534,20 +534,20 @@ h3 {
 
 .timeline-content h3 {
     margin-top: 0;
-    color: var(--color-verde-oscuro-legible);
+    color: var(--color-green-dark-legible);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
 }
 
-.timeline-hora {
+.timeline-time {
     font-size: 1.1rem;
     font-weight: bold;
     opacity: 0.9;
 }
 
-.timeline-evento {
+.timeline-event {
     font-size: 1.2rem;
     font-weight: normal;
 }
@@ -557,62 +557,62 @@ h3 {
     line-height: 1.5;
 }
 
-.timeline-evento i {
+.timeline-event i {
     width: 25px;
     height: 25px;
     margin-left: 8px;
     text-align: center;
 }
 
-.tarjeta-section,
-.regalo-section {
+.card-section,
+.gift-section {
     padding: 50px 20px;
     text-align: center;
 }
 
-.tarjeta-section {
-    background-color: var(--color-amarillo-claro);
+.card-section {
+    background-color: var(--color-yellow-light);
 }
 
-.regalo-section {
-    background-color: var(--color-verde-claro);
+.gift-section {
+    background-color: var(--color-green-light);
     padding-bottom: 80px;
 }
 
-.tarjeta-titulo,
-.regalo-titulo {
+.card-title,
+.gift-title {
     font-size: 4em;
     margin-top: 0;
     margin-bottom: 20px;
 }
 
-.tarjeta-titulo {
-    color: var(--color-texto-amarillo-oscuro);
+.card-title {
+    color: var(--color-text-yellow-dark);
 }
 
-.regalo-titulo {
-    color: var(--color-texto-oscuro);
+.gift-title {
+    color: var(--color-text-dark);
 }
 
-.tarjeta-descripcion,
-.regalo-descripcion {
+.card-description,
+.gift-description {
     max-width: 600px;
     margin: 0 auto 40px auto;
     font-size: 1.1em;
     line-height: 1.6;
 }
 
-.tarjeta-descripcion {
-    color: var(--color-texto-amarillo-oscuro);
+.card-description {
+    color: var(--color-text-yellow-dark);
 }
 
-.regalo-descripcion {
-    color: var(--color-texto-oscuro);
+.gift-description {
+    color: var(--color-text-dark);
 }
 
 
-.info-tarjeta,
-.datos-bancarios {
+.card-info,
+.bank-data {
     background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -623,53 +623,53 @@ h3 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.info-tarjeta h4,
-.datos-bancarios h4 {
+.card-info h4,
+.bank-data h4 {
     margin-top: 0;
     font-size: 1.5em;
 }
 
-.info-tarjeta h4 {
-    color: var(--color-texto-amarillo-oscuro);
+.card-info h4 {
+    color: var(--color-text-yellow-dark);
 }
 
-.datos-bancarios h4 {
-    color: var(--color-texto-oscuro);
+.bank-data h4 {
+    color: var(--color-text-dark);
 }
 
-.info-tarjeta p,
-.datos-bancarios p {
+.card-info p,
+.bank-data p {
     line-height: 1.7;
     word-wrap: break-word;
 }
 
-.info-tarjeta p {
-    color: var(--color-texto-amarillo-oscuro);
+.card-info p {
+    color: var(--color-text-yellow-dark);
 }
 
-.datos-bancarios p {
-    color: var(--color-texto-oscuro);
+.bank-data p {
+    color: var(--color-text-dark);
 }
 
-.botones-copiar {
+.copy-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
 }
 
-.tarjeta-section .link-secundario {
-    color: var(--color-texto-amarillo-oscuro);
-    border-color: var(--color-texto-amarillo-oscuro);
+.card-section .secondary-link {
+    color: var(--color-text-yellow-dark);
+    border-color: var(--color-text-yellow-dark);
 }
 
-.regalo-section .link-secundario {
-    color: var(--color-texto-oscuro);
-    border-color: var(--color-texto-oscuro);
+.gift-section .secondary-link {
+    color: var(--color-text-dark);
+    border-color: var(--color-text-dark);
 }
 
 
-.texto-aclaracion {
+.disclaimer-text {
     margin-top: 25px;
     font-size: 0.9em;
     font-style: italic;
@@ -680,20 +680,20 @@ h3 {
     line-height: 1.6;
 }
 
-.tarjeta-section .texto-aclaracion {
-    color: var(--color-texto-amarillo-oscuro);
+.card-section .disclaimer-text {
+    color: var(--color-text-yellow-dark);
 }
 
-.galeria-section {
+.gallery-section {
     position: relative;
     padding: 50px 20px 60px 20px;
     text-align: center;
-    color: var(--color-blanco);
+    color: var(--color-white);
     overflow: hidden;
     /* Importante para recortar el blur */
 }
 
-.galeria-section::before {
+.gallery-section::before {
     content: '';
     position: absolute;
     top: 0;
@@ -712,7 +712,7 @@ h3 {
     transform: scale(1.1) translateZ(0);
 }
 
-.galeria-section::after {
+.gallery-section::after {
     content: '';
     position: absolute;
     top: 0;
@@ -723,34 +723,34 @@ h3 {
     z-index: 0;
 }
 
-.galeria-titulo,
-.galeria-texto-final,
-.galeria-cuadricula {
+.gallery-title,
+.gallery-footer-text,
+.gallery-grid {
     position: relative;
     z-index: 1;
 }
 
-.galeria-titulo {
+.gallery-title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: 2.7em;
-    color: var(--color-blanco);
+    color: var(--color-white);
     text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
     margin-top: 0;
     margin-bottom: 10px;
 }
 
-.galeria-texto-final {
+.gallery-footer-text {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     font-size: 1.0em;
-    color: var(--color-blanco);
+    color: var(--color-white);
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
     margin-top: 30px;
     margin-bottom: -30px;
 }
 
-.galeria-cuadricula {
+.gallery-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 50px;
@@ -760,7 +760,7 @@ h3 {
     margin: 50px auto 0px;
 }
 
-.galeria-item-container {
+.gallery-item-container {
     position: relative;
     border-radius: 12px;
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.9);
@@ -771,12 +771,12 @@ h3 {
     backface-visibility: hidden;
 }
 
-.galeria-item-container:hover {
+.gallery-item-container:hover {
     transform: scale(1.02);
     z-index: 2;
 }
 
-.galeria-item {
+.gallery-item {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -784,28 +784,28 @@ h3 {
 }
 
 /* Vertical ~3:4 */
-.galeria-item-container.vertical {
+.gallery-item-container.vertical {
     grid-row: span 6;
     grid-column: span 1;
 }
 
 /* Horizontal ~4:3 */
-.galeria-item-container.horizontal {
+.gallery-item-container.horizontal {
     grid-column: span 2;
     grid-row: span 4;
 }
 
-.galeria-item-container.span-2 {
+.gallery-item-container.span-2 {
     grid-column: span 2 !important;
 }
 
 /* Rellenar espacio al final */
-.galeria-item-container:last-child {
+.gallery-item-container:last-child {
     grid-column-end: -1;
 }
 
 /* Overlay styles */
-.foto-info {
+.photo-info {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -829,8 +829,8 @@ h3 {
     justify-content: center;
 }
 
-.foto-data {
-    color: var(--color-texto-oscuro);
+.photo-date {
+    color: var(--color-text-dark);
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(0.7rem, 2vw, 0.85rem);
     font-weight: 600;
@@ -838,21 +838,21 @@ h3 {
 }
 
 /* Horizontal photos need narrower overlay to match vertical size */
-.galeria-item-container.horizontal .foto-info,
-.galeria-item-container.span-2 .foto-info {
+.gallery-item-container.horizontal .photo-info,
+.gallery-item-container.span-2 .photo-info {
     width: calc(50% - 20px) !important;
 }
 
 /* Hover state (Desktop) */
 @media (hover: hover) {
-    .galeria-item-container:hover .foto-info {
+    .gallery-item-container:hover .photo-info {
         opacity: 1;
         transform: translateX(-50%) translateY(0);
     }
 }
 
 /* Active state (Mobile/Click) */
-.galeria-item-container.active .foto-info {
+.gallery-item-container.active .photo-info {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
@@ -895,7 +895,7 @@ h3 {
         }
     }
 
-    .galeria-item-container.hint-animation::before {
+    .gallery-item-container.hint-animation::before {
         content: '';
         position: absolute;
         bottom: 37px;
@@ -910,7 +910,7 @@ h3 {
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
     }
 
-    .galeria-item-container.hint-animation::after {
+    .gallery-item-container.hint-animation::after {
         content: '\f0a6';
         /* fa-hand-pointer */
         font-family: "Font Awesome 6 Free";
@@ -935,14 +935,14 @@ footer {
     align-items: center;
     gap: 20px;
     padding: 25px 20px;
-    background-color: var(--color-verde-claro);
+    background-color: var(--color-green-light);
 }
 
 .footer-names {
     font-family: 'Calligraphy', sans-serif;
     font-size: clamp(1em, 15vw, 2.2em);
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-    color: var(--color-texto-oscuro);
+    color: var(--color-text-dark);
     margin: 0;
 }
 
@@ -952,7 +952,7 @@ footer {
     opacity: 0.8;
 }
 
-.icono-izquierdo {
+.icon-left {
     transform: scaleX(-1);
 }
 
@@ -967,7 +967,7 @@ footer {
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
-    color: var(--color-blanco);
+    color: var(--color-white);
     font-size: 1.5em;
     cursor: pointer;
 }
@@ -1006,7 +1006,7 @@ footer {
     top: 0;
     right: 0;
     background-color: rgba(30, 30, 30, 0.5);
-    color: var(--color-blanco);
+    color: var(--color-white);
     padding: 8px 15px;
     border-radius: 0 0 0 8px;
     z-index: 1000;
@@ -1029,16 +1029,16 @@ footer {
     pointer-events: auto;
 }
 
-.countdown-bloque {
+.countdown-block {
     text-align: center;
     line-height: 1.2;
 }
 
-.countdown-bloque span {
+.countdown-block span {
     display: block;
 }
 
-.countdown-bloque span:first-child {
+.countdown-block span:first-child {
     font-size: 1.2em;
     font-weight: 400;
 }
@@ -1051,25 +1051,25 @@ footer {
     letter-spacing: 0.5px;
 }
 
-.link-secundario,
-.btn-cortejo-inferior,
+.secondary-link,
+.btn-court-bottom,
 .form-modal-close-btn {
     -webkit-tap-highlight-color: transparent;
 }
 
-.bloque .link-secundario:active {
-    background-color: var(--color-verde-oscuro-legible);
-    color: var(--color-blanco);
+.block .secondary-link:active {
+    background-color: var(--color-green-dark-legible);
+    color: var(--color-white);
 }
 
-.tarjeta-section .link-secundario:active {
-    background-color: var(--color-texto-amarillo-oscuro);
-    color: var(--color-blanco);
+.card-section .secondary-link:active {
+    background-color: var(--color-text-yellow-dark);
+    color: var(--color-white);
 }
 
-.regalo-section .link-secundario:active {
-    background-color: var(--color-texto-oscuro);
-    color: var(--color-blanco);
+.gift-section .secondary-link:active {
+    background-color: var(--color-text-dark);
+    color: var(--color-white);
 }
 
 
@@ -1159,8 +1159,8 @@ img {
 
 a,
 button,
-.btn-cortejo-inferior,
-.link-secundario {
+.btn-court-bottom,
+.secondary-link {
     -webkit-user-drag: none;
     -webkit-touch-callout: none;
     user-select: none;
@@ -1188,13 +1188,13 @@ button,
         font-size: clamp(1.5em, 8vw, 5em);
     }
 
-    .cortejo-section {
+    .court-section {
         height: 40vh;
     }
 
 
-    .nombres-grid,
-    #lista-caballeros .nombres-grid {
+    .names-grid,
+    #groomsmen-list .names-grid {
         gap: 20px 10px;
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
@@ -1202,12 +1202,12 @@ button,
     }
 
     /* Ajuste para las tarjetas de persona en móvil */
-    .persona {
+    .person {
         width: 100%;
         max-width: 160px;
     }
 
-    .persona p {
+    .person p {
         white-space: normal;
         font-size: 0.95em;
         min-height: 2.4em;
@@ -1216,7 +1216,7 @@ button,
         justify-content: center;
     }
 
-    .detalles-section {
+    .details-section {
         background-image: url('../assets/fotos/detalles_celu.webp');
         background-position: center;
         min-height: 100vh;
@@ -1226,22 +1226,22 @@ button,
         padding: 40px 20px;
     }
 
-    .espaciador-vertical {
+    .vertical-spacer {
         display: none;
     }
 
-    .info-bloques {
+    .info-blocks {
         flex-direction: column;
         gap: 20px;
     }
 
-    .bloque {
+    .block {
         flex-basis: 100%;
         max-width: 90%;
         margin: 0 auto;
     }
 
-    .cronograma-titulo {
+    .schedule-title {
         font-size: 1.5em;
     }
 
@@ -1258,11 +1258,11 @@ button,
         left: 0;
     }
 
-    .timeline-hora {
+    .timeline-time {
         font-size: clamp(0.7rem, 4.7vw, 2rem);
     }
 
-    .timeline-evento {
+    .timeline-event {
         font-size: clamp(0.7rem, 5vw, 2.1rem);
         font-weight: normal;
     }
@@ -1272,14 +1272,14 @@ button,
         line-height: 1.5;
     }
 
-    .galeria-section {
+    .gallery-section {
         padding-top: 30px;
         padding-bottom: 40px;
         background-image: none;
         /* Limpiar background del contenedor */
     }
 
-    .galeria-section::before {
+    .gallery-section::before {
         background-image: url('../assets/fotos/album/01.webp'), url('../assets/fotos/album/10.webp'), url('../assets/fotos/album/20.webp'), url('../assets/fotos/album/30.webp'), url('../assets/fotos/album/35.webp'), url('../assets/fotos/album/41.webp');
         background-position: center 0%, center 20%, center 40%, center 60%, center 80%, center 100%;
         background-size: auto 30%;
@@ -1291,15 +1291,15 @@ button,
         -webkit-backdrop-filter: none;
     }
 
-    .galeria-titulo {
+    .gallery-title {
         font-size: 1.8em;
     }
 
-    .galeria-texto-final {
+    .gallery-footer-text {
         margin-bottom: -10px;
     }
 
-    .galeria-cuadricula {
+    .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: auto;
         gap: 10px;
@@ -1307,7 +1307,7 @@ button,
         margin-bottom: 20px;
     }
 
-    .galeria-item {
+    .gallery-item {
         width: 100%;
         height: 100%;
         max-width: none;
@@ -1315,19 +1315,19 @@ button,
         aspect-ratio: auto !important;
     }
 
-    .galeria-item-container.horizontal {
+    .gallery-item-container.horizontal {
         grid-column: span 2;
         grid-row: auto;
         aspect-ratio: 4/3;
     }
 
-    .galeria-item-container.vertical {
+    .gallery-item-container.vertical {
         grid-row: auto;
         grid-column: span 1;
         aspect-ratio: 3/4;
     }
 
-    .galeria-item:last-child:nth-child(odd) {
+    .gallery-item:last-child:nth-child(odd) {
         grid-column: span 2;
     }
 
@@ -1347,7 +1347,7 @@ button,
         border-radius: 0 0 0 8px;
     }
 
-    .countdown-bloque span:first-child {
+    .countdown-block span:first-child {
         font-size: 1.2em;
         font-weight: 400;
     }
@@ -1367,11 +1367,11 @@ button,
         padding-bottom: 0px;
     }
 
-    .foto-data {
+    .photo-date {
         font-size: 10px !important;
     }
 
-    .foto-data .js-format-date {
+    .photo-date .js-format-date {
         white-space: nowrap;
     }
 }
