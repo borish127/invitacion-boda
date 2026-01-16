@@ -234,13 +234,22 @@
                         id="link-location">Ver Mapa<i class="fa-solid fa-location-dot"></i></a>
                 </div>
 
-                <div class="block" data-aos="fade-left" data-aos-delay="300">
+                <div id="attendance-block" class="block" data-aos="fade-left" data-aos-delay="300">
                     <h3>Confirmanos tu asistencia</h3>
                     <p>Completa el formulario confirmando asistencia y seleccionando tu menu de comida.<i
                             class="fa-solid fa-utensils"></i></p>
                     <p class="fecha-limite">Completalo antes del <span class="js-format-date"
                             data-date="2026-08-01"></span>.</p>
                     <button type="button" class="secondary-link" id="open-form-modal"> Confirmar Asistencia<i
+                            class="fa-solid fa-pen-to-square"></i></button>
+                </div>
+
+                <div id="game-block" class="block hidden" data-aos="fade-left" data-aos-delay="300">
+                    <h3>Juego</h3>
+                    <p>Responde unas preguntas para un juego<i class="fa-solid fa-utensils"></i></p>
+                    <p class="fecha-limite">Completalo antes del <span class="js-format-date"
+                            data-date="2026-08-01"></span>.</p>
+                    <button type="button" class="secondary-link" id="open-game-modal"> Responder preguntas<i
                             class="fa-solid fa-pen-to-square"></i></button>
                 </div>
 
@@ -293,6 +302,86 @@
                     <button id="btn-copy-gift" class="secondary-link">Copiar CBU</button>
                     <button id="btn-copy-alias-gift" class="secondary-link">Copiar Alias</button>
                 </div>
+            </div>
+        </section>
+
+        <section id="schedule" class="schedule-section hidden">
+            <h2 class="schedule-title" data-aos="fade-up">
+                <i class="fa-solid fa-clock"></i>
+                <span class="schedule-date js-format-date" data-date="2027-04-04"></span>
+            </h2>
+            <div class="timeline-container">
+
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h3>
+                            <span class="timeline-hora">10:00 hs</span>
+                            <span class="timeline-evento">Recepción <i class="fa-solid fa-bell-concierge"></i></span>
+                        </h3>
+                        <p>¡Los esperamos a todos y nos preparamos para la ceremonia!</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <h3>
+                            <span class="timeline-hora">11:00 hs</span>
+                            <span class="timeline-evento">Ceremonia <i class="fa-solid fa-heart"></i></span>
+                        </h3>
+                        <p>El momento más importante de nuestras vidas.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h3>
+                            <span class="timeline-hora">12:00 hs</span>
+                            <span class="timeline-evento">Entrada <i class="fa-solid fa-pizza-slice"></i></span>
+                        </h3>
+                        <p>Disfruten de una entrada y bebida mientras nos hacemos fotos.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <h3>
+                            <span class="timeline-hora">13:00 hs</span>
+                            <span class="timeline-evento">¡Fiesta! <i class="fa-solid fa-music"></i></span>
+                        </h3>
+                        <p>¡A celebrar juntos este momento especial con juegos, música y buena comida!</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h3>
+                            <span class="timeline-hora">14:00 hs</span>
+                            <span class="timeline-evento">Fotos <i class="fa-solid fa-camera-retro"></i></span>
+                        </h3>
+                        <p>Las fotos con cada uno de ustedes.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <h3>
+                            <span class="timeline-hora">15:00 hs</span>
+                            <span class="timeline-evento">Brindis <i class="fa-solid fa-glass-cheers"></i></span>
+                        </h3>
+                        <p>Brindamos por nosotros y por todos los invitados.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h3>
+                            <span class="timeline-hora">16:00 hs</span>
+                            <span class="timeline-evento">¡Nos vamos! <i class="fa-solid fa-car-side"></i></span>
+                        </h3>
+                        <p>Gracias por venir.</p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -557,7 +646,7 @@
         </footer>
     </div>
 
-    <!-- ===== INICIO: MODAL DEL FORMULARIO ===== -->
+    <!-- ===== START: FORM MODAL ===== -->
     <div id="form-modal-overlay" class="form-modal-overlay">
         <div class="form-modal-content">
             <button id="close-form-modal" class="form-modal-close-btn" aria-label="Cerrar formulario">&times;</button>
@@ -565,7 +654,7 @@
                 title="Formulario de Confirmación"></iframe>
         </div>
     </div>
-    <!-- ===== FIN: MODAL DEL FORMULARIO ===== -->
+    <!-- ===== END: FORM MODAL ===== -->
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/scripts.js"></script>

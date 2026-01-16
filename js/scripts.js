@@ -1,3 +1,7 @@
+// Feature Flags
+const SHOW_GAME = false;
+const SHOW_SCHEDULE = false;
+
 function adjustMobileAnimations() {
     const mobileWidth = 768;
 
@@ -29,6 +33,30 @@ AOS.init({
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Feature Flags Logic
+    const attendanceBlock = document.getElementById('attendance-block');
+    const gameBlock = document.getElementById('game-block');
+
+    if (attendanceBlock && gameBlock) {
+        if (SHOW_GAME) {
+            attendanceBlock.classList.add('hidden');
+            gameBlock.classList.remove('hidden');
+        } else {
+            attendanceBlock.classList.remove('hidden');
+            gameBlock.classList.add('hidden');
+        }
+    }
+
+    const scheduleSection = document.getElementById('schedule');
+
+    if (scheduleSection) {
+        if (SHOW_SCHEDULE) {
+            scheduleSection.classList.remove('hidden');
+        } else {
+            scheduleSection.classList.add('hidden');
+        }
+    }
+
     function setupCopyButton(btnId, textId, originalText) {
         const button = document.getElementById(btnId);
         const textToCopy = document.getElementById(textId)?.innerText;
@@ -40,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         showFeedback(button, originalText);
                     });
                 } else {
-                    // Fallback para contextos no seguros (ej. http)
+                    // Fallback for non-secure contexts (e.g., http)
                     const textArea = document.createElement('textarea');
                     textArea.value = textToCopy;
                     textArea.style.position = 'absolute';
@@ -105,13 +133,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (group === 'damas') {
         if (bridesmaidsSection) bridesmaidsSection.classList.remove('hidden');
-        if (heroScrollLink) heroScrollLink.href = '#bridesmaids';
     } else if (group === 'caballeros') {
         if (groomsmenSection) groomsmenSection.classList.remove('hidden');
-        if (heroScrollLink) heroScrollLink.href = '#groomsmen';
     } else if (group === 'familia' || group === 'inv_esp') {
     } else {
         if (cardSection) cardSection.classList.remove('hidden');
+    }
+
+    if (heroScrollLink) {
+        heroScrollLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            const scrollHeight = window.innerHeight;
+            window.scrollTo({
+                top: scrollHeight,
+                behavior: 'smooth'
+            });
+        });
     }
     AOS.refresh();
 
@@ -144,13 +181,13 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleList(btnViewBridesmaids, bridesmaidsList, 'Ver todas las damas de honor', 'Ocultar damas de honor');
     toggleList(btnViewGroomsmen, groomsmenList, 'Ver todos los caballeros de honor', 'Ocultar caballeros de honor');
 
-    // --- BLOQUE 4.5: PREVENIR MENÚ CONTEXTUAL EN MÓVIL (LONG PRESS) ---
-    // Mantenemos esta lógica en JS ya que es más robusta que solo CSS
+    // --- BLOCK 4.5: PREVENT CONTEXT MENU ON MOBILE (LONG PRESS) ---
+    // We keep this logic in JS as it is more robust than just CSS
     const linksToBlock = document.querySelectorAll('.secondary-link, .scroll-link');
     linksToBlock.forEach(link => {
-        // 'contextmenu' es el evento para "click derecho" o "pulsación larga"
+        // 'contextmenu' is the event for "right click" or "long press"
         link.addEventListener('contextmenu', (e) => {
-            e.preventDefault(); // Previene que aparezca el menú
+            e.preventDefault(); // Prevents the menu from appearing
         });
     });
 
@@ -205,18 +242,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function openModal() {
         if (!modalOverlay || !formIframe) return;
-        // 1. Muestra el overlay oscuro y bloquea el scroll
+        // 1. Shows the dark overlay and blocks scroll
         modalOverlay.classList.add('modal-loading');
         document.documentElement.classList.add('modal-open');
         document.body.classList.add('modal-open');
 
-        // 2. Escucha el evento 'load' del iframe
+        // 2. Listen for the iframe 'load' event
         formIframe.addEventListener('load', () => {
-            // 3. Cuando el iframe cargó, activa la animación final
+            // 3. When the iframe has loaded, activate the final animation
             modalOverlay.classList.add('modal-visible');
-        }, { once: true }); // 'once: true' asegura que solo se ejecute 1 vez
+        }, { once: true }); // 'once: true' ensures it only runs once
 
-        // 4. Inicia la carga del iframe
+        // 4. Starts loading the iframe
         formIframe.src = formUrl;
     }
 
@@ -248,27 +285,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- INTERACCIÓN GALERÍA (MÓVIL) ---
+    // --- GALLERY INTERACTION (MOBILE) ---
     const galleryItems = document.querySelectorAll('.gallery-item-container');
 
-    // Agregar animación de "tap" a la primera foto si es móvil
+    // Add "tap" animation to the first photo if mobile
     if (window.innerWidth <= 768 && galleryItems.length > 0) {
         galleryItems[0].classList.add('hint-animation');
     }
 
-    // Función para actualizar la posición del hint al hacer scroll
+    // Function to update hint position on scroll
     function checkScrollForHint() {
-        // Solo para móvil
+        // Only for mobile
         if (window.innerWidth > 768) return;
 
-        // Verificar si existe algún elemento con la clase hint (si no hay, el usuario ya interactuó)
+        // Check if there is any element with the hint class (if not, the user has already interacted)
         const currentHint = document.querySelector('.hint-animation');
         if (!currentHint) return;
 
-        // Buscar el primer elemento visible
-        // Consideramos visible si su borde inferior está significativamente dentro de la pantalla (más abajo del top)
-        // y su borde superior no está por debajo de la pantalla
-        const headerOffset = 150; // Compensación aproximada por si hay header fijo o para no tomar fotos que se están yendo
+        // Find the first visible element
+        // We consider it visible if its bottom edge is significantly within the screen (below the top)
+        // and its top edge is not below the screen
+        const headerOffset = 150; // Approximate offset in case there is a fixed header or to avoid picking photos that are leaving
 
         let found = false;
 
@@ -276,9 +313,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const item = galleryItems[i];
             const rect = item.getBoundingClientRect();
 
-            // Condición: 
-            // rect.bottom > headerOffset -> La parte de abajo de la foto está visible más allá del offset superior
-            // rect.top < window.innerHeight - 100 -> La parte de arriba está en pantalla (no es una foto que aún no entra por abajo)
+            // Condition: 
+            // rect.bottom > headerOffset -> The bottom part of the photo is visible beyond the top offset
+            // rect.top < window.innerHeight - 100 -> The top part is on screen (it's not a photo that hasn't entered from below yet)
 
             if (rect.bottom > headerOffset && rect.top < window.innerHeight - 100) {
                 if (item !== currentHint) {
@@ -286,21 +323,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     item.classList.add('hint-animation');
                 }
                 found = true;
-                break; // Encontramos el primero, dejamos de buscar
+                break; // Found the first one, stop searching
             }
         }
     }
 
-    // Añadir listener de scroll específico para esto (con throttle idealmente, pero simple por ahora)
+    // Add specific scroll listener for this (ideally with throttle, but simple for now)
     window.addEventListener('scroll', checkScrollForHint, { passive: true });
 
 
     galleryItems.forEach(item => {
         item.addEventListener('click', (e) => {
-            // Evitar que el click se propague al document y cierre inmediatamente
+            // Prevent the click from propagating to the document and closing immediately
             e.stopPropagation();
 
-            // Remover la animación de hint al primer toque de CUALQUIER foto
+            // Remove hint animation on first touch of ANY photo
             const hintItem = document.querySelector('.hint-animation');
             if (hintItem) {
                 hintItem.classList.remove('hint-animation');
@@ -308,16 +345,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const wasActive = item.classList.contains('active');
 
-            // Quitar active de todas
+            // Remove active from all
             galleryItems.forEach(i => i.classList.remove('active'));
 
-            // Si no estaba activa, activarla
+            // If it wasn't active, activate it
             if (!wasActive) {
                 item.classList.add('active');
             }
         });
 
-        // Limpiar estado al salir el mouse (para desktop si se hizo click)
+        // Clear state on mouse leave (for desktop if clicked)
         item.addEventListener('mouseleave', () => {
             if (window.matchMedia('(hover: hover)').matches) {
                 item.classList.remove('active');
@@ -325,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Cerrar al hacer click fuera
+    // Close on click outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.gallery-item-container')) {
             galleryItems.forEach(i => i.classList.remove('active'));
@@ -338,7 +375,7 @@ if (mapButton) {
     const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/3apmmqSBGVd8eMAF7?g_st=aw";
     const APPLE_MAPS_URL = "https://maps.apple/p/hI~mG2AbUpvX-z";
 
-    // Detección simple de iOS/Mac
+    // Simple detection for iOS/Mac
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
     const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
     const isMac = /Macintosh|Mac OS X/.test(userAgent) && !/Windows/.test(userAgent);
@@ -362,8 +399,8 @@ window.addEventListener('message', (event) => {
     }
 });
 
-// --- BLOQUEO DE ARRASTRE EN PC ---
-// Esto previene que se arrastren enlaces y botones como si fueran archivos
+// --- PREVENT DRAG ON PC ---
+// This prevents links and buttons from being dragged as if they were files
 const noDragElements = document.querySelectorAll('a, button, img, .btn-court-bottom, .secondary-link');
 
 noDragElements.forEach(element => {
@@ -372,7 +409,7 @@ noDragElements.forEach(element => {
     });
 });
 
-// --- BLOQUEO DE ZOOM EN ESCRITORIO ---
+// --- PREVENT ZOOM ON DESKTOP ---
 document.addEventListener('wheel', function (e) {
     if (e.ctrlKey) {
         e.preventDefault();

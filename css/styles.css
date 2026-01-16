@@ -450,7 +450,7 @@ h3 {
     }
 }
 
-/* CIERRE IMPORTANTE DEL MEDIA QUERY HOVER */
+/* IMPORTANT CLOSING OF HOVER MEDIA QUERY */
 
 
 .schedule-section {
@@ -690,7 +690,7 @@ h3 {
     text-align: center;
     color: var(--color-white);
     overflow: hidden;
-    /* Importante para recortar el blur */
+    /* Important to clip the blur */
 }
 
 .gallery-section::before {
@@ -706,7 +706,7 @@ h3 {
     background-repeat: no-repeat;
     filter: blur(20px);
     transform: scale(1.1);
-    /* Evitar bordes blancos por el blur */
+    /* Prevent white edges due to blur */
     z-index: 0;
     will-change: transform;
     transform: scale(1.1) translateZ(0);
