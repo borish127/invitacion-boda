@@ -769,6 +769,7 @@ h3 {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     backface-visibility: hidden;
+    will-change: transform;
 }
 
 .gallery-item-container:hover {

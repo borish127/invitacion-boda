@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    window.addEventListener('scroll', checkScrollForCountdown);
+    // Initial check
     checkScrollForCountdown();
 
     const modalOverlay = document.getElementById('form-modal-overlay');
@@ -288,15 +288,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- GALLERY INTERACTION (MOBILE) ---
     const galleryItems = document.querySelectorAll('.gallery-item-container');
 
-    // Add "tap" animation to the first photo if mobile
-    if (window.innerWidth <= 768 && galleryItems.length > 0) {
+    function isTouchDevice() {
+        return (('ontouchstart' in window) ||
+            (navigator.maxTouchPoints > 0) ||
+            (navigator.msMaxTouchPoints > 0));
+    }
+
+    // Add "tap" animation to the first photo if touch device
+    if (isTouchDevice() && galleryItems.length > 0) {
         galleryItems[0].classList.add('hint-animation');
     }
 
     // Function to update hint position on scroll
     function checkScrollForHint() {
-        // Only for mobile
-        if (window.innerWidth > 768) return;
+        // Only for touch devices
+        if (!isTouchDevice()) return;
 
         // Check if there is any element with the hint class (if not, the user has already interacted)
         const currentHint = document.querySelector('.hint-animation');
@@ -329,7 +335,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Add specific scroll listener for this (ideally with throttle, but simple for now)
-    window.addEventListener('scroll', checkScrollForHint, { passive: true });
+    // Optimized Scroll Handler (Throttled)
+    let isScrolling = false;
+    function onScroll() {
+        if (!isScrolling) {
+            window.requestAnimationFrame(() => {
+                if (typeof checkScrollForCountdown === 'function') checkScrollForCountdown();
+                if (typeof checkScrollForHint === 'function') checkScrollForHint();
+                isScrolling = false;
+            });
+            isScrolling = true;
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
 
 
     galleryItems.forEach(item => {
