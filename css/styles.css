@@ -12,6 +12,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Nunito';
+    src: url('../fonts/Nunito-VariableFont_wght.ttf') format('truetype');
+    font-weight: 200 900;
+    font-style: normal;
+}
+
 :root {
     /* Updated Floral Palette */
     --color-primary: #9F985C;
@@ -46,6 +53,14 @@ body {
     padding: 0;
     background-color: #000000;
     color: var(--color-text-dark);
+}
+
+p {
+    font-family: 'Nunito', sans-serif;
+}
+
+button {
+    font-family: 'Nunito', sans-serif;
 }
 
 html.modal-open,
@@ -290,7 +305,7 @@ h3 {
 }
 
 .person p {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 1em;
     color: var(--color-text-dark);
     line-height: 1.2;
@@ -372,7 +387,8 @@ h3 {
     height: 40px;
     box-sizing: border-box;
     transition: all 0.3s;
-    font-family: Arial, sans-serif;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
     font-size: 1rem;
     background-color: transparent;
     cursor: pointer;
@@ -731,8 +747,8 @@ h3 {
 }
 
 .gallery-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 300;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
     font-size: 2.7em;
     color: var(--color-white);
     text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
@@ -741,7 +757,7 @@ h3 {
 }
 
 .gallery-footer-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-weight: 300;
     font-size: 1.0em;
     color: var(--color-white);
@@ -832,7 +848,7 @@ h3 {
 
 .photo-date {
     color: var(--color-text-dark);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: clamp(0.7rem, 2vw, 0.85rem);
     font-weight: 600;
     letter-spacing: 0.5px;
