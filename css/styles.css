@@ -904,6 +904,10 @@ h3 {
         }
     }
 
+    .bridesmaids-section .court-content h2 {
+        font-size: 3em;
+    }
+
     .gallery-item-container.hint-animation::before {
         content: '';
         position: absolute;
