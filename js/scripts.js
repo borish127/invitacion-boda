@@ -87,8 +87,14 @@
 
         // --- Contributions: conditional card pricing ---
         const cardPricing = $id('card-pricing');
+        const contributionsSection = $id('contributions');
         if (cardPricing && isSpecialGroup) {
             cardPricing.classList.add('hidden');
+            // Hide the ticket icon heading
+            const ticketTitle = contributionsSection?.querySelector('.contributions-title');
+            if (ticketTitle) ticketTitle.classList.add('hidden');
+            // Switch background from gradient to solid color
+            if (contributionsSection) contributionsSection.classList.add('is-vip');
         }
 
         // --- Court sections visibility ---

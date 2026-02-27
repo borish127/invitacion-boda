@@ -43,10 +43,15 @@
     --section-padding: 50px 20px;
 }
 
+*,
+*::before,
+*::after {
+    -webkit-tap-highlight-color: transparent;
+}
+
 html {
     overflow-x: hidden;
     scroll-behavior: smooth;
-    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -143,8 +148,6 @@ h3 {
     display: flex;
     align-items: center;
     color: white;
-    background-size: cover;
-    background-position: center;
 }
 
 .court-section::before {
@@ -158,29 +161,26 @@ h3 {
 }
 
 .bridesmaids-section {
-    background-image: url('../assets/fotos/damas_bg.webp');
-    background-size: cover;
-    background-position: center;
-    background-color: var(--color-accent-yellow);
-}
-
-.bridesmaids-section::before {
-    background-color: rgba(135, 102, 48, 0.5);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+    background:
+        radial-gradient(ellipse at 20% 80%, rgba(140, 101, 41, 0.7) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(244, 177, 71, 0.5) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(168, 127, 50, 0.4) 0%, transparent 70%),
+        linear-gradient(160deg, #5c461b 0%, #5a4220 40%, #765930 100%);
 }
 
 .groomsmen-section {
-    background-image: url('../assets/fotos/caballeros_bg.webp');
-    background-size: cover;
-    background-position: center;
-    background-color: var(--color-green-light);
+    background:
+        radial-gradient(ellipse at 25% 75%, rgba(60, 96, 48, 0.6) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 25%, rgba(159, 152, 92, 0.35) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(26, 46, 1, 0.5) 0%, transparent 65%),
+        linear-gradient(160deg, #273515 0%, #394d2d 45%, #233414 100%);
 }
 
+.bridesmaids-section::before,
 .groomsmen-section::before {
-    background-color: rgb(46, 62, 36, 0.3);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 .court-content {
@@ -195,7 +195,7 @@ h3 {
 }
 
 .bridesmaids-section .court-content h2 {
-    font-size: 2em;
+    font-size: 4em;
 }
 
 .groomsmen-section .court-content h2 {
@@ -209,6 +209,10 @@ h3 {
     text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.9);
     margin-top: 0;
     margin-bottom: 20px;
+}
+
+.bridesmaids-title {
+    font-family: 'Calligraphy', sans-serif;
 }
 
 .bridesmaids-description,
@@ -244,7 +248,6 @@ h3 {
     background-color: var(--color-green-light);
 }
 
-
 .collapsible-list.active {
     padding: 40px 20px 60px 20px;
 }
@@ -263,7 +266,11 @@ h3 {
 }
 
 .bridesmaids-section+.collapsible-list .list-title {
-    color: var(--color-text-yellow-dark);
+    display: none;
+}
+
+.bridesmaids-section+.collapsible-list.active {
+    padding: 50px 20px;
 }
 
 .groomsmen-section+.collapsible-list .list-title {
@@ -399,6 +406,7 @@ h3 {
     background-color: transparent;
     cursor: pointer;
     width: 100%;
+    will-change: transform;
 }
 
 .block .secondary-link {
@@ -504,7 +512,7 @@ h3 {
     letter-spacing: 2px;
     background-color: rgba(255, 255, 255, 0.85);
     padding: 8px 20px;
-    border-radius: 24px;
+    border-radius: 28px;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     color: var(--color-green-dark-legible);
@@ -545,7 +553,7 @@ h3 {
 .timeline-content {
     padding: 20px 30px;
     background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 24px;
+    border-radius: 28px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -589,6 +597,11 @@ h3 {
     background: linear-gradient(180deg, var(--color-yellow-light) 0%, var(--color-green-light) 100%);
 }
 
+/* VIP: solid background (no gradient, ticket info hidden) */
+.contributions-section.is-vip {
+    background: var(--color-green-light);
+}
+
 .contributions-title {
     font-size: 4em;
     margin-top: 0;
@@ -618,7 +631,7 @@ h3 {
     background-color: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(var(--blur-standard));
     -webkit-backdrop-filter: blur(var(--blur-standard));
-    border-radius: 24px;
+    border-radius: 28px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
 }
 
@@ -635,7 +648,7 @@ h3 {
     background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(var(--blur-standard));
     -webkit-backdrop-filter: blur(var(--blur-standard));
-    border-radius: 24px;
+    border-radius: 28px;
     padding: 25px;
     max-width: 450px;
     margin: 0 auto;
@@ -1096,7 +1109,7 @@ footer {
     background-color: transparent;
     width: 95%;
     height: 90%;
-    border-radius: 12px;
+    border-radius: 28px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     transform: scale(0.95);
@@ -1182,7 +1195,6 @@ button,
     .court-section {
         height: 40vh;
     }
-
 
     .names-grid,
     #groomsmen-list .names-grid {
