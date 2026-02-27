@@ -6,7 +6,7 @@
     // ==========================================
     const CONFIG = {
         SHOW_GAME: false,
-        SHOW_SCHEDULE: true,
+        SHOW_SCHEDULE: false,
         WEDDING_DATE: new Date('2027-04-04T10:00:00').getTime(),
         SPECIAL_GROUPS: ['damas', 'caballeros', 'familia', 'inv_esp'],
         MOBILE_WIDTH: 768,
