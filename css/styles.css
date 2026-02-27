@@ -20,31 +20,33 @@
 }
 
 :root {
-    /* Updated Floral Palette */
+    /* === Color Palette === */
     --color-primary: #9F985C;
-    /* Sage (base green) */
     --color-text-dark: #2e3e24;
-    /* Dark Brown/Green (for text on green) */
     --color-white: white;
-
-    /* Extra palette colors */
     --color-accent-yellow: #F4B147;
-
-    /* NEW SPECIFIC COLORS */
     --color-green-light: #eef2e9;
-    /* Very light green (for gift background) */
     --color-yellow-light: #fdf8e7;
-    /* Very light yellow (for card background) */
     --color-text-yellow-dark: #8C6529;
-    /* Dark brown/yellow (for text on yellow) */
-
     --color-green-dark-legible: #1a2e01;
-    /* Very dark green for text in green sections */
+
+    /* === Spacing === */
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 40px;
+    --spacing-xl: 60px;
+    --spacing-xxl: 80px;
+
+    /* === Shared UI tokens === */
+    --radius-card: 12px;
+    --blur-standard: 8px;
+    --section-padding: 50px 20px;
 }
 
 html {
     overflow-x: hidden;
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -353,7 +355,7 @@ h3 {
     flex: 1 1 30%;
     max-width: 380px;
     padding: 20px;
-    border-radius: 12px;
+    border-radius: 28px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 0;
     text-align: left;
@@ -383,10 +385,14 @@ h3 {
     font-weight: bold;
     border: 1px solid;
     padding: 0 10px;
-    border-radius: 8px;
+    border-radius: 28px;
     height: 40px;
     box-sizing: border-box;
-    transition: all 0.3s;
+    transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1),
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
     font-family: 'Nunito', sans-serif;
     font-weight: 700;
     font-size: 1rem;
@@ -425,13 +431,13 @@ h3 {
 .bridesmaids-section .btn-court-bottom:active {
     background-color: var(--color-text-yellow-dark);
     color: var(--color-white);
-    transition: background-color 0.1s, color 0.1s;
+    transition: transform 0.1s, background-color 0.1s, color 0.1s;
 }
 
 .groomsmen-section .btn-court-bottom:active {
     background-color: var(--color-text-dark);
     color: var(--color-white);
-    transition: background-color 0.1s, color 0.1s;
+    transition: transform 0.1s, background-color 0.1s, color 0.1s;
 }
 
 @media (hover: hover) {
@@ -455,12 +461,7 @@ h3 {
         color: var(--color-white);
     }
 
-    .card-section .secondary-link:hover {
-        background-color: var(--color-text-yellow-dark);
-        color: var(--color-white);
-    }
-
-    .gift-section .secondary-link:hover {
+    .contributions-section .secondary-link:hover {
         background-color: var(--color-text-dark);
         color: var(--color-white);
     }
@@ -503,7 +504,7 @@ h3 {
     letter-spacing: 2px;
     background-color: rgba(255, 255, 255, 0.85);
     padding: 8px 20px;
-    border-radius: 12px;
+    border-radius: 24px;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     color: var(--color-green-dark-legible);
@@ -544,7 +545,7 @@ h3 {
 .timeline-content {
     padding: 20px 30px;
     background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 12px;
+    border-radius: 24px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -580,110 +581,91 @@ h3 {
     text-align: center;
 }
 
-.card-section,
-.gift-section {
-    padding: 50px 20px;
+/* === Contributions Section (unified card + gift) === */
+.contributions-section {
+    padding: var(--section-padding);
+    padding-bottom: var(--spacing-xxl);
     text-align: center;
+    background: linear-gradient(180deg, var(--color-yellow-light) 0%, var(--color-green-light) 100%);
 }
 
-.card-section {
-    background-color: var(--color-yellow-light);
-}
-
-.gift-section {
-    background-color: var(--color-green-light);
-    padding-bottom: 80px;
-}
-
-.card-title,
-.gift-title {
+.contributions-title {
     font-size: 4em;
     margin-top: 0;
-    margin-bottom: 20px;
-}
-
-.card-title {
+    margin-bottom: var(--spacing-md);
     color: var(--color-text-yellow-dark);
 }
 
-.gift-title {
+.contributions-gift-title {
+    font-size: 4em;
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
     color: var(--color-text-dark);
 }
 
-.card-description,
-.gift-description {
+.contributions-description {
     max-width: 600px;
-    margin: 0 auto 40px auto;
+    margin: 0 auto var(--spacing-lg) auto;
     font-size: 1.1em;
     line-height: 1.6;
-}
-
-.card-description {
-    color: var(--color-text-yellow-dark);
-}
-
-.gift-description {
     color: var(--color-text-dark);
 }
 
+.card-pricing {
+    max-width: 600px;
+    margin: 0 auto var(--spacing-lg) auto;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(var(--blur-standard));
+    -webkit-backdrop-filter: blur(var(--blur-standard));
+    border-radius: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+}
 
-.card-info,
+.card-pricing .contributions-description {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-yellow-dark);
+}
+
+.card-pricing .disclaimer-text {
+    color: var(--color-text-yellow-dark);
+}
+
 .bank-data {
     background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 12px;
+    backdrop-filter: blur(var(--blur-standard));
+    -webkit-backdrop-filter: blur(var(--blur-standard));
+    border-radius: 24px;
     padding: 25px;
     max-width: 450px;
     margin: 0 auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.card-info h4,
 .bank-data h4 {
     margin-top: 0;
     font-size: 1.5em;
-}
-
-.card-info h4 {
-    color: var(--color-text-yellow-dark);
-}
-
-.bank-data h4 {
+    font-family: 'Nunito', sans-serif;
     color: var(--color-text-dark);
 }
 
-.card-info p,
 .bank-data p {
     line-height: 1.7;
     word-wrap: break-word;
-}
-
-.card-info p {
-    color: var(--color-text-yellow-dark);
-}
-
-.bank-data p {
     color: var(--color-text-dark);
 }
 
 .copy-buttons {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
 }
 
-.card-section .secondary-link {
-    color: var(--color-text-yellow-dark);
-    border-color: var(--color-text-yellow-dark);
-}
-
-.gift-section .secondary-link {
+.contributions-section .secondary-link {
     color: var(--color-text-dark);
     border-color: var(--color-text-dark);
 }
-
 
 .disclaimer-text {
     margin-top: 25px;
@@ -694,10 +676,7 @@ h3 {
     margin-left: auto;
     margin-right: auto;
     line-height: 1.6;
-}
-
-.card-section .disclaimer-text {
-    color: var(--color-text-yellow-dark);
+    color: var(--color-text-dark);
 }
 
 .gallery-section {
@@ -1024,12 +1003,12 @@ footer {
     right: 0;
     background-color: rgba(30, 30, 30, 0.5);
     color: var(--color-white);
-    padding: 8px 15px;
-    border-radius: 0 0 0 8px;
+    padding: 10px 18px;
+    border-radius: 0 0 0 24px;
     z-index: 1000;
     display: flex;
     gap: 12px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Nunito', sans-serif;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border-left: 1px solid rgba(255, 255, 255, 0.2);
@@ -1079,12 +1058,7 @@ footer {
     color: var(--color-white);
 }
 
-.card-section .secondary-link:active {
-    background-color: var(--color-text-yellow-dark);
-    color: var(--color-white);
-}
-
-.gift-section .secondary-link:active {
+.contributions-section .secondary-link:active {
     background-color: var(--color-text-dark);
     color: var(--color-white);
 }
@@ -1361,7 +1335,7 @@ button,
         right: 0;
         gap: 8px;
         padding: 8px 12px;
-        border-radius: 0 0 0 8px;
+        border-radius: 0 0 0 24px;
     }
 
     .countdown-block span:first-child {

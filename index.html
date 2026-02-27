@@ -19,16 +19,10 @@
 
     <link rel="icon" type="image/png" href="assets/icon.png">
 
-    <link rel="preload" as="image" href="assets/fotos/fondo-principal.webp">
+    <link rel="preload" as="image" href="assets/fotos/fondo-principal.webp" fetchpriority="high">
     <link rel="preload" as="image" href="assets/fotos/damas_bg.webp">
     <link rel="preload" as="image" href="assets/fotos/caballeros.webp">
     <link rel="preload" as="image" href="assets/fotos/fondo-detalles.webp">
-    <link rel="preload" as="image" href="assets/fotos/album/01.webp">
-    <link rel="preload" as="image" href="assets/fotos/album/10.webp">
-    <link rel="preload" as="image" href="assets/fotos/album/20.webp">
-    <link rel="preload" as="image" href="assets/fotos/album/30.webp">
-    <link rel="preload" as="image" href="assets/fotos/album/35.webp">
-    <link rel="preload" as="image" href="assets/fotos/album/41.webp">
 
     <style>
         html {
@@ -256,51 +250,40 @@
             </div>
         </section>
 
-        <section id="card" class="card-section hidden">
-            <h2 class="card-title" data-aos="fade-up">
-                <i class="fa-solid fa-ticket-simple"></i>
-            </h2>
-            <p class="card-description" data-aos="fade-up" data-aos-delay="100">
-                El valor de la tarjeta es de:<br>
-                $40.000 por adulto (mayores a 12 años).<br>
-                $20.000 por niño (entre 2 y 12 años).<br>
-            </p>
-            <!-- <div class="card-info" data-aos="fade-up" data-aos-delay="200">
-                <h4>Datos para la transferencia:</h4>
-                <p>
-                    <strong>CBU:</strong> <span id="cbu-card">0070080130004074676249</span><br>
-                    <strong>Alias:</strong> <span id="alias-card">KELLY.AND.BORIS</span>
+        <section id="contributions" class="contributions-section">
+            <div id="card-pricing" class="card-pricing" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="contributions-title">
+                    <i class="fa-solid fa-ticket-simple"></i>
+                </h2>
+                <p class="contributions-description">
+                    El valor de la tarjeta es de:<br>
+                    $40.000 por adulto (mayores a 12 años).<br>
+                    $20.000 por niño (entre 2 y 12 años).<br>
                 </p>
-                <div class="copy-buttons">
-                    <button id="btn-copy-card" class="secondary-link">Copiar CBU</button>
-                    <button id="btn-copy-alias-card" class="secondary-link">Copiar Alias</button>
-                </div>
-            </div> -->
-            <p class="disclaimer-text" data-aos="fade-up" data-aos-delay="100">
-                Si preferís alcanzarnos el dinero en efectivo, usd o transferencia desde el fuera de Argentina
-                escribinos por WhatsApp para coordinarlo.<br>
-                Por favor confirmar asistencia antes del <br><span class="js-format-date"
-                    data-date="2026-08-01"></span>.
-            </p>
-        </section>
+                <p class="disclaimer-text">
+                    Si preferís alcanzarnos el dinero en efectivo, usd o transferencia desde el fuera de Argentina
+                    escribinos por WhatsApp para coordinarlo.<br>
+                    Por favor confirmar asistencia antes del <br><span class="js-format-date"
+                        data-date="2026-08-01"></span>.
+                </p>
+            </div>
 
-        <section id="gift" class="gift-section">
-            <h2 class="gift-title" data-aos="fade-up">
+            <h2 class="contributions-gift-title" data-aos="fade-up" data-aos-delay="120">
                 <i class="fa-solid fa-gift"></i>
             </h2>
-            <p class="gift-description" data-aos="fade-up" data-aos-delay="100">
+            <p class="contributions-description" data-aos="fade-up" data-aos-delay="150">
                 El mejor regalo es tu presencia, pero si querés contribuir a nuestra nueva vida, cualquier ayuda es
                 bienvenida :)
             </p>
             <div class="bank-data" data-aos="fade-up" data-aos-delay="200">
                 <h4>Datos para transferencia:</h4>
                 <p>
-                    <strong>CBU:</strong> <span id="cbu-card">0070080130004074676249</span><br>
-                    <strong>Alias:</strong> <span id="alias-card">KELLY.AND.BORIS</span>
+                    <strong>CBU:</strong> <span id="cbu-contributions">0070080130004074676249</span><br>
+                    <strong>Alias:</strong> <span id="alias-contributions">KELLY.AND.BORIS</span>
                 </p>
                 <div class="copy-buttons">
-                    <button id="btn-copy-gift" class="secondary-link">Copiar CBU</button>
-                    <button id="btn-copy-alias-gift" class="secondary-link">Copiar Alias</button>
+                    <button id="btn-copy-cbu" class="secondary-link">Copiar CBU</button>
+                    <button id="btn-copy-alias" class="secondary-link">Copiar Alias</button>
                 </div>
             </div>
         </section>
