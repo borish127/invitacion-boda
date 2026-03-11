@@ -108,6 +108,16 @@
         }
         // 'familia' and 'inv_esp' don't show court sections (default hidden)
 
+        // --- Dynamic Hero Scroll Target ---
+        const heroScrollLink = $id('hero-scroll-link');
+        if (heroScrollLink) {
+            if (group === 'damas') {
+                heroScrollLink.setAttribute('href', '#bridesmaids');
+            } else if (group === 'caballeros') {
+                heroScrollLink.setAttribute('href', '#groomsmen');
+            }
+        }
+
         // --- Date Formatting ---
         const dateFormatter = new Intl.DateTimeFormat(undefined, {
             day: '2-digit',
@@ -168,17 +178,14 @@
         setupCopyButton('btn-copy-cbu', 'cbu-contributions', 'Copiar CBU');
         setupCopyButton('btn-copy-alias', 'alias-contributions', 'Copiar Alias');
 
-        // --- Hero Scroll Link ---
-        const heroScrollLink = $id('hero-scroll-link');
-        if (heroScrollLink) {
-            heroScrollLink.addEventListener('click', (e) => {
+        // --- Smooth Scroll Links ---
+        $$('.scroll-link').forEach(link => {
+            link.addEventListener('click', (e) => {
                 e.preventDefault();
-                window.scrollTo({
-                    top: window.innerHeight,
-                    behavior: 'smooth'
-                });
+                const targetElement = $(link.getAttribute('href'));
+                if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
             });
-        }
+        });
 
         AOS.refresh();
 
@@ -190,20 +197,22 @@
                 e.preventDefault();
                 const isActive = list.classList.toggle('active');
 
-                list.style.maxHeight = isActive ? list.scrollHeight + 'px' : '0px';
+                list.style.maxHeight = isActive ? (list.scrollHeight + 10) + 'px' : '0px';
                 button.textContent = isActive ? hideText : showText;
 
-                setTimeout(() => AOS.refresh(), 700);
+                list.addEventListener('transitionend', (evt) => {
+                    if (evt.propertyName === 'max-height') AOS.refresh();
+                }, { once: true });
             });
         }
 
         toggleList(
             $id('btn-view-bridesmaids'), $id('bridesmaids-list'),
-            'Ver todas las damas de honor', 'Ocultar damas de honor'
+            'Ver damas de honor', 'Ocultar damas de honor'
         );
         toggleList(
             $id('btn-view-groomsmen'), $id('groomsmen-list'),
-            'Ver todos los caballeros de honor', 'Ocultar caballeros de honor'
+            'Ver caballeros de honor', 'Ocultar caballeros de honor'
         );
 
         // --- Prevent Context Menu on Mobile (Long Press) ---

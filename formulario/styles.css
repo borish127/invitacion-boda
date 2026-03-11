@@ -250,6 +250,7 @@ h6 {
     border: none;
     cursor: pointer;
     box-shadow: var(--md-elevation-1);
+    will-change: transform, box-shadow;
     transition:
         background-color var(--md-motion-duration-short) var(--md-motion-standard),
         box-shadow var(--md-motion-duration-short) var(--md-motion-standard),
@@ -314,8 +315,10 @@ h6 {
     border-radius: var(--md-shape-full);
     border: 1px solid var(--md-outline-variant);
     cursor: pointer;
+    will-change: transform, box-shadow;
     transition:
         background-color var(--md-motion-duration-short) var(--md-motion-standard),
+        box-shadow var(--md-motion-duration-short) var(--md-motion-standard),
         transform var(--md-motion-duration-short) var(--md-motion-standard);
     -webkit-touch-callout: none;
     -webkit-user-select: none;
