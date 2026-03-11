@@ -44,7 +44,7 @@
             item.setAttribute('data-aos', 'fade-right');
         });
 
-        $$('.gallery-item-container').forEach((item, index) => {
+        $$('.gallery-aos-wrapper').forEach((item, index) => {
             const n = index + 1;
             if (n >= 5 && n <= 9) {
                 item.setAttribute('data-aos', n % 2 !== 0 ? 'fade-right' : 'fade-left');
